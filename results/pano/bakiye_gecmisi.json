@@ -15,7 +15,17 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-05T13:44Z",
+"bot": "Grid Bot 7/24 (15m)",
+"bakiye": 99.99
+},
+{
 "zaman": "2026-11-05T07:29Z",
+"bot": "Donchian Kırılım + Chandelier (1h)",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-05T13:44Z",
 "bot": "Donchian Kırılım + Chandelier (1h)",
 "bakiye": 100.0
 },
@@ -25,7 +35,17 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-05T13:44Z",
+"bot": "Aktif Trend (RSI + Kırılım) (1h)",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T07:40Z",
+"bot": "Donchian + Haber/Duygu Freni (1h)",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-05T13:44Z",
 "bot": "Donchian + Haber/Duygu Freni (1h)",
 "bakiye": 100.0
 },
