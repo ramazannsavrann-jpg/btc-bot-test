@@ -1,0 +1,64 @@
+name: v2 Ek Analiz (on kayit disi)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bot/v2_ek.py"
+      - ".github/workflows/v2_ek.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: v2-ek
+  cancel-in-progress: false
+
+jobs:
+  hesap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0          # motor dosyalarını v1 commit'iyle karşılaştırmak için tam geçmiş
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bagimliliklar (sabit surum)
+        run: pip install numpy==2.1.3
+
+      - name: On kayit v2 hesabi
+        run: python -m bot.v2_ek
+
+      - name: Sonuclari kalici sakla (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v2-ek-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            results/v2_ek/
+            results/V2_EK_ANALIZ.md
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Sonuclari depoya ekle (eskilerin uzerine yazmadan)
+        run: |
+          git config user.name "btc-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/v2_ek results/V2_EK_ANALIZ.md
+          if git diff --cached --quiet; then
+            echo "Degisiklik yok"
+            exit 0
+          fi
+          git commit -m "v2 ek analiz (on kayit disi) $(date -u '+%Y-%m-%d %H:%M UTC') (calistirma ${{ github.run_id }})"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main || { git rebase --abort; sleep 10; continue; }
+            git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
