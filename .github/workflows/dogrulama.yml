@@ -1,0 +1,54 @@
+name: Dogrulama Paketi (On Kayit v1)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bot/validate.py"
+      - "bot/validate_report.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dogrulama
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: numpy kur
+        run: pip install numpy
+
+      - name: Dogrulama paketini calistir
+        env:
+          BOOT_PATHS: "2000"
+        run: python -m bot.validate
+
+      - name: Sonuclari kaydet
+        run: |
+          git config user.name "btc-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/dogrulama.json results/DOGRULAMA.md
+          if git diff --cached --quiet; then
+            echo "Degisiklik yok"
+            exit 0
+          fi
+          git commit -m "Dogrulama raporu (on kayit v1) $(TZ=Europe/Istanbul date '+%d.%m %H:%M')"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main || { git rebase --abort; sleep 10; continue; }
+            git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1

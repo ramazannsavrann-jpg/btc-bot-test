@@ -189,6 +189,14 @@ def report(state, backtest):
             f"en kötü {w.get('en_kotu')}$, en iyi {w.get('en_iyi')}$, kazandıran hafta %{w.get('kazandiran_hafta_pct')}",
             "- Ayrıntı: [../TURNUVA.md](../TURNUVA.md)",
         ]
+    if state.get("dolumlar"):
+        L += ["", "## ⏱️ Son dolumlar (5 Kasım 2026'dan itibaren gerçekçi dolum)", "",
+              "| Olay | Sinyal | Karar anı | Gecikme | 1 dk mumu | Kayıt | Mum fiyatı | Referans | Fark |",
+              "|---|---|---|---|---|---|---|---|---|"]
+        for x in reversed(state["dolumlar"][-8:]):
+            L.append(f"| {x['olay']} | {x['sinyal_ts']} | {x.get('karar_ani_ts')} | {x.get('gecikme_dk')} dk | "
+                     f"{x['dakika_mumu_ts']} | {x.get('kayit_calismasi_ts')} | {x['mum_fiyati']} | {x['referans_fiyat']} | {x['fark_pct']}% |")
+        L += ["", "_Dolumlar simülasyondur: 1 dakikalık mum kapanışı gerçek işlem fiyatı değildir. Stop emirleri gecikmesiz sayılır._"]
     L += ["", "_Bu SANAL paradır; gerçek emir verilmez. Sonuçlar yatırım tavsiyesi değildir._", ""]
     return "\n".join(L)
 

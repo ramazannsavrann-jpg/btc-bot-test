@@ -144,6 +144,15 @@ def new_state(start_equity, params):
     }
 
 
+# Dolum kancası (gecikmeli/gerçekçi dolum). None iken davranış eskisiyle birebir aynıdır.
+# İmza: FILL_HOOK(olay, olay_ts_ms, varsayilan_fiyat, state) -> fiyat. Kayma bunun ÜSTÜNE bir kez uygulanır.
+FILL_HOOK = None
+
+
+def _fill(kind, t_event, px, state):
+    return FILL_HOOK(kind, t_event, px, state) if FILL_HOOK else px
+
+
 def equity(state, price):
     return state["cash"] + state["qty"] * price
 
@@ -176,6 +185,7 @@ def _close_position(state, ts, px, reason):
 
 def _open_position(state, ts, open_px, atr_val, rvol=None):
     p = state["params"]
+    open_px = _fill("giris", ts, open_px, state)
     entry_px = open_px * (1 + p["slip"])
     eq = state["cash"]
     stop_dist = entry_px * p["stop_pct"] if p.get("stop_pct") else p["stop_atr"] * atr_val
@@ -239,12 +249,12 @@ def process_bar(state, candles, ind, i):
                 pos["stop"] = max(pos["stop"], be, c - p["trail_atr"] * a)
         bar_ms = BAR_MS.get(p.get("interval", "1h"), HOUR_MS)
         if (ts + bar_ms - pos["entry_ts"]) / HOUR_MS >= p["max_hold"]:
-            _close_position(state, ts, c, "süre")
+            _close_position(state, ts, _fill("cikis", ts + bar_ms, c, state), "süre")
         else:
             from . import signals
             why = signals.get(p).exit(ind, i, candles, p, pos)
             if why:
-                _close_position(state, ts, c, why)
+                _close_position(state, ts, _fill("cikis", ts + bar_ms, c, state), why)
 
     # 3) düşüş freni
     eq = equity(state, c)

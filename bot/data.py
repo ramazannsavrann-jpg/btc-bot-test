@@ -15,7 +15,7 @@ import zipfile
 from datetime import datetime, timezone
 
 HOUR_MS = 3_600_000
-BAR_MS = {"1h": HOUR_MS, "15m": HOUR_MS // 4, "4h": 4 * HOUR_MS}
+BAR_MS = {"1h": HOUR_MS, "15m": HOUR_MS // 4, "4h": 4 * HOUR_MS, "1m": 60_000}
 OKX_BAR = {"1h": "1H", "15m": "15m", "4h": "4H"}
 KRAKEN_MIN = {"1h": 60, "15m": 15, "4h": 240}
 UA = {"User-Agent": "btc-bot-paper-test/1.0"}

@@ -13,7 +13,7 @@ import shutil
 import sys
 import time
 
-from . import backtest, data, engines, external, multi_live, multi_tournament, pano, paper, research, strategy as S, tournament
+from . import backtest, data, engines, external, live_fill, multi_live, multi_tournament, pano, paper, research, strategy as S, tournament
 
 OUT = os.environ.get("BOT_OUT", "results")
 TOP_N = 3
@@ -185,6 +185,8 @@ def main():
 
     if not external.FG:
         external.load_fear_greed(30)
+    minutes, last_min = live_fill.fetch_minutes()
+    now_ms = int(time.time() * 1000)
     cache, rows = {}, []
     for b in bots:
         d = os.path.join(OUT, b["id"])
@@ -196,7 +198,9 @@ def main():
         if iv not in cache:
             cache[iv] = data.recent(1000, prefer=(st_old or {}).get("source"), interval=iv)
         candles, src = cache[iv]
-        st = paper.run(candles, src, d, params=b["params"], title=b["title"], backtest=b["bt"])
+        st = live_fill.run_with_hook(
+            lambda: paper.run(candles, src, d, params=b["params"], title=b["title"], backtest=b["bt"], now_ms=now_ms),
+            minutes, last_min, candles, S.BAR_MS.get(iv, S.HOUR_MS), now_ms)
         rows.append((b, st))
         print(f"{b['id']:<14} bakiye={S.equity(st, st['last_price']):.2f}$ işlem={len(st['trades'])}")
 
