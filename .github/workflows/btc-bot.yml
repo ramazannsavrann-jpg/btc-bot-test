@@ -29,6 +29,20 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: On kayit sunucu zamani
+        run: |
+          if [ -f docs/ON_KAYIT_v1.md ] && [ ! -f docs/ON_KAYIT_v1_zaman.txt ]; then
+            {
+              echo "Dosya: docs/ON_KAYIT_v1.md"
+              echo "SHA-256: $(sha256sum docs/ON_KAYIT_v1.md | cut -d' ' -f1)"
+              echo "Commit: $(git log -1 --format=%H)"
+              echo "Commit zamani (git): $(git log -1 --format=%cI)"
+              echo "GitHub Actions sunucu zamani (UTC): $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+              echo "Calistirma: $GITHUB_RUN_ID / olay: $GITHUB_EVENT_NAME / depo: $GITHUB_REPOSITORY"
+            } > docs/ON_KAYIT_v1_zaman.txt
+            cat docs/ON_KAYIT_v1_zaman.txt
+          fi
+
       - name: Botu bir adim calistir
         run: python -m bot.main
 
@@ -37,6 +51,7 @@ jobs:
           git config user.name "btc-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add results
+          [ -f docs/ON_KAYIT_v1_zaman.txt ] && git add docs/ON_KAYIT_v1_zaman.txt
           if git diff --cached --quiet; then
             echo "Degisiklik yok"
             exit 0
