@@ -1,8 +1,8 @@
 # Grid Bot 7/24 (15m) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 05.11 13:56 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 05.11 14:25 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 1/7 (3 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 1/7 (4 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
