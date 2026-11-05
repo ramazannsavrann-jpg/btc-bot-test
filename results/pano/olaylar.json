@@ -1,56 +1,62 @@
 [
 {
-"bot": "Kırılım Ansamblı 20/40/60 gün (4s)",
-"zaman": "05.11 12:55",
-"olay": "Test başladı. BTC 80,359$, sanal bakiye 100$.",
+"bot": "Grid Bot 7/24 (15m)",
+"zaman": "05.11 15:30",
+"olay": "ALIM 79,685$ (12.51$ kullanıldı)",
 "no": 1
 },
 {
-"bot": "Donchian (4s)",
+"bot": "Kırılım Ansamblı 20/40/60 gün (4s)",
 "zaman": "05.11 12:55",
 "olay": "Test başladı. BTC 80,359$, sanal bakiye 100$.",
 "no": 2
 },
 {
-"bot": "30 Coin Akıllı Skor",
-"zaman": "05.11 11:12",
-"olay": "Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ",
+"bot": "Donchian (4s)",
+"zaman": "05.11 12:55",
+"olay": "Test başladı. BTC 80,359$, sanal bakiye 100$.",
 "no": 3
 },
 {
-"bot": "30 Coin Momentum Rotasyonu",
+"bot": "30 Coin Akıllı Skor",
 "zaman": "05.11 11:12",
 "olay": "Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ",
 "no": 4
 },
 {
+"bot": "30 Coin Momentum Rotasyonu",
+"zaman": "05.11 11:12",
+"olay": "Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ",
+"no": 5
+},
+{
 "bot": "Donchian + Haber/Duygu Freni (1h)",
 "zaman": "05.11 10:40",
 "olay": "Test başladı. BTC 80,649$, sanal bakiye 100$.",
-"no": 5
+"no": 6
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "05.11 10:29",
 "olay": "Test başladı. BTC 80,653$, sanal bakiye 100$.",
-"no": 6
+"no": 7
 },
 {
 "bot": "Donchian Kırılım + Chandelier (1h)",
 "zaman": "05.11 10:29",
 "olay": "Test başladı. BTC 80,649$, sanal bakiye 100$.",
-"no": 7
+"no": 8
 },
 {
 "bot": "Aktif Trend (RSI + Kırılım) (1h)",
 "zaman": "05.11 10:29",
 "olay": "Test başladı. BTC 80,649$, sanal bakiye 100$.",
-"no": 8
+"no": 9
 },
 {
 "bot": "Temkinli Trend (1s)",
 "zaman": "05.11 10:17",
 "olay": "Test başladı. BTC 80,649$, sanal bakiye 100$.",
-"no": 9
+"no": 10
 }
 ]
