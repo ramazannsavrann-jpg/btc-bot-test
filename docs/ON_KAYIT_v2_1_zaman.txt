@@ -1,0 +1,10 @@
+Dosya: docs/ON_KAYIT_v2_1.md
+SHA-256: 4a194a3ab5c71ed84fbd2501e1a38971357526e6b20b58c4c5245ba57888e230
+Commit: 8b5f62d32551d3d9a80feabb6a5c5eb078d62a5c
+Ust commit: c86ce74fcc286d73db43f2c15d5889d952b98318
+Commit zamani (git): 2026-11-05T15:35:00+03:00
+GitHub sunucu push zamani (UTC): 2026-11-05T12:35:02Z
+Dogrulama: https://github.com/ramazannsavrann-jpg/btc-bot-test/activity (GitHub API: GET /repos/ramazannsavrann-jpg/btc-bot-test/activity)
+T_kayit (v2 ve v2.1 push zamanlarinin gec olani): 2026-11-05T12:35:02Z
+Performans baslangici (ilk tam temiz UTC gunu): 2026-11-06T00:00:00Z
+Etiket: proxy etiket gondermeye izin vermedigi icin GitHub'a etiket gonderilemedi; kanit SHA-256 + commit + sunucu push zamanidir.
