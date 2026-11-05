@@ -19,8 +19,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1793869200000,
- "last_close": 80324.57,
+ "last_ts": 1793871000000,
+ "last_close": 80297.93,
  "trades": [],
  "grid": {
   "levels": [
@@ -55,7 +55,7 @@
   "05.11 10:29 Test başladı. BTC 80,653$, sanal bakiye 100$."
  ],
  "logged_entries": [],
- "last_price": 80324.57,
+ "last_price": 80297.93,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1793870961255
+ "last_run": 1793872542967
 }

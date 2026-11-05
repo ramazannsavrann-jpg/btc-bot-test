@@ -17,7 +17,7 @@
 "tur": "Sadece BTC",
 "bakiye": 100.0,
 "getiri_pct": 0.0,
-"btc_al_tut_pct": -0.41,
+"btc_al_tut_pct": -0.44,
 "islem": 0,
 "kazanan": 0,
 "basari_pct": 0.0,
@@ -63,6 +63,32 @@
 "durum": "Gün 1/7",
 "acik_pozisyon": "Yok",
 "baslangic": "2026-11-05T07:40Z"
+},
+{
+"bot": "Kırılım Ansamblı 20/40/60 gün (4s)",
+"tur": "Sadece BTC",
+"bakiye": 100.0,
+"getiri_pct": 0.0,
+"btc_al_tut_pct": 0.0,
+"islem": 0,
+"kazanan": 0,
+"basari_pct": 0.0,
+"durum": "Gün 1/7",
+"acik_pozisyon": "Yok",
+"baslangic": "2026-11-05T09:55Z"
+},
+{
+"bot": "Donchian (4s)",
+"tur": "Sadece BTC",
+"bakiye": 100.0,
+"getiri_pct": 0.0,
+"btc_al_tut_pct": 0.0,
+"islem": 0,
+"kazanan": 0,
+"basari_pct": 0.0,
+"durum": "Gün 1/7",
+"acik_pozisyon": "Yok",
+"baslangic": "2026-11-05T09:55Z"
 },
 {
 "bot": "30 Coin Akıllı Skor",
