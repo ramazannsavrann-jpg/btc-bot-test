@@ -1,30 +1,36 @@
-# BTC Bot — Canlı Kâğıt Test Raporu
+# 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 05.11 10:17 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 05.11 10:29 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
-**Durum:** 🟢 Test sürüyor — gün 1/7 (0 saat geçti)
+| Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
+|---|---|---|---|---|---|---|
+| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | +0.00% | 0 | %0 | gün 1/7 |
+| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **100.00$** | +0.00% | +0.00% | 0 | %0 | gün 1/7 |
+| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | +0.00% | 0 | %0 | gün 1/7 |
+| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | +0.00% | 0 | %0 | gün 1/7 |
 
-## 💰 100$ → **100.00$** (+0.00%)
-
-- Aynı sürede sadece BTC alıp tutsaydın: **100.00$** (+0.00%)
-- BTC fiyatı: 80,649$ → 80,649$
-- Biten işlem: **0** · Kazanan: 0 · Başarı oranı: **%0**
-- Açık pozisyon yok (bot uygun fırsat bekliyor; nakitte durmak da bir karardır).
-
-## 🕕 6 saatlik özet
-
-| Zaman | Bakiye | Değişim | BTC | Toplam işlem |
-|---|---|---|---|---|
-| 05.11 10:17 | 100.00$ | +0.00$ | 80,649$ | 0 |
-
-## 📜 Ne oldu? (son olaylar)
-
+### Temkinli Trend (1s)
+- Başlangıç: 05.11 10:17, BTC 80,649$
+- Açık pozisyon: yok
 - 05.11 10:17 Test başladı. BTC 80,649$, sanal bakiye 100$.
 
-## 📊 Geçmiş test özeti (karşılaştırma için)
+### Grid Bot 7/24 (15m)
+- Başlangıç: 05.11 10:29, BTC 80,653$
+- Açık pozisyon: yok
+- 05.11 10:29 Test başladı. BTC 80,653$, sanal bakiye 100$.
 
-- Botun görmediği 2026-03-27 → 2026-10-31 döneminde: 100$ → 105.24$ (al-tut %12.73), başarı %85.7, en büyük düşüş %1.56
-- 100$ ile 1 hafta, 213 deneme: tipik 100.0$, en kötü 99.43$, en iyi 101.33$, kazandıran hafta %18.3
-- Ayrıntı: [GECMIS_TEST.md](GECMIS_TEST.md)
+### Donchian Kırılım + Chandelier (1h)
+- Başlangıç: 05.11 10:29, BTC 80,649$
+- Açık pozisyon: yok
+- 05.11 10:29 Test başladı. BTC 80,649$, sanal bakiye 100$.
+
+### Aktif Trend (RSI + Kırılım) (1h)
+- Başlangıç: 05.11 10:29, BTC 80,649$
+- Açık pozisyon: yok
+- 05.11 10:29 Test başladı. BTC 80,649$, sanal bakiye 100$.
+
+## 🏆 Turnuva
+
+Tüm adayların 2 yıllık geçmiş test sıralaması: [TURNUVA.md](TURNUVA.md)
 
 _Bu SANAL paradır; gerçek emir verilmez. Sonuçlar yatırım tavsiyesi değildir._

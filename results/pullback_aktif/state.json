@@ -1,0 +1,59 @@
+{
+ "params": {
+  "ema_fast": 50,
+  "ema_slow": 200,
+  "rsi_len": 14,
+  "rsi_entry": 40.0,
+  "breakout_len": 24,
+  "atr_len": 14,
+  "stop_atr": 2.0,
+  "tp_atr": 2.0,
+  "be_atr": 1.5,
+  "trail_atr": 2.0,
+  "max_hold": 72,
+  "risk": 0.015,
+  "max_alloc": 0.99,
+  "fee": 0.001,
+  "slip": 0.0005,
+  "loss_streak": 3,
+  "pause_hours": 24,
+  "max_dd": 0.1,
+  "interval": "1h",
+  "signal": "pullback",
+  "x_fast": 9,
+  "x_slow": 21
+ },
+ "start_equity": 100.0,
+ "cash": 100.0,
+ "qty": 0.0,
+ "position": null,
+ "pending_entry": null,
+ "loss_streak": 0,
+ "pause_until": 0,
+ "peak": 100.0,
+ "halted": false,
+ "halt_reason": null,
+ "last_ts": 1793858400000,
+ "last_close": 80649.36,
+ "trades": [],
+ "title": "Aktif Trend (RSI + Kırılım) (1h)",
+ "test_start": 1793863766539,
+ "test_end": 1794468566539,
+ "start_price": 80649.36,
+ "finished": false,
+ "snapshots": [
+  {
+   "ts": 1793863766539,
+   "equity": 100.0,
+   "price": 80649.36,
+   "trades": 0
+  }
+ ],
+ "log": [
+  "05.11 10:29 Test başladı. BTC 80,649$, sanal bakiye 100$."
+ ],
+ "logged_entries": [],
+ "last_price": 80649.36,
+ "source": "Binance (data-api.binance.vision)",
+ "last_run": 1793863766539
+}

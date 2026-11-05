@@ -1,0 +1,47 @@
+{
+ "params": {
+  "engine": "grid",
+  "interval": "15m",
+  "n_levels": 8,
+  "range_pct": 0.05,
+  "stop_pct": 0.03,
+  "fee": 0.001,
+  "slip": 0.0005,
+  "max_dd": 0.1
+ },
+ "start_equity": 100.0,
+ "cash": 100.0,
+ "qty": 0.0,
+ "position": null,
+ "pending_entry": null,
+ "loss_streak": 0,
+ "pause_until": 0,
+ "peak": 100.0,
+ "halted": false,
+ "halt_reason": null,
+ "last_ts": 1793862000000,
+ "last_close": 80653.2,
+ "trades": [],
+ "grid": null,
+ "lots": [],
+ "title": "Grid Bot 7/24 (15m)",
+ "test_start": 1793863766534,
+ "test_end": 1794468566534,
+ "start_price": 80653.2,
+ "finished": false,
+ "snapshots": [
+  {
+   "ts": 1793863766534,
+   "equity": 100.0,
+   "price": 80653.2,
+   "trades": 0
+  }
+ ],
+ "log": [
+  "05.11 10:29 Test başladı. BTC 80,653$, sanal bakiye 100$."
+ ],
+ "logged_entries": [],
+ "last_price": 80653.2,
+ "source": "Binance (data-api.binance.vision)",
+ "last_run": 1793863766534
+}
