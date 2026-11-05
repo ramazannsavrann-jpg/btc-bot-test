@@ -1,0 +1,1149 @@
+{
+ "meta": {
+  "egitim": "2024-11-11 → 2026-03-27",
+  "sinav": "2026-03-27 → 2026-10-31",
+  "evren": [
+   "BTC",
+   "ETH",
+   "DOGE",
+   "SOL",
+   "XRP",
+   "PEPE",
+   "PNUT",
+   "BNB",
+   "ADA",
+   "SUI",
+   "NEIRO",
+   "SHIB",
+   "WIF",
+   "XLM",
+   "ACT",
+   "BONK",
+   "WLD",
+   "AVAX",
+   "FLOKI",
+   "NEAR",
+   "DOT",
+   "HBAR",
+   "BOME",
+   "FET",
+   "ARB",
+   "TRX",
+   "LTC",
+   "APT",
+   "ENA",
+   "SEI"
+  ]
+ },
+ "sonuclar": [
+  {
+   "id": "coin_rotasyon",
+   "baslik": "30 Coin Momentum Rotasyonu",
+   "aciklama": "Her gün son günlerin en güçlü coinlerini (EMA200 üstünde olanlar) eşit ağırlıkla tutar, güçten düşeni satar. BTC düşüş trendindeyse nakde geçer.",
+   "zaman_dilimi": "1h",
+   "secilen_ayar": {
+    "rot_k": 5,
+    "mom_len": 72
+   },
+   "params": {
+    "engine": "multi",
+    "mode": "rotation",
+    "interval": "1h",
+    "max_pos": 5,
+    "risk": 0.01,
+    "stop_atr": 6.0,
+    "chandelier_atr": 3.0,
+    "max_hold": 120,
+    "fee": 0.001,
+    "slip_tiers": [
+     [
+      5,
+      0.0005
+     ],
+     [
+      15,
+      0.001
+     ],
+     [
+      99,
+      0.002
+     ]
+    ],
+    "btc_filter": true,
+    "event_pause": true,
+    "fg_max": null,
+    "max_dd": null,
+    "score_min": 6,
+    "mom_len": 72,
+    "dc_len": 48,
+    "dc_exit": 24,
+    "rot_k": 5,
+    "rot_hour": 23,
+    "loss_streak": 3,
+    "pause_hours": 24
+   },
+   "sinav": {
+    "son_bakiye": 73.94,
+    "getiri_pct": -26.06,
+    "islem": 271,
+    "haftalik_islem": 8.66,
+    "basari_pct": 31.4,
+    "kar_faktoru": 0.82,
+    "max_dusus_pct": 49.69,
+    "al_tut_pct": 12.73,
+    "en_cok_kazandiran": [
+     [
+      "BOME",
+      7.43
+     ],
+     [
+      "ENA",
+      4.31
+     ],
+     [
+      "PNUT",
+      4.25
+     ]
+    ],
+    "en_cok_kaybettiren": [
+     [
+      "NEAR",
+      -6.78
+     ],
+     [
+      "HBAR",
+      -6.9
+     ],
+     [
+      "BONK",
+      -11.5
+     ]
+    ]
+   },
+   "sinav_2x_maliyet": {
+    "son_bakiye": 61.53,
+    "getiri_pct": -38.47,
+    "islem": 267,
+    "haftalik_islem": 8.54,
+    "basari_pct": 28.8,
+    "kar_faktoru": 0.73,
+    "max_dusus_pct": 56.91,
+    "al_tut_pct": 12.73,
+    "en_cok_kazandiran": [
+     [
+      "BOME",
+      5.84
+     ],
+     [
+      "ENA",
+      3.1
+     ],
+     [
+      "PNUT",
+      2.76
+     ]
+    ],
+    "en_cok_kaybettiren": [
+     [
+      "PEPE",
+      -6.76
+     ],
+     [
+      "NEAR",
+      -6.95
+     ],
+     [
+      "BONK",
+      -12.67
+     ]
+    ]
+   },
+   "haftalik_100": {
+    "pencere": 212,
+    "ortanca": 99.67,
+    "ortalama": 100.26,
+    "en_kotu": 89.43,
+    "en_iyi": 139.17,
+    "kotu_yuzde10": 92.47,
+    "iyi_yuzde10": 108.2,
+    "kazandiran_hafta_pct": 33.5
+   },
+   "haftalik_islem_ortanca": 7.0,
+   "egitim_tablosu": [
+    {
+     "rot_k": 3,
+     "mom_len": 72,
+     "getiri_pct": -71.06,
+     "haftalik_islem": 5.65,
+     "max_dusus_pct": 88.62
+    },
+    {
+     "rot_k": 3,
+     "mom_len": 168,
+     "getiri_pct": -76.61,
+     "haftalik_islem": 4.62,
+     "max_dusus_pct": 87.79
+    },
+    {
+     "rot_k": 5,
+     "mom_len": 72,
+     "getiri_pct": -55.06,
+     "haftalik_islem": 8.31,
+     "max_dusus_pct": 79.28
+    },
+    {
+     "rot_k": 5,
+     "mom_len": 168,
+     "getiri_pct": -57.81,
+     "haftalik_islem": 6.7,
+     "max_dusus_pct": 76.07
+    }
+   ],
+   "uygun": true,
+   "puan": -0.6,
+   "son_islemler": [
+    {
+     "coin": "DOT",
+     "entry_ts": 1791763200000,
+     "exit_ts": 1791846000000,
+     "entry_px": 1.25751,
+     "exit_px": 1.1801528056090318,
+     "qty": 15.36499179852727,
+     "pnl": -1.226,
+     "pnl_pct": -6.339,
+     "reason": "stop"
+    },
+    {
+     "coin": "APT",
+     "entry_ts": 1791763200000,
+     "exit_ts": 1791849600000,
+     "entry_px": 0.9030024,
+     "exit_px": 0.7925118,
+     "qty": 21.434843467877034,
+     "pnl": -2.4047,
+     "pnl_pct": -12.411,
+     "reason": "rotasyon dışı"
+    },
+    {
+     "coin": "SUI",
+     "entry_ts": 1792540800000,
+     "exit_ts": 1792627200000,
+     "entry_px": 1.0313302999999998,
+     "exit_px": 1.0282707000000002,
+     "qty": 16.803640778261304,
+     "pnl": -0.086,
+     "pnl_pct": -0.496,
+     "reason": "rotasyon dışı"
+    },
+    {
+     "coin": "LTC",
+     "entry_ts": 1792540800000,
+     "exit_ts": 1792627200000,
+     "entry_px": 61.73322,
+     "exit_px": 61.45684,
+     "qty": 0.28061350608215,
+     "pnl": -0.1121,
+     "pnl_pct": -0.647,
+     "reason": "rotasyon dışı"
+    },
+    {
+     "coin": "FLOKI",
+     "entry_ts": 1792540800000,
+     "exit_ts": 1792627200000,
+     "entry_px": 2.4689280000000003e-05,
+     "exit_px": 2.4570760000000003e-05,
+     "qty": 701130.1654528956,
+     "pnl": -0.1176,
+     "pnl_pct": -0.679,
+     "reason": "rotasyon dışı"
+    },
+    {
+     "coin": "WIF",
+     "entry_ts": 1792627200000,
+     "exit_ts": 1792677600000,
+     "entry_px": 0.2108106,
+     "exit_px": 0.1978854966800557,
+     "qty": 80.92373564585303,
+     "pnl": -1.079,
+     "pnl_pct": -6.319,
+     "reason": "stop"
+    },
+    {
+     "coin": "WLD",
+     "entry_ts": 1792540800000,
+     "exit_ts": 1792713600000,
+     "entry_px": 0.5887752,
+     "exit_px": 0.5448082000000001,
+     "qty": 29.46258646377787,
+     "pnl": -1.3288,
+     "pnl_pct": -7.652,
+     "reason": "rotasyon dışı"
+    },
+    {
+     "coin": "PEPE",
+     "entry_ts": 1792540800000,
+     "exit_ts": 1792713600000,
+     "entry_px": 4.56456e-06,
+     "exit_px": 4.3956e-06,
+     "qty": 3798183.2279753997,
+     "pnl": -0.6758,
+     "pnl_pct": -3.894,
+     "reason": "rotasyon dışı"
+    },
+    {
+     "coin": "ENA",
+     "entry_ts": 1792627200000,
+     "exit_ts": 1792713600000,
+     "entry_px": 0.2142276,
+     "exit_px": 0.1979034,
+     "qty": 80.75289232636197,
+     "pnl": -1.3515,
+     "pnl_pct": -7.805,
+     "reason": "rotasyon dışı"
+    },
+    {
+     "coin": "BONK",
+     "entry_ts": 1792627200000,
+     "exit_ts": 1792713600000,
+     "entry_px": 3.22644e-06,
+     "exit_px": 3.0439e-06,
+     "qty": 5358578.628184613,
+     "pnl": -1.0118,
+     "pnl_pct": -5.846,
+     "reason": "rotasyon dışı"
+    },
+    {
+     "coin": "FLOKI",
+     "entry_ts": 1793232000000,
+     "exit_ts": 1793304000000,
+     "entry_px": 2.406804e-05,
+     "exit_px": 2.2246474217769586e-05,
+     "qty": 672854.4429129888,
+     "pnl": -1.2568,
+     "pnl_pct": -7.753,
+     "reason": "stop"
+    },
+    {
+     "coin": "FET",
+     "entry_ts": 1793232000000,
+     "exit_ts": 1793304000000,
+     "entry_px": 0.1847688,
+     "exit_px": 0.16891585650718288,
+     "qty": 87.60098951812539,
+     "pnl": -1.4197,
+     "pnl_pct": -8.763,
+     "reason": "stop"
+    },
+    {
+     "coin": "BONK",
+     "entry_ts": 1793232000000,
+     "exit_ts": 1793304000000,
+     "entry_px": 3.1763400000000002e-06,
+     "exit_px": 2.8930894110163017e-06,
+     "qty": 5092726.5586012,
+     "pnl": -1.4734,
+     "pnl_pct": -9.099,
+     "reason": "stop"
+    },
+    {
+     "coin": "BOME",
+     "entry_ts": 1793232000000,
+     "exit_ts": 1793304000000,
+     "entry_px": 0.0006469914,
+     "exit_px": 0.0005959216543614729,
+     "qty": 24946.123745786586,
+     "pnl": -1.305,
+     "pnl_pct": -8.077,
+     "reason": "stop"
+    },
+    {
+     "coin": "PEPE",
+     "entry_ts": 1793232000000,
+     "exit_ts": 1793318400000,
+     "entry_px": 5.02502e-06,
+     "exit_px": 4.54545e-06,
+     "qty": 3222736.758008784,
+     "pnl": -1.5764,
+     "pnl_pct": -9.724,
+     "reason": "rotasyon dışı"
+    }
+   ],
+   "evren": [
+    "BTC",
+    "ETH",
+    "DOGE",
+    "SOL",
+    "XRP",
+    "PEPE",
+    "PNUT",
+    "BNB",
+    "ADA",
+    "SUI",
+    "NEIRO",
+    "SHIB",
+    "WIF",
+    "XLM",
+    "ACT",
+    "BONK",
+    "WLD",
+    "AVAX",
+    "FLOKI",
+    "NEAR",
+    "DOT",
+    "HBAR",
+    "BOME",
+    "FET",
+    "ARB",
+    "TRX",
+    "LTC",
+    "APT",
+    "ENA",
+    "SEI"
+   ]
+  },
+  {
+   "id": "coin_skor",
+   "baslik": "30 Coin Akıllı Skor",
+   "aciklama": "30 coinin her birine trend, göreceli güç, momentum, kırılım, formasyon, hacim ve RSI'dan 8 üzerinden puan verir; eşik üstündekilerin en iyilerine girer. BTC yönü, haber ve duygu freni açık.",
+   "zaman_dilimi": "1h",
+   "secilen_ayar": {
+    "score_min": 7,
+    "max_pos": 5
+   },
+   "params": {
+    "engine": "multi",
+    "mode": "score",
+    "interval": "1h",
+    "max_pos": 5,
+    "risk": 0.01,
+    "stop_atr": 2.5,
+    "chandelier_atr": 3.0,
+    "max_hold": 120,
+    "fee": 0.001,
+    "slip_tiers": [
+     [
+      5,
+      0.0005
+     ],
+     [
+      15,
+      0.001
+     ],
+     [
+      99,
+      0.002
+     ]
+    ],
+    "btc_filter": true,
+    "event_pause": true,
+    "fg_max": 85,
+    "max_dd": null,
+    "score_min": 7,
+    "mom_len": 168,
+    "dc_len": 48,
+    "dc_exit": 24,
+    "rot_k": 3,
+    "rot_hour": 23,
+    "loss_streak": 3,
+    "pause_hours": 24
+   },
+   "sinav": {
+    "son_bakiye": 78.58,
+    "getiri_pct": -21.42,
+    "islem": 306,
+    "haftalik_islem": 9.78,
+    "basari_pct": 30.4,
+    "kar_faktoru": 0.78,
+    "max_dusus_pct": 28.75,
+    "al_tut_pct": 12.73,
+    "en_cok_kazandiran": [
+     [
+      "PNUT",
+      6.52
+     ],
+     [
+      "SUI",
+      4.04
+     ],
+     [
+      "SEI",
+      2.03
+     ]
+    ],
+    "en_cok_kaybettiren": [
+     [
+      "WLD",
+      -5.0
+     ],
+     [
+      "APT",
+      -5.53
+     ],
+     [
+      "FLOKI",
+      -5.98
+     ]
+    ]
+   },
+   "sinav_2x_maliyet": {
+    "son_bakiye": 69.05,
+    "getiri_pct": -30.95,
+    "islem": 289,
+    "haftalik_islem": 9.24,
+    "basari_pct": 27.7,
+    "kar_faktoru": 0.68,
+    "max_dusus_pct": 33.62,
+    "al_tut_pct": 12.73,
+    "en_cok_kazandiran": [
+     [
+      "PNUT",
+      6.5
+     ],
+     [
+      "SUI",
+      3.51
+     ],
+     [
+      "SEI",
+      2.39
+     ]
+    ],
+    "en_cok_kaybettiren": [
+     [
+      "NEAR",
+      -5.05
+     ],
+     [
+      "ENA",
+      -5.41
+     ],
+     [
+      "APT",
+      -6.31
+     ]
+    ]
+   },
+   "haftalik_100": {
+    "pencere": 212,
+    "ortanca": 98.74,
+    "ortalama": 99.18,
+    "en_kotu": 91.67,
+    "en_iyi": 117.34,
+    "kotu_yuzde10": 95.57,
+    "iyi_yuzde10": 103.48,
+    "kazandiran_hafta_pct": 25.5
+   },
+   "haftalik_islem_ortanca": 10.0,
+   "egitim_tablosu": [
+    {
+     "score_min": 5,
+     "max_pos": 3,
+     "getiri_pct": -42.77,
+     "haftalik_islem": 11.17,
+     "max_dusus_pct": 58.89
+    },
+    {
+     "score_min": 5,
+     "max_pos": 5,
+     "getiri_pct": -70.43,
+     "haftalik_islem": 16.25,
+     "max_dusus_pct": 76.52
+    },
+    {
+     "score_min": 6,
+     "max_pos": 3,
+     "getiri_pct": -52.57,
+     "haftalik_islem": 9.81,
+     "max_dusus_pct": 64.66
+    },
+    {
+     "score_min": 6,
+     "max_pos": 5,
+     "getiri_pct": -58.07,
+     "haftalik_islem": 13.63,
+     "max_dusus_pct": 68.01
+    },
+    {
+     "score_min": 7,
+     "max_pos": 3,
+     "getiri_pct": -21.72,
+     "haftalik_islem": 6.24,
+     "max_dusus_pct": 37.57
+    },
+    {
+     "score_min": 7,
+     "max_pos": 5,
+     "getiri_pct": -4.85,
+     "haftalik_islem": 7.68,
+     "max_dusus_pct": 34.88
+    }
+   ],
+   "uygun": true,
+   "puan": -0.833,
+   "son_islemler": [
+    {
+     "coin": "FET",
+     "entry_ts": 1791190800000,
+     "exit_ts": 1791208800000,
+     "entry_px": 0.26943779999999995,
+     "exit_px": 0.2528210797305063,
+     "qty": 49.79898038536954,
+     "pnl": -0.8535,
+     "pnl_pct": -6.355,
+     "reason": "stop"
+    },
+    {
+     "coin": "APT",
+     "entry_ts": 1791320400000,
+     "exit_ts": 1791334800000,
+     "entry_px": 0.8488943999999999,
+     "exit_px": 0.8139829100639131,
+     "qty": 20.38337106356992,
+     "pnl": -0.7455,
+     "pnl_pct": -4.304,
+     "reason": "stop"
+    },
+    {
+     "coin": "WLD",
+     "entry_ts": 1791734400000,
+     "exit_ts": 1791752400000,
+     "entry_px": 0.580659,
+     "exit_px": 0.5536798423706795,
+     "qty": 27.663701802395025,
+     "pnl": -0.7777,
+     "pnl_pct": -4.837,
+     "reason": "stop"
+    },
+    {
+     "coin": "NEAR",
+     "entry_ts": 1791734400000,
+     "exit_ts": 1791802800000,
+     "entry_px": 5.802582,
+     "exit_px": 5.639292928729356,
+     "qty": 2.6849671899122103,
+     "pnl": -0.4691,
+     "pnl_pct": -3.008,
+     "reason": "stop"
+    },
+    {
+     "coin": "DOT",
+     "entry_ts": 1791734400000,
+     "exit_ts": 1791813600000,
+     "entry_px": 1.25751,
+     "exit_px": 1.2406851788128168,
+     "qty": 13.626786709612688,
+     "pnl": -0.2633,
+     "pnl_pct": -1.535,
+     "reason": "stop"
+    },
+    {
+     "coin": "SOL",
+     "entry_ts": 1792508400000,
+     "exit_ts": 1792508400000,
+     "entry_px": 107.82388499999999,
+     "exit_px": 105.43783977157571,
+     "qty": 0.15629367831201824,
+     "pnl": -0.4063,
+     "pnl_pct": -2.408,
+     "reason": "stop"
+    },
+    {
+     "coin": "DOT",
+     "entry_ts": 1792508400000,
+     "exit_ts": 1792576800000,
+     "entry_px": 1.1863679999999999,
+     "exit_px": 1.1415357701947535,
+     "qty": 14.200599460919017,
+     "pnl": -0.6697,
+     "pnl_pct": -3.971,
+     "reason": "stop"
+    },
+    {
+     "coin": "DOT",
+     "entry_ts": 1792598400000,
+     "exit_ts": 1792620000000,
+     "entry_px": 1.1823599999999999,
+     "exit_px": 1.1477,
+     "qty": 14.051282569778197,
+     "pnl": -0.5198,
+     "pnl_pct": -3.125,
+     "reason": "trend bozuldu"
+    },
+    {
+     "coin": "ARB",
+     "entry_ts": 1792598400000,
+     "exit_ts": 1792623600000,
+     "entry_px": 0.1970934,
+     "exit_px": 0.1880467650985993,
+     "qty": 84.36911517583958,
+     "pnl": -0.7958,
+     "pnl_pct": -4.781,
+     "reason": "stop"
+    },
+    {
+     "coin": "WIF",
+     "entry_ts": 1792598400000,
+     "exit_ts": 1792630800000,
+     "entry_px": 0.21351329999999996,
+     "exit_px": 0.20914595695145444,
+     "qty": 77.84207946842798,
+     "pnl": -0.3729,
+     "pnl_pct": -2.241,
+     "reason": "stop"
+    },
+    {
+     "coin": "NEAR",
+     "entry_ts": 1792598400000,
+     "exit_ts": 1792634400000,
+     "entry_px": 5.39577,
+     "exit_px": 5.139378882539688,
+     "qty": 2.7708283533154336,
+     "pnl": -0.7396,
+     "pnl_pct": -4.942,
+     "reason": "stop"
+    },
+    {
+     "coin": "BNB",
+     "entry_ts": 1793178000000,
+     "exit_ts": 1793192400000,
+     "entry_px": 751.2404899999999,
+     "exit_px": 750.1872831479958,
+     "qty": 0.021499645649059197,
+     "pnl": -0.0549,
+     "pnl_pct": -0.34,
+     "reason": "stop"
+    },
+    {
+     "coin": "BOME",
+     "entry_ts": 1793289600000,
+     "exit_ts": 1793293200000,
+     "entry_px": 0.0006789552,
+     "exit_px": 0.0006529802074203545,
+     "qty": 23766.445355448344,
+     "pnl": -0.649,
+     "pnl_pct": -4.018,
+     "reason": "stop"
+    },
+    {
+     "coin": "PEPE",
+     "entry_ts": 1793289600000,
+     "exit_ts": 1793304000000,
+     "entry_px": 5.505499999999999e-06,
+     "exit_px": 5.139682426784732e-06,
+     "qty": 1848132.6552100796,
+     "pnl": -0.6958,
+     "pnl_pct": -6.831,
+     "reason": "stop"
+    },
+    {
+     "coin": "ENA",
+     "entry_ts": 1793293200000,
+     "exit_ts": 1793304000000,
+     "entry_px": 0.2155302,
+     "exit_px": 0.2031677497024972,
+     "qty": 60.47752017613964,
+     "pnl": -0.773,
+     "pnl_pct": -5.924,
+     "reason": "stop"
+    }
+   ],
+   "evren": [
+    "BTC",
+    "ETH",
+    "DOGE",
+    "SOL",
+    "XRP",
+    "PEPE",
+    "PNUT",
+    "BNB",
+    "ADA",
+    "SUI",
+    "NEIRO",
+    "SHIB",
+    "WIF",
+    "XLM",
+    "ACT",
+    "BONK",
+    "WLD",
+    "AVAX",
+    "FLOKI",
+    "NEAR",
+    "DOT",
+    "HBAR",
+    "BOME",
+    "FET",
+    "ARB",
+    "TRX",
+    "LTC",
+    "APT",
+    "ENA",
+    "SEI"
+   ]
+  },
+  {
+   "id": "coin_donchian",
+   "baslik": "30 Coin Donchian Tarayıcı",
+   "aciklama": "30 coinde zirve kırılımı arar (trend + haber/duygu freni), en güçlü momentumlu olanlara girer.",
+   "zaman_dilimi": "1h",
+   "secilen_ayar": {
+    "dc_len": 48,
+    "max_pos": 3
+   },
+   "params": {
+    "engine": "multi",
+    "mode": "scan",
+    "interval": "1h",
+    "max_pos": 3,
+    "risk": 0.01,
+    "stop_atr": 2.5,
+    "chandelier_atr": 3.0,
+    "max_hold": 120,
+    "fee": 0.001,
+    "slip_tiers": [
+     [
+      5,
+      0.0005
+     ],
+     [
+      15,
+      0.001
+     ],
+     [
+      99,
+      0.002
+     ]
+    ],
+    "btc_filter": true,
+    "event_pause": true,
+    "fg_max": 85,
+    "max_dd": null,
+    "score_min": 6,
+    "mom_len": 168,
+    "dc_len": 48,
+    "dc_exit": 24,
+    "rot_k": 3,
+    "rot_hour": 23,
+    "loss_streak": 3,
+    "pause_hours": 24
+   },
+   "sinav": {
+    "son_bakiye": 69.53,
+    "getiri_pct": -30.47,
+    "islem": 283,
+    "haftalik_islem": 9.05,
+    "basari_pct": 28.6,
+    "kar_faktoru": 0.68,
+    "max_dusus_pct": 32.12,
+    "al_tut_pct": 12.73,
+    "en_cok_kazandiran": [
+     [
+      "SEI",
+      6.36
+     ],
+     [
+      "ARB",
+      5.03
+     ],
+     [
+      "PNUT",
+      3.28
+     ]
+    ],
+    "en_cok_kaybettiren": [
+     [
+      "HBAR",
+      -4.26
+     ],
+     [
+      "TRX",
+      -5.77
+     ],
+     [
+      "NEAR",
+      -7.31
+     ]
+    ]
+   },
+   "sinav_2x_maliyet": {
+    "son_bakiye": 52.97,
+    "getiri_pct": -47.03,
+    "islem": 277,
+    "haftalik_islem": 8.86,
+    "basari_pct": 24.5,
+    "kar_faktoru": 0.49,
+    "max_dusus_pct": 47.4,
+    "al_tut_pct": 12.73,
+    "en_cok_kazandiran": [
+     [
+      "ARB",
+      4.35
+     ],
+     [
+      "SEI",
+      2.43
+     ],
+     [
+      "ENA",
+      1.91
+     ]
+    ],
+    "en_cok_kaybettiren": [
+     [
+      "ACT",
+      -3.09
+     ],
+     [
+      "NEAR",
+      -6.39
+     ],
+     [
+      "TRX",
+      -7.8
+     ]
+    ]
+   },
+   "haftalik_100": {
+    "pencere": 212,
+    "ortanca": 98.34,
+    "ortalama": 99.07,
+    "en_kotu": 90.4,
+    "en_iyi": 125.74,
+    "kotu_yuzde10": 95.53,
+    "iyi_yuzde10": 101.88,
+    "kazandiran_hafta_pct": 25.9
+   },
+   "haftalik_islem_ortanca": 9.0,
+   "egitim_tablosu": [
+    {
+     "dc_len": 24,
+     "max_pos": 3,
+     "getiri_pct": -36.38,
+     "haftalik_islem": 9.35,
+     "max_dusus_pct": 47.36
+    },
+    {
+     "dc_len": 24,
+     "max_pos": 5,
+     "getiri_pct": -40.48,
+     "haftalik_islem": 13.38,
+     "max_dusus_pct": 55.52
+    },
+    {
+     "dc_len": 48,
+     "max_pos": 3,
+     "getiri_pct": -28.76,
+     "haftalik_islem": 8.2,
+     "max_dusus_pct": 40.04
+    },
+    {
+     "dc_len": 48,
+     "max_pos": 5,
+     "getiri_pct": -36.82,
+     "haftalik_islem": 11.85,
+     "max_dusus_pct": 48.56
+    }
+   ],
+   "uygun": true,
+   "puan": -0.97,
+   "son_islemler": [
+    {
+     "coin": "AVAX",
+     "entry_ts": 1791288000000,
+     "exit_ts": 1791334800000,
+     "entry_px": 11.458872,
+     "exit_px": 11.31388156413674,
+     "qty": 1.9677396943255454,
+     "pnl": -0.3301,
+     "pnl_pct": -1.463,
+     "reason": "stop"
+    },
+    {
+     "coin": "WLD",
+     "entry_ts": 1791734400000,
+     "exit_ts": 1791752400000,
+     "entry_px": 0.580659,
+     "exit_px": 0.5536798423706795,
+     "qty": 23.436922184322363,
+     "pnl": -0.6589,
+     "pnl_pct": -4.837,
+     "reason": "stop"
+    },
+    {
+     "coin": "BTC",
+     "entry_ts": 1791734400000,
+     "exit_ts": 1791752400000,
+     "entry_px": 83950.844445,
+     "exit_px": 83500.02528004807,
+     "qty": 0.0002883735369959468,
+     "pnl": -0.1783,
+     "pnl_pct": -0.736,
+     "reason": "stop"
+    },
+    {
+     "coin": "NEAR",
+     "entry_ts": 1791734400000,
+     "exit_ts": 1791802800000,
+     "entry_px": 5.802582,
+     "exit_px": 5.639292928729356,
+     "qty": 2.2771704168515194,
+     "pnl": -0.3979,
+     "pnl_pct": -3.008,
+     "reason": "stop"
+    },
+    {
+     "coin": "BTC",
+     "entry_ts": 1792371600000,
+     "exit_ts": 1792404000000,
+     "entry_px": 82343.59122,
+     "exit_px": 82103.48170129301,
+     "qty": 0.0002893183804960065,
+     "pnl": -0.117,
+     "pnl_pct": -0.491,
+     "reason": "stop"
+    },
+    {
+     "coin": "ARB",
+     "entry_ts": 1792393200000,
+     "exit_ts": 1792479600000,
+     "entry_px": 0.1959912,
+     "exit_px": 0.19233711576443477,
+     "qty": 78.67508961740437,
+     "pnl": -0.318,
+     "pnl_pct": -2.06,
+     "reason": "stop"
+    },
+    {
+     "coin": "SEI",
+     "entry_ts": 1792508400000,
+     "exit_ts": 1792508400000,
+     "entry_px": 0.06334644,
+     "exit_px": 0.060952133287582935,
+     "qty": 274.838560874555,
+     "pnl": -0.6922,
+     "pnl_pct": -3.972,
+     "reason": "stop"
+    },
+    {
+     "coin": "WLD",
+     "entry_ts": 1792508400000,
+     "exit_ts": 1792591200000,
+     "entry_px": 0.5783544,
+     "exit_px": 0.5659803747113515,
+     "qty": 20.790458634891152,
+     "pnl": -0.2811,
+     "pnl_pct": -2.335,
+     "reason": "stop"
+    },
+    {
+     "coin": "PEPE",
+     "entry_ts": 1792396800000,
+     "exit_ts": 1792630800000,
+     "entry_px": 4.114109999999999e-06,
+     "exit_px": 4.581338374257987e-06,
+     "qty": 4491149.1484981235,
+     "pnl": 2.0593,
+     "pnl_pct": 11.134,
+     "reason": "iz süren stop"
+    },
+    {
+     "coin": "APT",
+     "entry_ts": 1792519200000,
+     "exit_ts": 1792634400000,
+     "entry_px": 0.8320608,
+     "exit_px": 0.8107957305066006,
+     "qty": 15.345470048344561,
+     "pnl": -0.3515,
+     "pnl_pct": -2.75,
+     "reason": "stop"
+    },
+    {
+     "coin": "ETH",
+     "entry_ts": 1793178000000,
+     "exit_ts": 1793188800000,
+     "entry_px": 2373.46614,
+     "exit_px": 2338.3352185172225,
+     "qty": 0.010039175783549978,
+     "pnl": -0.4,
+     "pnl_pct": -1.677,
+     "reason": "stop"
+    },
+    {
+     "coin": "DOGE",
+     "entry_ts": 1793160000000,
+     "exit_ts": 1793192400000,
+     "entry_px": 0.079849905,
+     "exit_px": 0.07908899929612878,
+     "qty": 299.6037989419442,
+     "pnl": -0.2756,
+     "pnl_pct": -1.151,
+     "reason": "stop"
+    },
+    {
+     "coin": "BTC",
+     "entry_ts": 1793178000000,
+     "exit_ts": 1793192400000,
+     "entry_px": 81519.74950499999,
+     "exit_px": 80658.41985105866,
+     "qty": 0.00029376105556765646,
+     "pnl": -0.3007,
+     "pnl_pct": -1.254,
+     "reason": "stop"
+    },
+    {
+     "coin": "BOME",
+     "entry_ts": 1793289600000,
+     "exit_ts": 1793293200000,
+     "entry_px": 0.0006789552,
+     "exit_px": 0.0006529802074203545,
+     "qty": 24043.70593023498,
+     "pnl": -0.6566,
+     "pnl_pct": -4.018,
+     "reason": "stop"
+    },
+    {
+     "coin": "PEPE",
+     "entry_ts": 1793289600000,
+     "exit_ts": 1793304000000,
+     "entry_px": 5.505499999999999e-06,
+     "exit_px": 5.139682426784732e-06,
+     "qty": 1621225.031623661,
+     "pnl": -0.6103,
+     "pnl_pct": -6.831,
+     "reason": "stop"
+    }
+   ],
+   "evren": [
+    "BTC",
+    "ETH",
+    "DOGE",
+    "SOL",
+    "XRP",
+    "PEPE",
+    "PNUT",
+    "BNB",
+    "ADA",
+    "SUI",
+    "NEIRO",
+    "SHIB",
+    "WIF",
+    "XLM",
+    "ACT",
+    "BONK",
+    "WLD",
+    "AVAX",
+    "FLOKI",
+    "NEAR",
+    "DOT",
+    "HBAR",
+    "BOME",
+    "FET",
+    "ARB",
+    "TRX",
+    "LTC",
+    "APT",
+    "ENA",
+    "SEI"
+   ]
+  }
+ ]
+}
