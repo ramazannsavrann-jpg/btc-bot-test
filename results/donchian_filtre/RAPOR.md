@@ -1,8 +1,8 @@
 # Donchian + Haber/Duygu Freni (1h) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 05.11 11:02 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 05.11 11:12 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 1/7 (0 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 1/7 (1 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 

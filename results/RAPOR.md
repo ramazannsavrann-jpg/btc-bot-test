@@ -1,6 +1,6 @@
 # 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 05.11 11:10 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
+**Son güncelleme:** 05.11 11:12 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
 | Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
 |---|---|---|---|---|---|---|
@@ -38,14 +38,14 @@
 - 05.11 10:40 Test başladı. BTC 80,649$, sanal bakiye 100$.
 
 ### 30 Coin Akıllı Skor
-- Başlangıç: 05.11 11:10, BTC 80,359$
+- Başlangıç: 05.11 11:12, BTC 80,359$
 - Açık pozisyon: yok
-- 05.11 11:10 Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, SNDKB, UNI, SOXLB, XAUT, TRUMP, SUI, HYPE, DOGE, ENA, SPCXB, TRX, CRCLB, LINK, WLD, MUB, GOOGLB, AAVE, ADA, RWUSD, PUMP, MSTRB, AVAX
+- 05.11 11:12 Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ
 
 ### 30 Coin Momentum Rotasyonu
-- Başlangıç: 05.11 11:10, BTC 80,359$
+- Başlangıç: 05.11 11:12, BTC 80,359$
 - Açık pozisyon: yok
-- 05.11 11:10 Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, SNDKB, UNI, SOXLB, XAUT, TRUMP, SUI, HYPE, DOGE, ENA, SPCXB, TRX, CRCLB, LINK, WLD, MUB, GOOGLB, AAVE, ADA, RWUSD, PUMP, MSTRB, AVAX
+- 05.11 11:12 Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ
 
 ## 🏆 Turnuvalar
 
