@@ -1,16 +1,16 @@
 # 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 05.11 11:35 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
+**Son güncelleme:** 05.11 12:27 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
 | Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
 |---|---|---|---|---|---|---|
-| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -0.36% | 0 | %0 | gün 1/7 |
-| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **100.00$** | +0.00% | -0.09% | 0 | %0 | gün 1/7 |
-| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -0.36% | 0 | %0 | gün 1/7 |
-| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -0.36% | 0 | %0 | gün 1/7 |
-| [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -0.36% | 0 | %0 | gün 1/7 |
-| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | +0.00% (BTC) | 0 | %0 | gün 1/7 |
-| [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | +0.00% (BTC) | 0 | %0 | gün 1/7 |
+| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -0.19% | 0 | %0 | gün 1/7 |
+| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **100.00$** | +0.00% | -0.41% | 0 | %0 | gün 1/7 |
+| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -0.19% | 0 | %0 | gün 1/7 |
+| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -0.19% | 0 | %0 | gün 1/7 |
+| [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -0.19% | 0 | %0 | gün 1/7 |
+| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | +0.17% (BTC) | 0 | %0 | gün 1/7 |
+| [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | +0.17% (BTC) | 0 | %0 | gün 1/7 |
 
 ### Temkinli Trend (1s)
 - Başlangıç: 05.11 10:17, BTC 80,649$
@@ -49,6 +49,7 @@
 
 ## 🏆 Turnuvalar
 
+- 🔬 Araştırma (4 yıl, walk-forward, PBO): [ARASTIRMA.md](ARASTIRMA.md)
 - BTC stratejileri (2 yıl): [TURNUVA.md](TURNUVA.md)
 - 30 coin botları (2 yıl): [COIN_TURNUVA.md](COIN_TURNUVA.md)
 
