@@ -1,0 +1,6 @@
+Dosya: docs/ON_KAYIT_v1.md
+SHA-256: e6b23406a5397c7d4d77004b5d52d9e79a8ce0cf89038288e5ae9411d3745b2f
+Commit: 4fcfd96ba138112884c2bccf976549bba0bb9a42
+Commit zamani (git): 2026-11-05T13:45:41+03:00
+GitHub Actions sunucu zamani (UTC): 2026-11-05T10:45:50Z
+Calistirma: 42013386886 / olay: push / depo: ramazannsavrann-jpg/btc-bot-test
