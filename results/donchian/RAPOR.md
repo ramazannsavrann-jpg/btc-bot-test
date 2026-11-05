@@ -1,6 +1,6 @@
 # Donchian Kırılım + Chandelier (1h) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 05.11 11:12 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 05.11 11:29 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
 **Durum:** 🟢 Test sürüyor — gün 1/7 (1 saat geçti)
 
