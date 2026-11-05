@@ -163,3 +163,99 @@ def history(months=24, interval="1h"):
         except Exception as e:  # noqa: BLE001
             errors.append(f"{name}: {e}")
     raise RuntimeError("Geçmiş veri alınamadı: " + " | ".join(errors))
+
+
+# ================================================================ çoklu coin
+STABLE = {"USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "USD1", "XUSD", "RLUSD", "PYUSD", "U",
+          "AEUR", "EURI", "USDE", "BFUSD", "PAXG", "WBTC", "WBETH", "BNSOL", "WSTETH"}
+
+# Geçmiş test için aday havuzu: Kasım 2024 civarında Binance'te en çok işlem gören coinler
+# (bugünün listesi değil). İlk ayın hacmine göre içlerinden en büyük 30'u seçilir.
+HIST_POOL = ["BTC", "ETH", "SOL", "XRP", "DOGE", "BNB", "ADA", "PEPE", "SHIB", "SUI", "AVAX", "LINK", "TRX",
+             "LTC", "DOT", "NEAR", "WIF", "BONK", "FET", "TON", "APT", "ARB", "OP", "FLOKI", "HBAR", "BCH",
+             "UNI", "ATOM", "FIL", "INJ", "SEI", "TIA", "RENDER", "WLD", "ORDI", "ENA", "PNUT", "NEIRO",
+             "ACT", "TAO", "XLM", "ETC", "ICP", "AAVE", "JUP", "EIGEN", "BOME", "NOT", "PEOPLE", "CRV"]
+
+
+def _sym_recent_binance(base, sym, limit, iv):
+    url = f"{base}/api/v3/klines?symbol={sym}USDT&interval={iv}&limit={limit}"
+    return _binance_rows(json.loads(_get(url)))
+
+
+def recent_symbol(sym, limit=1000, interval="1h"):
+    errors = []
+    for base in ("https://data-api.binance.vision", "https://api.binance.com"):
+        try:
+            c = _clean(_sym_recent_binance(base, sym, limit, interval), interval)
+            if c:
+                return c
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"{base}: {e}")
+    raise RuntimeError(f"{sym} verisi alınamadı: " + " | ".join(errors))
+
+
+def history_symbol(sym, months=24, interval="1h"):
+    """Binance arşivinden coin geçmişi; listelenmeden önceki aylar atlanır."""
+    out = []
+    for ym in _month_list(months):
+        url = (f"https://data.binance.vision/data/spot/monthly/klines/{sym}USDT/{interval}/"
+               f"{sym}USDT-{interval}-{ym}.zip")
+        try:
+            z = zipfile.ZipFile(io.BytesIO(_get(url, 60)))
+        except Exception:  # noqa: BLE001
+            continue  # o ay listede değil
+        for line in z.read(z.namelist()[0]).decode().splitlines():
+            parts = line.split(",")
+            if parts[0].strip().isdigit():
+                out.append(parts)
+    return _clean(_binance_rows(out), interval)
+
+
+def top_symbols(n=30):
+    """Şu anki 24 saatlik USDT hacmine göre en büyük n coin (stabil coin ve kaldıraçlı tokenler hariç)."""
+    for base in ("https://data-api.binance.vision", "https://api.binance.com"):
+        try:
+            rows = json.loads(_get(f"{base}/api/v3/ticker/24hr", 60))
+            break
+        except Exception:  # noqa: BLE001
+            rows = None
+    if not rows:
+        raise RuntimeError("Coin listesi alınamadı")
+    cands = []
+    for r in rows:
+        s = r["symbol"]
+        if not s.endswith("USDT"):
+            continue
+        base = s[:-4]
+        if base in STABLE or base.endswith(("UP", "DOWN", "BULL", "BEAR")) or not base.isalnum():
+            continue
+        if float(r.get("lastPrice", 0)) <= 0 or int(r.get("count", 0)) == 0:
+            continue
+        cands.append((float(r["quoteVolume"]), base))
+    cands.sort(reverse=True)
+    return [b for _, b in cands[:n]]
+
+
+def history_universe(months=24, n=30, interval="1h", log=print):
+    """Havuzdaki her coinin geçmişini indirir; İLK AYIN hacmine göre en büyük n coini seçer."""
+    data = {}
+    for sym in HIST_POOL:
+        try:
+            c = history_symbol(sym, months, interval)
+        except Exception as e:  # noqa: BLE001
+            log(f"{sym}: {e}")
+            continue
+        if len(c) > 24 * 30:
+            data[sym] = c
+    if "BTC" not in data:
+        raise RuntimeError("BTC geçmişi yok")
+    t0 = data["BTC"][0][0]
+    first_month = t0 + 30 * 24 * HOUR_MS
+    vol = {}
+    for sym, c in data.items():
+        vol[sym] = sum(x[5] * x[4] for x in c if x[0] < first_month)   # yaklaşık USDT hacmi
+    chosen = [s for s, v in sorted(vol.items(), key=lambda kv: -kv[1]) if v > 0][:n]
+    if "BTC" not in chosen:
+        chosen = ["BTC"] + chosen[:n - 1]
+    log(f"Geçmiş evren ({len(chosen)} coin, ilk ay hacmine göre): {', '.join(chosen)}")
+    return {s: data[s] for s in chosen}
