@@ -24,8 +24,8 @@ Gerçek para, Binance hesabı veya API anahtarı **kullanılmaz**.
 `results/state.json` dosyasını silmen yeterli (geçmiş testi de yenilemek için `results/backtest.json` ve `results/params.json`'u da sil).
 
 ## Turnuva
-`bot/candidates.py` içindeki 16 aday (Donchian, Supertrend, UT Bot, Bollinger dip, RSI(2), Squeeze,
-Aktif Trend, Freqtrade BinH+Cluc, EMA 9/21 15dk, Grid Bot, Gece saati kontrolü, haber/duygu freni eklenmiş 3 bot, Aşırı korkuda dip alımı, Takoz/üçgen kırılımı) 24 aylık gerçek
+`bot/candidates.py` içindeki 23 aday (Donchian, Supertrend, UT Bot, Bollinger dip, RSI(2), Squeeze,
+Aktif Trend, Freqtrade BinH+Cluc, EMA 9/21 15dk, Grid Bot, Gece saati kontrolü, haber/duygu freni eklenmiş 3 bot, Aşırı korkuda dip alımı, Takoz/üçgen, İkili dip, Ters OBO, Boğa bayrağı, Yatay direnç, Fincan-kulp, Formasyon Avcısı ve frenli hâli) 24 aylık gerçek
 Binance verisinde yarışır. Ayarlar ilk %70'te seçilir, sıralama hiç görülmemiş son %30'a ve
 2 kat komisyonlu dayanıklılık testine göre yapılır. İlk 3 bot, temkinli botla birlikte canlı kâğıt teste girer.
 Turnuvayı yeniden yapmak için `results/turnuva.json` ve `results/secilen_botlar.json` silinir.

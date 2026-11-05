@@ -10,5 +10,9 @@
  {
   "id": "pullback_aktif",
   "title": "Aktif Trend (RSI + Kırılım) (1h)"
+ },
+ {
+  "id": "donchian_filtre",
+  "title": "Donchian + Haber/Duygu Freni (1h)"
  }
 ]

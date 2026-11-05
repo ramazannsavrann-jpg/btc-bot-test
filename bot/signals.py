@@ -466,3 +466,136 @@ class Wedge(Sig):
             vm = ind["vol_ma"][i]
             brk = not isn(vm) and ind["vol"][i] > vm * 1.2
         return brk
+
+
+# ================================================================ klasik formasyonlar
+# Hepsi sadece DOĞRULANMIŞ pivotları (tepe/dip, k mum sonra onaylanır) kullanır -> geleceği görmez.
+# Her formasyon i. mumda bir "kırılım seviyesi" üretir; kapanış bu seviyeyi yukarı keserse alım.
+
+def _confirmed(piv, i, ptr):
+    while ptr < len(piv) and piv[ptr][2] <= i:
+        ptr += 1
+    return ptr
+
+
+def pat_double_bottom(h, l, c, p):
+    k, tol, recent = p.get("pivot_k", 4), p.get("pat_tol", 0.015), p.get("pat_recent", 48)
+    pl = pivots(l, k, False)
+    out, b = [NAN] * len(c), 0
+    for i in range(len(c)):
+        b = _confirmed(pl, i, b)
+        if b < 2:
+            continue
+        (j1, l1, _), (j2, l2, _) = pl[b - 2], pl[b - 1]
+        if j2 - j1 >= 10 and abs(l2 - l1) / l1 <= tol and i - j2 <= recent and min(l[j2:i + 1]) >= min(l1, l2) * 0.995:
+            out[i] = max(h[j1:j2 + 1])          # boyun çizgisi
+    return out
+
+
+def pat_inv_hs(h, l, c, p):
+    k, tol, recent = p.get("pivot_k", 4), p.get("pat_tol", 0.015) * 2, p.get("pat_recent", 48)
+    pl = pivots(l, k, False)
+    out, b = [NAN] * len(c), 0
+    for i in range(len(c)):
+        b = _confirmed(pl, i, b)
+        if b < 3:
+            continue
+        (j1, l1, _), (j2, l2, _), (j3, l3, _) = pl[b - 3], pl[b - 2], pl[b - 1]
+        if not (l2 < min(l1, l3) * 0.995 and abs(l3 - l1) / l1 <= tol and i - j3 <= recent):
+            continue
+        n1 = max(range(j1, j2 + 1), key=lambda x: h[x])
+        n2 = max(range(j2, j3 + 1), key=lambda x: h[x])
+        if n2 == n1:
+            continue
+        slope = (h[n2] - h[n1]) / (n2 - n1)
+        out[i] = h[n2] + slope * (i - n2)       # eğimli boyun çizgisi
+    return out
+
+
+def pat_bull_flag(h, l, c, p):
+    pole_bars, pole_pct = p.get("pole_bars", 12), p.get("pole_pct", 0.04)
+    out = [NAN] * len(c)
+    for i in range(pole_bars + 20, len(c)):
+        for n in range(4, 17):                  # bayrak (dinlenme) uzunluğu
+            s = i - n
+            pole_lo = min(l[s - pole_bars:s])
+            pole_h = c[s - 1] - pole_lo
+            if pole_h <= 0 or pole_h / pole_lo < pole_pct:
+                continue
+            fh, fl = max(h[s:i]), min(l[s:i])
+            # dar ve direğin yarısından fazla geri vermeyen dinlenme
+            if fh - fl <= 0.5 * pole_h and fl >= c[s - 1] - 0.5 * pole_h:
+                out[i] = fh
+                break
+    return out
+
+
+def pat_resistance(h, l, c, p):
+    k, tol, look = p.get("pivot_k", 4), p.get("res_tol", 0.004), p.get("pattern_bars", 120)
+    ph = pivots(h, k, True)
+    out, a = [NAN] * len(c), 0
+    for i in range(len(c)):
+        a = _confirmed(ph, i, a)
+        if a < 2:
+            continue
+        last = ph[a - 1][1]
+        touches = [v for (j, v, _) in ph[max(0, a - 8):a] if i - j <= look and abs(v - last) / last <= tol]
+        if len(touches) >= 2:
+            out[i] = max(touches)               # en az 2 kez test edilmiş yatay direnç
+    return out
+
+
+def pat_cup_handle(h, l, c, p):
+    k = p.get("pivot_k", 4)
+    ph = pivots(h, k, True)
+    out, a = [NAN] * len(c), 0
+    for i in range(len(c)):
+        a = _confirmed(ph, i, a)
+        if a < 2:
+            continue
+        (j1, h1, _), (j2, h2, _) = ph[a - 2], ph[a - 1]
+        if j2 - j1 < 30 or abs(h2 - h1) / h1 > 0.03 or i - j2 > 30:
+            continue
+        low = min(l[j1:j2 + 1])
+        depth = (max(h1, h2) - low) / max(h1, h2)
+        if 0.05 <= depth <= 0.35 and min(l[j2:i + 1]) >= h2 - (h2 - low) / 2:   # kulp çanağın yarısından sığ
+            out[i] = max(h1, h2)                # fincan ağzı
+    return out
+
+
+PATTERNS = {
+    "ikili_dip": pat_double_bottom,
+    "ters_obo": pat_inv_hs,
+    "bayrak": pat_bull_flag,
+    "direnc": pat_resistance,
+    "fincan_kulp": pat_cup_handle,
+}
+PATTERN_TR = {"ikili_dip": "İkili dip (W)", "ters_obo": "Ters OBO", "bayrak": "Boğa bayrağı",
+              "direnc": "Yatay direnç", "fincan_kulp": "Fincan-kulp", "takoz": "Takoz/üçgen"}
+
+
+@register("pattern")
+class Pattern(Sig):
+    title = "Formasyon kırılımı"
+
+    def indicators(self, candles, p, base):
+        _, h, l, c, v = cols(candles)
+        names = p.get("patterns", list(PATTERNS))
+        lv = {n: PATTERNS[n](h, l, c, p) for n in names if n in PATTERNS}
+        if "takoz" in names:
+            w = REGISTRY["wedge"].indicators(candles, p, base)
+            lv["takoz"] = [u if ok else NAN for u, ok in zip(w["w_up"], w["w_ok"])]
+        return {"levels": lv, "cl": c, "vol": v, "vol_ma": sma(v, 20)}
+
+    def entry(self, ind, i, candles, p):
+        c, cp = ind["cl"][i], ind["cl"][i - 1]
+        for name, lv in ind["levels"].items():
+            a, b = lv[i], lv[i - 1]
+            ref_prev = b if not isn(b) else a
+            if not isn(a, ref_prev) and c > a * 1.001 and cp <= ref_prev * 1.001:
+                if p.get("vol_confirm"):
+                    vm = ind["vol_ma"][i]
+                    if isn(vm) or ind["vol"][i] <= vm * 1.2:
+                        continue
+                return True
+        return False
