@@ -1,6 +1,7 @@
-"""Motor seçimi: 'trend' (strategy.py + signals.py) veya 'grid' (grid.py)."""
-from . import grid, strategy
+"""Motor seçimi: 'trend' (strategy.py + signals.py), 'grid' (grid.py) veya 'ensemble' (ensemble.py)."""
+from . import ensemble, grid, strategy
 
 
 def get(params):
-    return grid if params.get("engine") == "grid" else strategy
+    e = params.get("engine")
+    return grid if e == "grid" else ensemble if e == "ensemble" else strategy

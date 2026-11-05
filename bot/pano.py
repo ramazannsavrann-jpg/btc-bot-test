@@ -32,7 +32,7 @@ def _acik(st, px):
     return engines.get(st["params"]).describe_open(st, px) or "Yok"
 
 
-def write(out_dir, rows, tour, ctour):
+def write(out_dir, rows, tour, ctour, rtour=None):
     d = os.path.join(out_dir, "pano")
     os.makedirs(d, exist_ok=True)
     botlar, gecmis, olaylar = [], [], []
@@ -81,9 +81,30 @@ def write(out_dir, rows, tour, ctour):
         "btc_degisim_pct": round((btc_now / first["start_price"] - 1) * 100, 2) if first and btc_now else None,
         "bot_sayisi": len(rows),
         "toplam_islem": sum(r["islem"] for r in botlar),
+        "arastirma_donem": rtour["meta"]["sinav"] if rtour else None,
+        "pbo_pct": round(rtour["meta"]["pbo"]["pbo"] * 100, 1) if rtour and rtour["meta"].get("pbo") else None,
+        "dsr_pct": round(rtour["meta"]["dsr"]["dsr"] * 100, 1) if rtour and rtour["meta"].get("dsr") else None,
+        "deneme_sayisi": rtour["meta"]["pbo"]["deneme"] if rtour and rtour["meta"].get("pbo") else None,
     }]
     olaylar = [dict(r, no=k + 1) for k, r in enumerate(olaylar[:30])]
+    arastirma = []
+    if rtour:
+        bh = rtour["meta"]["al_tut"]
+        arastirma.append({"sira": 0, "bot": "BTC al-tut (karşılaştırma)", "zaman": "-",
+                          "getiri_pct": bh.get("getiri_pct"), "cagr_pct": bh.get("cagr_pct"),
+                          "sharpe": bh.get("sharpe"), "sortino": bh.get("sortino"), "calmar": bh.get("calmar"),
+                          "max_dusus_pct": bh.get("max_dusus_pct"), "piyasada_pct": 100.0, "haftalik_islem": 0,
+                          "kar_faktoru": None, "iki_kat_pct": bh.get("getiri_pct"), "uc_kat_pct": bh.get("getiri_pct"),
+                          "pozitif_pencere": "-"})
+        for k, r in enumerate(rtour["sonuclar"], 1):
+            m, c = r["olcum"], r["maliyet_egrisi"]
+            arastirma.append({"sira": k, "bot": r["baslik"], "zaman": r["zaman_dilimi"],
+                              "getiri_pct": m["getiri_pct"], "cagr_pct": m["cagr_pct"], "sharpe": m["sharpe"],
+                              "sortino": m["sortino"], "calmar": m["calmar"], "max_dusus_pct": m["max_dusus_pct"],
+                              "piyasada_pct": m["piyasada_kalma_pct"], "haftalik_islem": m["haftalik_islem"],
+                              "kar_faktoru": m["kar_faktoru"], "iki_kat_pct": c["2x"], "uc_kat_pct": c["3x"],
+                              "pozitif_pencere": r["pozitif_pencere"]})
     for name, data in (("botlar", botlar), ("bakiye_gecmisi", gecmis), ("olaylar", olaylar),
-                       ("turnuva", turnuva), ("ozet", ozet)):
+                       ("turnuva", turnuva), ("ozet", ozet), ("arastirma", arastirma)):
         with open(os.path.join(d, f"{name}.json"), "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=0)

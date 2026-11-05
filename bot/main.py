@@ -13,7 +13,7 @@ import shutil
 import sys
 import time
 
-from . import backtest, data, engines, external, multi_live, multi_tournament, pano, paper, strategy as S, tournament
+from . import backtest, data, engines, external, multi_live, multi_tournament, pano, paper, research, strategy as S, tournament
 
 OUT = os.environ.get("BOT_OUT", "results")
 TOP_N = 3
@@ -66,6 +66,21 @@ def ensure_coin_tournament():
     uni = data.history_universe(24, 30)
     print(f"Coin verisi hazır ({time.time() - t:.0f} sn)")
     multi_tournament.run(uni, OUT)
+    return paper.load_json(path)
+
+
+def ensure_research():
+    """4 yıllık walk-forward araştırma turnuvası (bir kere)."""
+    path = os.path.join(OUT, "arastirma.json")
+    if os.path.exists(path):
+        return paper.load_json(path)
+    print("Araştırma turnuvası (48 ay, walk-forward) başlıyor...")
+    if not external.FG or min(external.FG) > (time.time() * 1000 - 4.2 * 365 * 86_400_000) // 86_400_000:
+        external.load_fear_greed(0)
+    t = time.time()
+    candles, src = data.history(49, "1h")
+    print(f"{len(candles)} mum ({src}), {time.time() - t:.0f} sn")
+    research.run(candles, OUT)
     return paper.load_json(path)
 
 
@@ -144,7 +159,8 @@ def combined_report(rows, tour):
         L += [f"- {x}" for x in list(reversed(st["log"]))[:6]]
         L.append("")
     if tour:
-        L += ["## 🏆 Turnuvalar", "", "- BTC stratejileri (2 yıl): [TURNUVA.md](TURNUVA.md)",
+        L += ["## 🏆 Turnuvalar", "", "- 🔬 Araştırma (4 yıl, walk-forward, PBO): [ARASTIRMA.md](ARASTIRMA.md)",
+              "- BTC stratejileri (2 yıl): [TURNUVA.md](TURNUVA.md)",
               "- 30 coin botları (2 yıl): [COIN_TURNUVA.md](COIN_TURNUVA.md)", ""]
     L += ["_Bu SANAL paradır; gerçek emir verilmez. Sonuçlar yatırım tavsiyesi değildir._", ""]
     return "\n".join(L)
@@ -192,8 +208,13 @@ def main():
 
     with open(os.path.join(OUT, "RAPOR.md"), "w", encoding="utf-8") as f:
         f.write(combined_report(rows, tour))
+    rtour = None
     try:
-        pano.write(OUT, rows, tour, ctour)
+        rtour = ensure_research()
+    except Exception as e:  # noqa: BLE001
+        print("Araştırma turnuvası hata:", e)
+    try:
+        pano.write(OUT, rows, tour, ctour, rtour)
     except Exception as e:  # noqa: BLE001
         print("Pano verisi yazılamadı:", e)
     if all(st.get("finished") for _, st in rows):

@@ -15,9 +15,9 @@ import zipfile
 from datetime import datetime, timezone
 
 HOUR_MS = 3_600_000
-BAR_MS = {"1h": HOUR_MS, "15m": HOUR_MS // 4}
-OKX_BAR = {"1h": "1H", "15m": "15m"}
-KRAKEN_MIN = {"1h": 60, "15m": 15}
+BAR_MS = {"1h": HOUR_MS, "15m": HOUR_MS // 4, "4h": 4 * HOUR_MS}
+OKX_BAR = {"1h": "1H", "15m": "15m", "4h": "4H"}
+KRAKEN_MIN = {"1h": 60, "15m": 15, "4h": 240}
 UA = {"User-Agent": "btc-bot-paper-test/1.0"}
 
 
@@ -265,3 +265,20 @@ def history_universe(months=24, n=30, interval="1h", log=print):
         chosen = ["BTC"] + chosen[:n - 1]
     log(f"Geçmiş evren ({len(chosen)} coin, ilk ay hacmine göre): {', '.join(chosen)}")
     return {s: data[s] for s in chosen}
+
+
+def aggregate(candles, hours=4):
+    """1 saatlik mumları N saatlik mumlara birleştirir (UTC hizalı, sadece tamamlanmış mumlar)."""
+    step = hours * HOUR_MS
+    out, cur = [], None
+    for c in candles:
+        k = c[0] // step * step
+        if cur is None or cur[0] != k:
+            if cur and cur[6] == hours:
+                out.append(tuple(cur[:6]))
+            cur = [k, c[1], c[2], c[3], c[4], c[5], 1]
+        else:
+            cur[2] = max(cur[2], c[2]); cur[3] = min(cur[3], c[3]); cur[4] = c[4]; cur[5] += c[5]; cur[6] += 1
+    if cur and cur[6] == hours:
+        out.append(tuple(cur[:6]))
+    return out

@@ -23,7 +23,7 @@ from __future__ import annotations
 import math
 
 HOUR_MS = 3_600_000
-BAR_MS = {"1h": HOUR_MS, "15m": HOUR_MS // 4}
+BAR_MS = {"1h": HOUR_MS, "15m": HOUR_MS // 4, "4h": 4 * HOUR_MS}
 
 DEFAULT_PARAMS = {
     "ema_fast": 50,
@@ -120,6 +120,7 @@ def indicators(candles, p):
     }
     from . import signals
     out.update(signals.get(p).indicators(candles, p, out))
+    out.update(signals.filter_indicators(candles, p))
     return out
 
 
@@ -173,7 +174,7 @@ def _close_position(state, ts, px, reason):
         state["loss_streak"] = 0
 
 
-def _open_position(state, ts, open_px, atr_val):
+def _open_position(state, ts, open_px, atr_val, rvol=None):
     p = state["params"]
     entry_px = open_px * (1 + p["slip"])
     eq = state["cash"]
@@ -183,6 +184,9 @@ def _open_position(state, ts, open_px, atr_val):
     # risk tabanlı büyüklük: stop çalışırsa kayıp ~ eq * risk
     risk_frac = stop_dist / entry_px + 2 * p["fee"] + 2 * p["slip"]
     notional = min(eq * p["risk"] / risk_frac, eq * p["max_alloc"])
+    if p.get("vol_target") and rvol:
+        # volatilite hedefleme: oynaklık yüksekse küçük, düşükse büyük pozisyon (en fazla %99)
+        notional = min(eq * p["max_alloc"], eq * p["vol_target"] / rvol)
     notional = notional / (1 + p["fee"])
     if notional < 5:  # Binance min. işlem ~5 USDT
         return
@@ -209,7 +213,7 @@ def process_bar(state, candles, ind, i):
 
     # 1) bekleyen alım emri bu mumun açılışında gerçekleşir
     if state["pending_entry"] and not state["halted"] and state["position"] is None:
-        _open_position(state, ts, o, state["pending_entry"]["atr"])
+        _open_position(state, ts, o, state["pending_entry"]["atr"], state["pending_entry"].get("rvol"))
     state["pending_entry"] = None
 
     # 2) açık pozisyon: stop / hedef (aynı mumda ikisi de varsa stop önce = temkinli)
@@ -261,6 +265,8 @@ def process_bar(state, candles, ind, i):
             entry = signals.get(p).entry(ind, i, candles, p)
             if entry and p.get("trend_filter") and not c > es:
                 entry = False
+            if entry and not signals.filters_ok(ind, i, c, p):
+                entry = False
             if entry:
                 from . import external
                 why = external.entry_blocked(p, ts + BAR_MS.get(p.get("interval", "1h"), HOUR_MS))
@@ -268,7 +274,9 @@ def process_bar(state, candles, ind, i):
                     entry = False
                     state["blocked"] = state.get("blocked", 0) + 1
             if entry:
-                state["pending_entry"] = {"signal_ts": ts, "atr": a}
+                rv = ind.get("rvol")
+                state["pending_entry"] = {"signal_ts": ts, "atr": a,
+                                          "rvol": rv[i] if rv and not math.isnan(rv[i]) else None}
 
     state["last_ts"] = ts
     state["last_close"] = c

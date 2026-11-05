@@ -13,7 +13,7 @@ from __future__ import annotations
 
 import math
 
-from .strategy import atr, ema, rsi
+from .strategy import BAR_MS as S_BAR, atr, ema, rsi
 
 NAN = math.nan
 
@@ -599,3 +599,181 @@ class Pattern(Sig):
                         continue
                 return True
         return False
+
+
+def realized_vol(closes, n, bars_per_year):
+    """Son n barın getiri oynaklığı, yıllık (kayan toplamlarla, hızlı)."""
+    out = [NAN] * len(closes)
+    s1 = s2 = 0.0
+    r = [0.0] * len(closes)
+    for i in range(1, len(closes)):
+        r[i] = closes[i] / closes[i - 1] - 1
+        s1 += r[i]; s2 += r[i] * r[i]
+        if i > n:
+            s1 -= r[i - n]; s2 -= r[i - n] * r[i - n]
+        if i >= n:
+            m = s1 / n
+            out[i] = math.sqrt(max(s2 / n - m * m, 0.0)) * math.sqrt(bars_per_year)
+    return out
+
+
+BARS_PER_DAY = {"1h": 24, "4h": 6, "15m": 96}
+
+
+@register("tsmom")
+class TSMOM(Sig):
+    title = "Zaman Serisi Momentum (vol. hedefli)"
+
+    def indicators(self, candles, p, base):
+        cl = [c[4] for c in candles]
+        bpd = BARS_PER_DAY[p.get("interval", "1h")]
+        lb = int(p.get("mom_days", 30) * bpd)
+        return {"cl": cl, "bpd": bpd,
+                "mom": [cl[i] / cl[i - lb] - 1 if i >= lb else NAN for i in range(len(cl))],
+                "rvol": realized_vol(cl, int(p.get("vol_days", 30) * bpd), 365 * bpd)}
+
+    def _daily_bar(self, candles, i, p):
+        # sadece günde bir kez (00:00 UTC'de kapanan mum) karar ver -> gereksiz al-sat yok
+        bar = S_BAR.get(p.get("interval", "1h"))
+        return ((candles[i][0] + bar) // 3_600_000) % 24 == 0
+
+    def entry(self, ind, i, candles, p):
+        if not self._daily_bar(candles, i, p):
+            return False
+        m, rv = ind["mom"][i], ind["rvol"][i]
+        if isn(m, rv):
+            return False
+        if p.get("max_vol") and rv > p["max_vol"]:
+            return False
+        return m > 0
+
+    def exit(self, ind, i, candles, p, pos):
+        if self._daily_bar(candles, i, p) and not isn(ind["mom"][i]) and ind["mom"][i] <= 0:
+            return "momentum negatife döndü"
+        return None
+
+
+# ================================================================ filtre göstergeleri (araştırma)
+def kama(cl, n=10, fast=2, slow=30):
+    out = [NAN] * len(cl)
+    fsc, ssc = 2 / (fast + 1), 2 / (slow + 1)
+    for i in range(n, len(cl)):
+        ch = abs(cl[i] - cl[i - n])
+        vol = sum(abs(cl[j] - cl[j - 1]) for j in range(i - n + 1, i + 1))
+        er = ch / vol if vol > 0 else 0.0
+        sc = (er * (fsc - ssc) + ssc) ** 2
+        prev = out[i - 1] if not math.isnan(out[i - 1]) else cl[i - 1]
+        out[i] = prev + sc * (cl[i] - prev)
+    return out
+
+
+def adx(h, l, c, n=14):
+    N = len(c)
+    out = [NAN] * N
+    if N <= 2 * n:
+        return out
+    tr = [0.0] * N; pdm = [0.0] * N; mdm = [0.0] * N
+    for i in range(1, N):
+        up, dn = h[i] - h[i - 1], l[i - 1] - l[i]
+        pdm[i] = up if up > dn and up > 0 else 0.0
+        mdm[i] = dn if dn > up and dn > 0 else 0.0
+        tr[i] = max(h[i] - l[i], abs(h[i] - c[i - 1]), abs(l[i] - c[i - 1]))
+    atr_s, p_s, m_s = sum(tr[1:n + 1]), sum(pdm[1:n + 1]), sum(mdm[1:n + 1])
+    dx = []
+    for i in range(n + 1, N):
+        atr_s = atr_s - atr_s / n + tr[i]
+        p_s = p_s - p_s / n + pdm[i]
+        m_s = m_s - m_s / n + mdm[i]
+        pdi, mdi = 100 * p_s / atr_s if atr_s else 0, 100 * m_s / atr_s if atr_s else 0
+        dx.append(100 * abs(pdi - mdi) / (pdi + mdi) if pdi + mdi else 0.0)
+        if len(dx) == n:
+            out[i] = sum(dx) / n
+        elif len(dx) > n:
+            out[i] = (out[i - 1] * (n - 1) + dx[-1]) / n
+    return out
+
+
+def ichimoku_cloud_top(h, l, shift=26):
+    """Bulutun üst sınırı; i. mumda (i-26)'da hesaplanan Span A/B kullanılır -> geleceği görmez."""
+    def mid(n):
+        hh, ll = highest(h, n), lowest(l, n)
+        return [(a + b) / 2 if not isn(a, b) else NAN for a, b in zip(hh, ll)]
+    tk, kj, sb = mid(9), mid(26), mid(52)
+    sa = [(a + b) / 2 if not isn(a, b) else NAN for a, b in zip(tk, kj)]
+    top = [NAN] * len(h)
+    for i in range(shift, len(h)):
+        a, b = sa[i - shift], sb[i - shift]
+        if not isn(a, b):
+            top[i] = max(a, b)
+    return top
+
+
+def filter_indicators(candles, p):
+    """Genel giriş filtreleri için göstergeler (yalnızca istenenler hesaplanır)."""
+    _, h, l, c, _ = cols(candles)
+    out = {}
+    bpd = BARS_PER_DAY.get(p.get("interval", "1h"), 24)
+    if p.get("vol_target"):
+        out["rvol"] = realized_vol(c, int(p.get("vol_days", 30) * bpd), 365 * bpd)
+    if p.get("f_mom_days"):
+        lb = int(p["f_mom_days"] * bpd)
+        out["f_mom"] = [c[i] / c[i - lb] - 1 if i >= lb else NAN for i in range(len(c))]
+        out["f_sma"] = sma(c, int(p.get("f_sma_days", 40) * bpd))
+    if p.get("f_kama"):
+        k = kama(c)
+        out["f_kama"] = k
+    if p.get("f_macd"):
+        e12, e26 = ema(c, 12), ema(c, 26)
+        out["f_macd"] = [a - b if not isn(a, b) else NAN for a, b in zip(e12, e26)]
+    if p.get("f_adx"):
+        out["f_adx"] = adx(h, l, c, 14)
+    if p.get("f_cloud"):
+        out["f_cloud"] = ichimoku_cloud_top(h, l)
+    return out
+
+
+def filters_ok(ind, i, c, p):
+    """Tüm açık filtreler alıma izin veriyor mu?"""
+    if p.get("f_mom_days"):
+        m, s = ind["f_mom"][i], ind["f_sma"][i]
+        if isn(m, s) or not (m > 0 and c > s):
+            return False
+    if p.get("f_kama"):
+        k = ind["f_kama"]
+        lb = 6
+        if i < lb or isn(k[i], k[i - lb]) or not (c > k[i] and k[i] > k[i - lb]):
+            return False
+    if p.get("f_macd"):
+        m = ind["f_macd"][i]
+        if isn(m) or m <= 0:
+            return False
+    if p.get("f_adx"):
+        a = ind["f_adx"][i]
+        if isn(a) or a <= p["f_adx"]:
+            return False
+    if p.get("f_cloud"):
+        t = ind["f_cloud"][i]
+        if isn(t) or c <= t:
+            return False
+    return True
+
+
+@register("breakout_mid")
+class BreakoutMid(Sig):
+    title = "Kırılım + orta nokta iz süren çıkış (Zarattini)"
+
+    def indicators(self, candles, p, base):
+        c = [x[4] for x in candles]
+        n = p.get("bo_len", 240)
+        return {"hc": highest(c, n), "lc": lowest(c, n), "cl": c}
+
+    def entry(self, ind, i, candles, p):
+        prev = ind["hc"][i - 1]
+        return not isn(prev) and ind["cl"][i] > prev
+
+    def exit(self, ind, i, candles, p, pos):
+        hc, lc = ind["hc"][i], ind["lc"][i]
+        if isn(hc, lc):
+            return None
+        pos["mid"] = max(pos.get("mid", -math.inf), (hc + lc) / 2)   # sadece yukarı taşınır
+        return "orta noktanın altı" if ind["cl"][i] < pos["mid"] else None

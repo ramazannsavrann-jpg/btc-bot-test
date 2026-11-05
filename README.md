@@ -4,6 +4,7 @@ Gerçek BTC fiyatıyla, **sanal 100$** kullanan al-sat botu testi.
 Gerçek para, Binance hesabı veya API anahtarı **kullanılmaz**.
 
 📄 **Canlı rapor (tüm botlar):** [results/RAPOR.md](results/RAPOR.md)
+🔬 **Araştırma turnuvası (4 yıl, walk-forward, PBO/Deflated Sharpe):** [results/ARASTIRMA.md](results/ARASTIRMA.md)
 🏆 **BTC turnuvası (2 yıl):** [results/TURNUVA.md](results/TURNUVA.md)
 🪙 **30 coin turnuvası (2 yıl):** [results/COIN_TURNUVA.md](results/COIN_TURNUVA.md)
 📊 **Temkinli botun geçmiş testi:** [results/temkinli/GECMIS_TEST.md](results/temkinli/GECMIS_TEST.md)
@@ -37,3 +38,10 @@ göreceli güç, momentum, kırılım, formasyon (ikili dip, ters OBO, yatay dir
 hacim patlaması ve RSI'dan 8 üzerinden puan verir. BTC yön filtresi, FOMC/CPI freni, Korku & Açgözlülük
 freni, coin başına ATR stop + iz süren stop, en fazla N pozisyon. Küçük coinlerde kayma daha yüksek hesaplanır.
 Geçmiş testte coin listesi Kasım 2024 hacmine göre seçilir (bugünün kazananlarını seçip sonucu şişirmemek için).
+
+## Araştırma turnuvası (ChatGPT denetimi sonrası)
+`bot/research.py`: 48 ay BTC verisi, 12 ay eğitim / 3 ay sınav kayan walk-forward, pencere bazında piyasa
+rejimi, günlük özsermaye ölçümleri (Sharpe, Sortino, Calmar, CAGR, exposure, PF, beklenti), 1×–3× maliyet
+eğrisi, tüm aday×ayarlarla PBO (CSCV) ve kazanan için Deflated Sharpe. Yeni adaylar: volatilite hedefli
+zaman serisi momentumu, Zarattini tipi kırılım + orta nokta çıkış, 20/40/60 gün kırılım ansamblı,
+Donchian 4s + ADX / MACD / KAMA / momentum / Ichimoku filtreleri. Yeniden yapmak için `results/arastirma.json` silinir.
