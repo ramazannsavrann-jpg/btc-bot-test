@@ -167,7 +167,11 @@ def history(months=24, interval="1h"):
 
 # ================================================================ çoklu coin
 STABLE = {"USDC", "FDUSD", "TUSD", "USDP", "DAI", "BUSD", "EUR", "USD1", "XUSD", "RLUSD", "PYUSD", "U",
-          "AEUR", "EURI", "USDE", "BFUSD", "PAXG", "WBTC", "WBETH", "BNSOL", "WSTETH"}
+          "AEUR", "EURI", "USDE", "BFUSD", "PAXG", "WBTC", "WBETH", "BNSOL", "WSTETH", "RWUSD", "USDF"}
+# kripto olmayan ürünler: tokenize altın/hisse/ETF
+NON_CRYPTO = {"XAUT", "PAXG", "MUB", "SNDKB", "SOXLB", "SPCXB", "CRCLB", "GOOGLB", "MSTRB", "TSLAB", "NVDAB",
+              "AAPLB", "COINB", "HOODB", "METAB", "AMZNB", "QQQB", "SPYB"}
+CRYPTO_B = set()   # 'B' ile biten gerçek kripto çıkarsa buraya eklenir
 
 # Geçmiş test için aday havuzu: Kasım 2024 civarında Binance'te en çok işlem gören coinler
 # (bugünün listesi değil). İlk ayın hacmine göre içlerinden en büyük 30'u seçilir.
@@ -227,8 +231,10 @@ def top_symbols(n=30):
         if not s.endswith("USDT"):
             continue
         base = s[:-4]
-        if base in STABLE or base.endswith(("UP", "DOWN", "BULL", "BEAR")) or not base.isalnum():
+        if base in STABLE or base in NON_CRYPTO or base.endswith(("UP", "DOWN", "BULL", "BEAR")) or not base.isalnum():
             continue
+        if len(base) >= 5 and base.endswith("B") and base[:-1].isalpha() and base not in CRYPTO_B:
+            continue  # tokenize hisse/ETF (ör. GOOGLB, MSTRB)
         if float(r.get("lastPrice", 0)) <= 0 or int(r.get("count", 0)) == 0:
             continue
         cands.append((float(r["quoteVolume"]), base))
