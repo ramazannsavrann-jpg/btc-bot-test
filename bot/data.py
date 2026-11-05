@@ -1,0 +1,162 @@
+"""
+BTC/USDT 1 saatlik mum verisi. Sadece herkese açık fiyat verisi okunur:
+API anahtarı yok, hesaba bağlanmak yok, gerçek emir yok.
+
+GitHub sunucuları ABD'de olduğu için api.binance.com bazen engellenir; bu yüzden
+sırayla birkaç kaynak denenir. Mum formatı: (açılış_ms, açılış, yüksek, düşük, kapanış, hacim)
+"""
+from __future__ import annotations
+
+import io
+import json
+import time
+import urllib.request
+import zipfile
+from datetime import datetime, timezone
+
+HOUR_MS = 3_600_000
+UA = {"User-Agent": "btc-bot-paper-test/1.0"}
+
+
+def _get(url, timeout=30):
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
+
+def _norm_ts(ts):
+    ts = int(ts)
+    if ts > 10**14:   # 2025'ten beri Binance arşivi mikrosaniye kullanıyor
+        ts //= 1000
+    elif ts < 10**11:  # saniye
+        ts *= 1000
+    return ts
+
+
+def _binance_rows(rows):
+    return [(_norm_ts(r[0]), float(r[1]), float(r[2]), float(r[3]), float(r[4]), float(r[5]))
+            for r in rows]
+
+
+def _clean(candles, now_ms=None):
+    """Sırala, tekrarları at, henüz kapanmamış son mumu çıkar."""
+    now_ms = now_ms or int(time.time() * 1000)
+    d = {}
+    for c in candles:
+        d[c[0]] = c
+    out = [d[k] for k in sorted(d)]
+    return [c for c in out if c[0] + HOUR_MS <= now_ms]
+
+
+# ------------------------------------------------------------ son mumlar (canlı)
+def _recent_binance(base, limit):
+    url = f"{base}/api/v3/klines?symbol=BTCUSDT&interval=1h&limit={limit}"
+    return _binance_rows(json.loads(_get(url)))
+
+
+def _recent_okx(limit):
+    out, after = [], ""
+    while len(out) < limit:
+        url = "https://www.okx.com/api/v5/market/history-candles?instId=BTC-USDT&bar=1H&limit=100" + after
+        rows = json.loads(_get(url))["data"]
+        if not rows:
+            break
+        out += [(int(r[0]), float(r[1]), float(r[2]), float(r[3]), float(r[4]), float(r[5]))
+                for r in rows]
+        after = f"&after={rows[-1][0]}"
+    return out
+
+
+def _recent_kraken(limit):
+    data = json.loads(_get("https://api.kraken.com/0/public/OHLC?pair=XBTUSD&interval=60"))
+    rows = next(v for k, v in data["result"].items() if k != "last")
+    return [(int(r[0]) * 1000, float(r[1]), float(r[2]), float(r[3]), float(r[4]), float(r[6]))
+            for r in rows][-limit:]
+
+
+RECENT_SOURCES = [
+    ("Binance (data-api.binance.vision)", lambda n: _recent_binance("https://data-api.binance.vision", n)),
+    ("Binance (api.binance.com)", lambda n: _recent_binance("https://api.binance.com", n)),
+    ("Binance US", lambda n: _recent_binance("https://api.binance.us", n)),
+    ("OKX", _recent_okx),
+    ("Kraken", _recent_kraken),
+]
+
+
+def recent(limit=1000, prefer=None):
+    """Son `limit` kapanmış 1s mum + kaynak adı. `prefer`: önce denenecek kaynak (test boyunca aynı kalsın)."""
+    errors = []
+    sources = sorted(RECENT_SOURCES, key=lambda s: s[0] != prefer)
+    for name, fn in sources:
+        try:
+            c = _clean(fn(limit))
+            if len(c) >= 300:
+                return c, name
+            errors.append(f"{name}: az veri ({len(c)})")
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"{name}: {e}")
+    raise RuntimeError("Fiyat verisi alınamadı: " + " | ".join(errors))
+
+
+# ------------------------------------------------------------ geçmiş (2 yıl)
+def _month_list(months):
+    now = datetime.now(timezone.utc)
+    y, m = now.year, now.month
+    out = []
+    for _ in range(months):
+        m -= 1
+        if m == 0:
+            y, m = y - 1, 12
+        out.append(f"{y}-{m:02d}")
+    return list(reversed(out))
+
+
+def _history_vision(months):
+    out = []
+    for ym in _month_list(months):
+        url = f"https://data.binance.vision/data/spot/monthly/klines/BTCUSDT/1h/BTCUSDT-1h-{ym}.zip"
+        z = zipfile.ZipFile(io.BytesIO(_get(url, 60)))
+        text = z.read(z.namelist()[0]).decode()
+        for line in text.splitlines():
+            parts = line.split(",")
+            if not parts[0].strip().isdigit():
+                continue  # başlık satırı
+            out.append(parts)
+    return _binance_rows(out)
+
+
+def _history_paged(base, months):
+    start = int(time.time() * 1000) - months * 30 * 24 * HOUR_MS
+    out = []
+    while True:
+        url = f"{base}/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=1000&startTime={start}"
+        rows = _binance_rows(json.loads(_get(url)))
+        if not rows:
+            break
+        out += rows
+        start = rows[-1][0] + HOUR_MS
+        if len(rows) < 1000:
+            break
+        time.sleep(0.2)
+    return out
+
+
+HISTORY_SOURCES = [
+    ("Binance arşivi (data.binance.vision)", _history_vision),
+    ("Binance (data-api.binance.vision)", lambda m: _history_paged("https://data-api.binance.vision", m)),
+    ("Binance (api.binance.com)", lambda m: _history_paged("https://api.binance.com", m)),
+    ("Binance US", lambda m: _history_paged("https://api.binance.us", m)),
+]
+
+
+def history(months=24):
+    errors = []
+    for name, fn in HISTORY_SOURCES:
+        try:
+            c = _clean(fn(months))
+            if len(c) >= 24 * 30 * 3:
+                return c, name
+            errors.append(f"{name}: az veri ({len(c)})")
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"{name}: {e}")
+    raise RuntimeError("Geçmiş veri alınamadı: " + " | ".join(errors))

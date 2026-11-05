@@ -1,0 +1,50 @@
+name: BTC Bot Kagit Test
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "results/**"
+  workflow_dispatch:
+  schedule:
+    - cron: "4,19,34,49 * * * *"   # ~15 dakikada bir (GitHub bazen birkaç dakika geciktirir)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: btc-bot
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Botu bir adim calistir
+        run: python -m bot.main
+
+      - name: Sonuclari kaydet
+        run: |
+          git config user.name "btc-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results
+          if git diff --cached --quiet; then
+            echo "Degisiklik yok"
+            exit 0
+          fi
+          git commit -m "Bot raporu $(TZ=Europe/Istanbul date '+%d.%m %H:%M')"
+          for i in 1 2 3; do
+            git pull --rebase origin main || { git rebase --abort; sleep 5; continue; }
+            git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1
