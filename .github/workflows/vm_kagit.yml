@@ -1,0 +1,51 @@
+name: VM-A Kagit Bot
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bot/vm_kagit.py"
+      - ".github/workflows/vm_kagit.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "11,26,41,56 * * * *"   # ~15 dakikada bir (mevcut bot iş akışından bağımsız)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: vm-kagit
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: VM-A botunu bir adim calistir (sanal para, gercek emir yok)
+        run: python -m bot.vm_kagit
+
+      - name: Sonuclari kaydet
+        run: |
+          git config user.name "btc-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/vm_kagit
+          if git diff --cached --quiet; then
+            echo "Degisiklik yok"
+            exit 0
+          fi
+          git commit -m "VM-A kagit bot $(TZ=Europe/Istanbul date '+%d.%m %H:%M')"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main || { git rebase --abort; sleep 10; continue; }
+            git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
