@@ -13,7 +13,7 @@ import shutil
 import sys
 import time
 
-from . import backtest, data, engines, external, multi_live, multi_tournament, paper, strategy as S, tournament
+from . import backtest, data, engines, external, multi_live, multi_tournament, pano, paper, strategy as S, tournament
 
 OUT = os.environ.get("BOT_OUT", "results")
 TOP_N = 3
@@ -174,6 +174,7 @@ def main():
         rows.append((b, st))
         print(f"{b['id']:<14} bakiye={S.equity(st, st['last_price']):.2f}$ işlem={len(st['trades'])}")
 
+    ctour = None
     try:
         ctour = ensure_coin_tournament()
         for b in coin_bots(ctour):
@@ -191,6 +192,10 @@ def main():
 
     with open(os.path.join(OUT, "RAPOR.md"), "w", encoding="utf-8") as f:
         f.write(combined_report(rows, tour))
+    try:
+        pano.write(OUT, rows, tour, ctour)
+    except Exception as e:  # noqa: BLE001
+        print("Pano verisi yazılamadı:", e)
     if all(st.get("finished") for _, st in rows):
         print("Tüm testler bitti. İstersen Actions'tan iş akışını kapatabilirsin.")
 
