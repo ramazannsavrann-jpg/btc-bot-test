@@ -1,6 +1,6 @@
 # 30 Coin Akıllı Skor — Canlı Kâğıt Test
 
-**Son güncelleme:** 05.11 16:44 (İstanbul) · **Durum:** 🟢 Test sürüyor — gün 1/7
+**Son güncelleme:** 05.11 17:39 (İstanbul) · **Durum:** 🟢 Test sürüyor — gün 1/7
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
@@ -14,6 +14,7 @@
 | Zaman | Bakiye | Değişim | Toplam işlem |
 |---|---|---|---|
 | 05.11 11:12 | 100.00$ | +0.00$ | 0 |
+| 05.11 17:39 | 100.00$ | +0.00$ | 0 |
 
 ## 📜 Ne oldu?
 
