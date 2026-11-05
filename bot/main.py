@@ -110,9 +110,19 @@ def bot_list(tour):
         sel = [{"id": r["id"], "title": f"{r['baslik']} ({r['zaman_dilimi']})"} for r in ok[:TOP_N]]
         paper.save_json(sel_path, sel)
     by_id = {r["id"]: r for r in tour["sonuclar"]}
+    res = paper.load_json(os.path.join(OUT, "arastirma.json")) or {"sonuclar": []}
+    res_by_id = {r["id"]: r for r in res["sonuclar"]}
     bots = [{"id": "temkinli", "title": "Temkinli Trend (1s)", "params": None, "bt": None,
              "interval": "1h"}]
     for s in sel:
+        if s.get("kaynak") == "arastirma" and s["id"] in res_by_id:
+            r = res_by_id[s["id"]]
+            p = r["params_son"]
+            bots.append({"id": s["id"], "title": s["title"], "params": p, "bt": None,
+                         "interval": p.get("interval", "1h")})
+            continue
+        if s["id"] not in by_id:
+            continue
         r = by_id[s["id"]]
         bots.append({"id": s["id"], "title": s["title"], "params": r["params"], "bt": r,
                      "interval": r["params"].get("interval", "1h")})

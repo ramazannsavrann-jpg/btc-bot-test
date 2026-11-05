@@ -14,5 +14,15 @@
  {
   "id": "donchian_filtre",
   "title": "Donchian + Haber/Duygu Freni (1h)"
+ },
+ {
+  "id": "kirilim_ansambl",
+  "title": "Kırılım Ansamblı 20/40/60 gün (4s)",
+  "kaynak": "arastirma"
+ },
+ {
+  "id": "donchian_4s",
+  "title": "Donchian (4s)",
+  "kaynak": "arastirma"
  }
 ]
