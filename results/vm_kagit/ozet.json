@@ -1,0 +1,50 @@
+{
+ "olusturma": "05.11 16:24",
+ "VM-A": {
+  "bakiye_piyasa": 100.0,
+  "bakiye_tasfiye": 100.0,
+  "toplam_getiri_pct": 0.0,
+  "btc_ayni_surede_pct": 0.0,
+  "acik_pozisyon": "yok",
+  "nakit_orani_pct": 100.0,
+  "son_karar": "henüz gün sonu kararı yok",
+  "son_islenen_mum_kapanisi": "05.11 15:00",
+  "son_dolum": "henüz dolum yok",
+  "bekleyen": "yok",
+  "baslangic": "05.11 16:20",
+  "son_calisma": "05.11 16:24"
+ },
+ "ENS": {
+  "bakiye_piyasa": 100.0,
+  "toplam_getiri_pct": 0.0,
+  "btc_ayni_surede_pct": 0.039,
+  "acik_pozisyon": "yok",
+  "nakit_orani_pct": 100.0,
+  "son_karar": "05.11 15:00 (son değerlendirilen 4s mum kapanışı)",
+  "son_dolum": "henüz dolum yok",
+  "durum": "çalışıyor",
+  "baslangic": "05.11 12:55",
+  "bitis": "12.11 12:55",
+  "son_calisma": "05.11 16:20"
+ },
+ "karsilastirma": {
+  "yontem": "İkisi de ortak ilk kayıtta 100'e eşitlenir; her gün, iki botun en fazla 20 dk arayla eşleşen son kaydı kullanılır. Değerler piyasa değeri esasındadır (nakit + adet × fiyat). Eşleşen kayıt olmayan gün tahmin edilmez, 'eksik' yazılır.",
+  "temel": {
+   "zaman": "05.11 16:20",
+   "vm": 100.0,
+   "ens": 100.0,
+   "btc": 80390.01
+  },
+  "gunluk": [
+   {
+    "gun": "2026-11-05",
+    "kayit": "05.11 16:24",
+    "VM-A": 100.0,
+    "ENS": 100.0,
+    "BTC": 100.0
+   }
+  ],
+  "eksik_gunler": [],
+  "not": "ENS canlı testi 12.11'de biter; sonrasında ENS sütunu güncellenmez. ENS'de canlı %10 düşüş freni açık, VM-A'da yok. Asıl ileri karşılaştırma ön kayıt v2 hesabıdır."
+ }
+}
