@@ -23,6 +23,7 @@ from __future__ import annotations
 import math
 
 HOUR_MS = 3_600_000
+BAR_MS = {"1h": HOUR_MS, "15m": HOUR_MS // 4}
 
 DEFAULT_PARAMS = {
     "ema_fast": 50,
@@ -43,6 +44,10 @@ DEFAULT_PARAMS = {
     "loss_streak": 3,
     "pause_hours": 24,
     "max_dd": None,          # örn. 0.10 -> %10 düşüşte dur (canlı testte açık)
+    "interval": "1h",        # mum süresi: "1h" veya "15m"
+    "signal": "pullback",    # "pullback" (RSI dönüşü / zirve kırılımı) veya "ema_cross"
+    "x_fast": 9,             # ema_cross için hızlı EMA
+    "x_slow": 21,            # ema_cross için yavaş EMA
 }
 
 
@@ -107,12 +112,15 @@ def indicators(candles, p):
     closes = [c[4] for c in candles]
     highs = [c[2] for c in candles]
     lows = [c[3] for c in candles]
-    return {
+    out = {
         "ema_fast": ema(closes, p["ema_fast"]),
         "ema_slow": ema(closes, p["ema_slow"]),
         "rsi": rsi(closes, p["rsi_len"]),
         "atr": atr(highs, lows, closes, p["atr_len"]),
     }
+    from . import signals
+    out.update(signals.get(p).indicators(candles, p, out))
+    return out
 
 
 # ---------------------------------------------------------------- motor
@@ -169,7 +177,7 @@ def _open_position(state, ts, open_px, atr_val):
     p = state["params"]
     entry_px = open_px * (1 + p["slip"])
     eq = state["cash"]
-    stop_dist = p["stop_atr"] * atr_val
+    stop_dist = entry_px * p["stop_pct"] if p.get("stop_pct") else p["stop_atr"] * atr_val
     if stop_dist <= 0 or eq <= 1:
         return
     # risk tabanlı büyüklük: stop çalışırsa kayıp ~ eq * risk
@@ -185,7 +193,8 @@ def _open_position(state, ts, open_px, atr_val):
     state["position"] = {
         "entry_ts": ts, "entry_px": entry_px,
         "stop": entry_px - stop_dist,
-        "tp": entry_px + p["tp_atr"] * atr_val,
+        "tp": entry_px * (1 + p["tp_pct"]) if p.get("tp_pct") else entry_px + p["tp_atr"] * atr_val,
+        "hh": entry_px,
         "atr": atr_val, "qty": qty, "cost": notional + fee,
         "be_done": False,
     }
@@ -214,13 +223,24 @@ def process_bar(state, candles, ind, i):
     pos = state["position"]
     if pos:
         a = ind["atr"][i]
-        if not math.isnan(a):
+        k = p.get("chandelier_atr")
+        if k and not math.isnan(a):
+            # Chandelier çıkışı: girişten beri en yüksek - k*ATR (sadece yukarı taşınır)
+            pos["hh"] = max(pos.get("hh", pos["entry_px"]), h)
+            pos["stop"] = max(pos["stop"], pos["hh"] - k * a)
+        if not math.isnan(a) and p.get("be_atr"):
             if pos["be_done"] or c - pos["entry_px"] >= p["be_atr"] * pos["atr"]:
                 pos["be_done"] = True
                 be = pos["entry_px"] * (1 + 2 * p["fee"] + 2 * p["slip"])
                 pos["stop"] = max(pos["stop"], be, c - p["trail_atr"] * a)
-        if (ts - pos["entry_ts"]) / HOUR_MS + 1 >= p["max_hold"]:
+        bar_ms = BAR_MS.get(p.get("interval", "1h"), HOUR_MS)
+        if (ts + bar_ms - pos["entry_ts"]) / HOUR_MS >= p["max_hold"]:
             _close_position(state, ts, c, "süre")
+        else:
+            from . import signals
+            why = signals.get(p).exit(ind, i, candles, p, pos)
+            if why:
+                _close_position(state, ts, c, why)
 
     # 3) düşüş freni
     eq = equity(state, c)
@@ -237,16 +257,29 @@ def process_bar(state, candles, ind, i):
         ef, es, r, a = ind["ema_fast"][i], ind["ema_slow"][i], ind["rsi"][i], ind["atr"][i]
         r_prev = ind["rsi"][i - 1]
         if not any(math.isnan(x) for x in (ef, es, r, r_prev, a)):
-            trend = c > es and ef > es
-            cross_up = r_prev < p["rsi_entry"] <= r
-            n = int(p.get("breakout_len") or 0)
-            breakout = (n > 0 and i > n and r < 75
-                        and c > max(x[2] for x in candles[i - n:i]))
-            if trend and (cross_up or breakout):
+            from . import signals
+            entry = signals.get(p).entry(ind, i, candles, p)
+            if entry and p.get("trend_filter") and not c > es:
+                entry = False
+            if entry:
                 state["pending_entry"] = {"signal_ts": ts, "atr": a}
 
     state["last_ts"] = ts
     state["last_close"] = c
+
+
+def close_all(state, ts, px, reason):
+    if state["position"]:
+        _close_position(state, ts, px, reason)
+
+
+def describe_open(state, price):
+    pos = state["position"]
+    if not pos:
+        return None
+    unreal = pos["qty"] * price - pos["cost"]
+    return (f"{pos['entry_px']:,.0f}$'dan alındı, stop {pos['stop']:,.0f}$, "
+            f"hedef {pos['tp']:,.0f}$, şu an {unreal:+.2f}$")
 
 
 def run(candles, params, start_equity=100.0, state=None):

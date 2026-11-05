@@ -1,10 +1,11 @@
-# BTC Bot — 1 Haftalık Kâğıt Test
+# BTC Botları — Turnuva + 1 Haftalık Kâğıt Test
 
 Gerçek BTC fiyatıyla, **sanal 100$** kullanan al-sat botu testi.
 Gerçek para, Binance hesabı veya API anahtarı **kullanılmaz**.
 
-📄 **Canlı rapor:** [results/RAPOR.md](results/RAPOR.md)
-📊 **Geçmiş test (2 yıl):** [results/GECMIS_TEST.md](results/GECMIS_TEST.md)
+📄 **Canlı rapor (tüm botlar):** [results/RAPOR.md](results/RAPOR.md)
+🏆 **Turnuva (11 strateji, 2 yıl):** [results/TURNUVA.md](results/TURNUVA.md)
+📊 **Temkinli botun geçmiş testi:** [results/temkinli/GECMIS_TEST.md](results/temkinli/GECMIS_TEST.md)
 
 ## Nasıl çalışır?
 - GitHub Actions her ~15 dakikada bir `python -m bot.main` çalıştırır.
@@ -21,3 +22,10 @@ Gerçek para, Binance hesabı veya API anahtarı **kullanılmaz**.
 
 ## Testi yeniden başlatmak
 `results/state.json` dosyasını silmen yeterli (geçmiş testi de yenilemek için `results/backtest.json` ve `results/params.json`'u da sil).
+
+## Turnuva
+`bot/candidates.py` içindeki 11 aday (Donchian, Supertrend, UT Bot, Bollinger dip, RSI(2), Squeeze,
+Aktif Trend, Freqtrade BinH+Cluc, EMA 9/21 15dk, Grid Bot, Gece saati kontrolü) 24 aylık gerçek
+Binance verisinde yarışır. Ayarlar ilk %70'te seçilir, sıralama hiç görülmemiş son %30'a ve
+2 kat komisyonlu dayanıklılık testine göre yapılır. İlk 3 bot, temkinli botla birlikte canlı kâğıt teste girer.
+Turnuvayı yeniden yapmak için `results/turnuva.json` ve `results/secilen_botlar.json` silinir.

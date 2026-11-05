@@ -16,7 +16,7 @@ import os
 import time
 from datetime import datetime, timedelta, timezone
 
-from . import strategy as S
+from . import engines, strategy as S
 
 HOUR_MS = S.HOUR_MS
 TEST_DAYS = 7
@@ -42,10 +42,17 @@ def save_json(path, obj):
     os.replace(tmp, path)
 
 
-def start_test(candles, params, now_ms):
+def open_entries(state):
+    if state.get("lots"):
+        return state["lots"]
+    return [state["position"]] if state.get("position") else []
+
+
+def start_test(candles, params, now_ms, title=""):
     p = dict(params)
     p["max_dd"] = 0.10  # canlı testte %10 düşüş freni açık
-    st = S.new_state(100.0, p)
+    st = engines.get(p).new_state(100.0, p)
+    st["title"] = title
     st["test_start"] = now_ms
     st["test_end"] = now_ms + TEST_DAYS * 24 * HOUR_MS
     st["start_price"] = candles[-1][4]
@@ -58,7 +65,9 @@ def start_test(candles, params, now_ms):
 
 
 def step(state, candles, now_ms, source):
-    ind = S.indicators(candles, state["params"])
+    E = engines.get(state["params"])
+    bar_ms = S.BAR_MS.get(state["params"].get("interval", "1h"), HOUR_MS)
+    ind = E.indicators(candles, state["params"])
     logged = set(state.setdefault("logged_entries", []))
     n_trades = len(state["trades"])
     last_bar = None  # test_end'den önce işlenen son mum
@@ -71,7 +80,7 @@ def step(state, candles, now_ms, source):
     for i, c in enumerate(candles):
         if c[0] >= state["test_end"]:
             break
-        S.process_bar(state, candles, ind, i)
+        E.process_bar(state, candles, ind, i)
         if c[0] == state["last_ts"]:
             last_bar = c
         # aynı saatte açılıp kapanan işlemler dahil, tüm alım/satımları günlüğe yaz
@@ -81,11 +90,11 @@ def step(state, candles, now_ms, source):
                 f"{tr_time(t['exit_ts'])} SATIŞ {t['exit_px']:,.0f}$ ({t['reason']}) "
                 f"→ {'+' if t['pnl'] >= 0 else ''}{t['pnl']:.2f}$")
         n_trades = len(state["trades"])
-        pos = state["position"]
-        if pos:
-            log_buy(pos["entry_ts"], pos["entry_px"],
-                    f" (stop {pos['stop']:,.0f}$, hedef {pos['tp']:,.0f}$, {pos['cost']:.2f}$ kullanıldı)")
-    state["logged_entries"] = sorted(logged)[-50:]
+        for pos in open_entries(state):
+            extra = (f" (stop {pos['stop']:,.0f}$, hedef {pos['tp']:,.0f}$, {pos['cost']:.2f}$ kullanıldı)"
+                     if "stop" in pos else f" ({pos['cost']:.2f}$ kullanıldı)")
+            log_buy(pos["entry_ts"], pos["entry_px"], extra)
+    state["logged_entries"] = sorted(logged)[-80:]
 
     price = candles[-1][4]
     state["last_price"] = price
@@ -95,10 +104,10 @@ def step(state, candles, now_ms, source):
     if not state["finished"] and now_ms >= state["test_end"]:
         # bitiş anına en yakın kapanmış mumun fiyatından kapat
         end_px = last_bar[4] if last_bar else state["last_close"]
-        end_ts = (last_bar[0] + HOUR_MS) if last_bar else state["test_end"]
-        if state["position"]:
-            S._close_position(state, end_ts, end_px, "test bitti")
-            t = state["trades"][-1]
+        end_ts = (last_bar[0] + bar_ms) if last_bar else state["test_end"]
+        k = len(state["trades"])
+        E.close_all(state, end_ts, end_px, "test bitti")
+        for t in state["trades"][k:]:
             state["log"].append(f"{tr_time(end_ts)} SATIŞ {t['exit_px']:,.0f}$ (test bitti) → {t['pnl']:+.2f}$")
         state["last_price"] = end_px
         price = end_px
@@ -114,6 +123,7 @@ def step(state, candles, now_ms, source):
 
 
 def report(state, backtest):
+    E = engines.get(state["params"])
     price = state.get("last_price") or state["last_close"]
     s = S.stats(state, price)
     eq = s["equity"]
@@ -129,7 +139,7 @@ def report(state, backtest):
         durum = f"🟢 Test sürüyor — gün {day}/{TEST_DAYS} ({elapsed_h:.0f} saat geçti)"
 
     L = [
-        "# BTC Bot — Canlı Kâğıt Test Raporu",
+        f"# {state.get('title') or 'BTC Bot'} — Canlı Kâğıt Test Raporu",
         "",
         f"**Son güncelleme:** {tr_time(now)} (İstanbul) · Fiyat kaynağı: {state.get('source', '-')}",
         "",
@@ -141,13 +151,11 @@ def report(state, backtest):
         f"- BTC fiyatı: {state['start_price']:,.0f}$ → {price:,.0f}$",
         f"- Biten işlem: **{s['trades']}** · Kazanan: {s['wins']} · Başarı oranı: **%{s['win_rate']:.0f}**",
     ]
-    pos = state["position"]
-    if pos:
-        unreal = pos["qty"] * price - pos["cost"]
-        L.append(f"- Açık pozisyon: {tr_time(pos['entry_ts'])} alındı, giriş {pos['entry_px']:,.0f}$, "
-                 f"stop {pos['stop']:,.0f}$, hedef {pos['tp']:,.0f}$, şu an {unreal:+.2f}$")
+    desc = E.describe_open(state, price)
+    if desc:
+        L.append(f"- Açık pozisyon: {desc}")
     elif state.get("pending_entry"):
-        L.append("- Alım sinyali geldi, bir sonraki saat başı alınacak.")
+        L.append("- Alım sinyali geldi, bir sonraki mumda alınacak.")
     else:
         L.append("- Açık pozisyon yok (bot uygun fırsat bekliyor; nakitte durmak da bir karardır).")
 
@@ -161,7 +169,7 @@ def report(state, backtest):
     L += ["", "## 📜 Ne oldu? (son olaylar)", ""]
     L += [f"- {x}" for x in reversed(state["log"][-20:])]
 
-    if backtest:
+    if backtest and "gorulmemis_donem" in backtest:
         o, w = backtest["gorulmemis_donem"], backtest["haftalik_100_dolar_bot"]
         L += [
             "", "## 📊 Geçmiş test özeti (karşılaştırma için)", "",
@@ -170,6 +178,16 @@ def report(state, backtest):
             f"- 100$ ile 1 hafta, {w.get('pencere')} deneme: tipik {w.get('ortanca')}$, "
             f"en kötü {w.get('en_kotu')}$, en iyi {w.get('en_iyi')}$, kazandıran hafta %{w.get('kazandiran_hafta_pct')}",
             "- Ayrıntı: [GECMIS_TEST.md](GECMIS_TEST.md)",
+        ]
+    elif backtest and "sinav" in backtest:
+        o, w = backtest["sinav"], backtest["haftalik_100"]
+        L += [
+            "", "## 📊 Turnuvadaki geçmiş test (karşılaştırma için)", "",
+            f"- Görülmemiş dönemde: 100$ → {o['son_bakiye']}$ (al-tut %{o['al_tut_pct']}), "
+            f"haftada {o['haftalik_islem']} işlem, başarı %{o['basari_pct']}, en büyük düşüş %{o['max_dusus_pct']}",
+            f"- 100$ ile 1 hafta, {w.get('pencere')} deneme: tipik {w.get('ortanca')}$, "
+            f"en kötü {w.get('en_kotu')}$, en iyi {w.get('en_iyi')}$, kazandıran hafta %{w.get('kazandiran_hafta_pct')}",
+            "- Ayrıntı: [../TURNUVA.md](../TURNUVA.md)",
         ]
     L += ["", "_Bu SANAL paradır; gerçek emir verilmez. Sonuçlar yatırım tavsiyesi değildir._", ""]
     return "\n".join(L)
@@ -186,14 +204,15 @@ def append_equity(path, state):
                     round(S.equity(state, price), 4), len(state["trades"])])
 
 
-def run(candles, source, out_dir, now_ms=None):
+def run(candles, source, out_dir, now_ms=None, params=None, title="", backtest=None):
     now_ms = now_ms or int(time.time() * 1000)
+    os.makedirs(out_dir, exist_ok=True)
     state_path = os.path.join(out_dir, "state.json")
     state = load_json(state_path)
-    backtest = load_json(os.path.join(out_dir, "backtest.json"))
+    backtest = backtest or load_json(os.path.join(out_dir, "backtest.json"))
     if state is None:
-        params = load_json(os.path.join(out_dir, "params.json"), S.DEFAULT_PARAMS)
-        state = start_test(candles, params, now_ms)
+        params = params or load_json(os.path.join(out_dir, "params.json"), S.DEFAULT_PARAMS)
+        state = start_test(candles, params, now_ms, title)
     if not state["finished"]:
         step(state, candles, now_ms, source)
         append_equity(os.path.join(out_dir, "equity_history.csv"), state)
