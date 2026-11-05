@@ -1,0 +1,66 @@
+name: On Kayit v2 Hesabi
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "bot/onkayit_v2.py"
+      - ".github/workflows/onkayit_v2.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "23 4 7 5,11 *"   # v2 §8: 6 ayda bir ileri dönem ara raporu (7 Mayıs ve 7 Kasım)
+
+permissions:
+  contents: write
+
+concurrency:
+  group: onkayit-v2
+  cancel-in-progress: false
+
+jobs:
+  hesap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0          # motor dosyalarını v1 commit'iyle karşılaştırmak için tam geçmiş
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bagimliliklar (sabit surum)
+        run: pip install numpy==2.1.3
+
+      - name: On kayit v2 hesabi
+        run: python -m bot.onkayit_v2
+
+      - name: Sonuclari kalici sakla (artifact)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: onkayit-v2-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            results/v2/
+            results/ON_KAYIT_v2_SONUC.md
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Sonuclari depoya ekle (eskilerin uzerine yazmadan)
+        run: |
+          git config user.name "btc-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/v2 results/ON_KAYIT_v2_SONUC.md
+          if git diff --cached --quiet; then
+            echo "Degisiklik yok"
+            exit 0
+          fi
+          git commit -m "On kayit v2 sonucu $(date -u '+%Y-%m-%d %H:%M UTC') (calistirma ${{ github.run_id }})"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main || { git rebase --abort; sleep 10; continue; }
+            git push origin HEAD:main && exit 0
+            sleep 10
+          done
+          exit 1
