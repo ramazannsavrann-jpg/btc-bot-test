@@ -1,0 +1,20 @@
+{
+ "ema_fast": 50,
+ "ema_slow": 200,
+ "rsi_len": 14,
+ "rsi_entry": 30.0,
+ "breakout_len": 0,
+ "atr_len": 14,
+ "stop_atr": 2.5,
+ "tp_atr": 3.0,
+ "be_atr": 1.5,
+ "trail_atr": 2.0,
+ "max_hold": 72,
+ "risk": 0.015,
+ "max_alloc": 0.99,
+ "fee": 0.001,
+ "slip": 0.0005,
+ "loss_streak": 3,
+ "pause_hours": 24,
+ "max_dd": null
+}
