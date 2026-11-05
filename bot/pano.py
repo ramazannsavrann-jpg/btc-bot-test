@@ -82,7 +82,8 @@ def write(out_dir, rows, tour, ctour):
         "bot_sayisi": len(rows),
         "toplam_islem": sum(r["islem"] for r in botlar),
     }]
-    for name, data in (("botlar", botlar), ("bakiye_gecmisi", gecmis), ("olaylar", olaylar[:30]),
+    olaylar = [dict(r, no=k + 1) for k, r in enumerate(olaylar[:30])]
+    for name, data in (("botlar", botlar), ("bakiye_gecmisi", gecmis), ("olaylar", olaylar),
                        ("turnuva", turnuva), ("ozet", ozet)):
         with open(os.path.join(d, f"{name}.json"), "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=0)
