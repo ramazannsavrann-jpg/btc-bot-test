@@ -13,7 +13,7 @@ import shutil
 import sys
 import time
 
-from . import backtest, data, engines, external, paper, strategy as S, tournament
+from . import backtest, data, engines, external, multi_live, multi_tournament, paper, strategy as S, tournament
 
 OUT = os.environ.get("BOT_OUT", "results")
 TOP_N = 3
@@ -55,6 +55,36 @@ def ensure_tournament():
     return paper.load_json(path)
 
 
+def ensure_coin_tournament():
+    path = os.path.join(OUT, "coin_turnuva.json")
+    if os.path.exists(path):
+        return paper.load_json(path)
+    print("30 coin turnuvası başlıyor...")
+    if not external.FG:
+        external.load_fear_greed(0)
+    t = time.time()
+    uni = data.history_universe(24, 30)
+    print(f"Coin verisi hazır ({time.time() - t:.0f} sn)")
+    multi_tournament.run(uni, OUT)
+    return paper.load_json(path)
+
+
+def coin_bots(ctour):
+    """Akıllı Skor botu her zaman + turnuva birincisi (farklıysa). Seçim ilk seferde kilitlenir."""
+    path = os.path.join(OUT, "secilen_coin_botlari.json")
+    sel = paper.load_json(path)
+    by_id = {r["id"]: r for r in ctour["sonuclar"]}
+    if sel is None:
+        ids = ["coin_skor"]
+        top = ctour["sonuclar"][0]["id"]
+        if top not in ids:
+            ids.append(top)
+        sel = [{"id": i, "title": by_id[i]["baslik"]} for i in ids if i in by_id]
+        paper.save_json(path, sel)
+    return [{"id": s["id"], "title": s["title"], "params": by_id[s["id"]]["params"], "bt": by_id[s["id"]]}
+            for s in sel if s["id"] in by_id]
+
+
 def bot_list(tour):
     """Temkinli + turnuvanın ilk TOP_N botu. Seçim ilk seferde kilitlenir (test boyunca değişmez)."""
     sel_path = os.path.join(OUT, "secilen_botlar.json")
@@ -81,6 +111,14 @@ def combined_report(rows, tour):
          "| Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |",
          "|---|---|---|---|---|---|---|"]
     for b, st in rows:
+        if st.get("multi"):
+            s = multi_live.stats(st)
+            bh = (st["last_price"] / st["start_price"] - 1) * 100
+            el = (min(st["last_run"], st["test_end"]) - st["test_start"]) / S.HOUR_MS
+            durum = "✅ bitti" if st["finished"] else "⛔ durdu" if st["halted"] else f"gün {min(7, int(el // 24) + 1)}/7"
+            L.append(f"| [{b['title']}]({b['id']}/RAPOR.md) | **{s['equity']:.2f}$** | {s['return_pct']:+.2f}% | "
+                     f"{bh:+.2f}% (BTC) | {s['trades']} | %{s['win_rate']:.0f} | {durum} |")
+            continue
         px = st.get("last_price") or st["last_close"]
         s = S.stats(st, px)
         bh = (px / st["start_price"] - 1) * 100
@@ -96,13 +134,18 @@ def combined_report(rows, tour):
     L += [""]
     for b, st in rows:
         px = st.get("last_price") or st["last_close"]
-        desc = engines.get(st["params"]).describe_open(st, px)
+        if st.get("multi"):
+            from . import multi as MM
+            desc = MM.describe_open(st)
+        else:
+            desc = engines.get(st["params"]).describe_open(st, px)
         L += [f"### {b['title']}", f"- Başlangıç: {paper.tr_time(st['test_start'])}, BTC {st['start_price']:,.0f}$",
               f"- Açık pozisyon: {desc or 'yok'}"]
         L += [f"- {x}" for x in list(reversed(st["log"]))[:6]]
         L.append("")
     if tour:
-        L += ["## 🏆 Turnuva", "", f"Tüm adayların 2 yıllık geçmiş test sıralaması: [TURNUVA.md](TURNUVA.md)", ""]
+        L += ["## 🏆 Turnuvalar", "", "- BTC stratejileri (2 yıl): [TURNUVA.md](TURNUVA.md)",
+              "- 30 coin botları (2 yıl): [COIN_TURNUVA.md](COIN_TURNUVA.md)", ""]
     L += ["_Bu SANAL paradır; gerçek emir verilmez. Sonuçlar yatırım tavsiyesi değildir._", ""]
     return "\n".join(L)
 
@@ -130,6 +173,21 @@ def main():
         st = paper.run(candles, src, d, params=b["params"], title=b["title"], backtest=b["bt"])
         rows.append((b, st))
         print(f"{b['id']:<14} bakiye={S.equity(st, st['last_price']):.2f}$ işlem={len(st['trades'])}")
+
+    try:
+        ctour = ensure_coin_tournament()
+        for b in coin_bots(ctour):
+            try:
+                st = multi_live.run(b["id"], b["params"], b["title"], b["bt"], OUT)
+                rows.append((b, st))
+                print(f"{b['id']:<14} bakiye={multi_live.stats(st)['equity']:.2f}$ işlem={len(st['trades'])}")
+            except Exception as e:  # noqa: BLE001  (coin botu hata verse de BTC botları çalışmaya devam etsin)
+                print(f"{b['id']} hata: {e}")
+                old = paper.load_json(os.path.join(OUT, b["id"], "state.json"))
+                if old and old.get("start_price"):
+                    rows.append((b, old))
+    except Exception as e:  # noqa: BLE001
+        print("30 coin bölümü hata:", e)
 
     with open(os.path.join(OUT, "RAPOR.md"), "w", encoding="utf-8") as f:
         f.write(combined_report(rows, tour))

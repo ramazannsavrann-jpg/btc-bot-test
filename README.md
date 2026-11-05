@@ -4,7 +4,8 @@ Gerçek BTC fiyatıyla, **sanal 100$** kullanan al-sat botu testi.
 Gerçek para, Binance hesabı veya API anahtarı **kullanılmaz**.
 
 📄 **Canlı rapor (tüm botlar):** [results/RAPOR.md](results/RAPOR.md)
-🏆 **Turnuva (11 strateji, 2 yıl):** [results/TURNUVA.md](results/TURNUVA.md)
+🏆 **BTC turnuvası (2 yıl):** [results/TURNUVA.md](results/TURNUVA.md)
+🪙 **30 coin turnuvası (2 yıl):** [results/COIN_TURNUVA.md](results/COIN_TURNUVA.md)
 📊 **Temkinli botun geçmiş testi:** [results/temkinli/GECMIS_TEST.md](results/temkinli/GECMIS_TEST.md)
 
 ## Nasıl çalışır?
@@ -29,3 +30,10 @@ Aktif Trend, Freqtrade BinH+Cluc, EMA 9/21 15dk, Grid Bot, Gece saati kontrolü,
 Binance verisinde yarışır. Ayarlar ilk %70'te seçilir, sıralama hiç görülmemiş son %30'a ve
 2 kat komisyonlu dayanıklılık testine göre yapılır. İlk 3 bot, temkinli botla birlikte canlı kâğıt teste girer.
 Turnuvayı yeniden yapmak için `results/turnuva.json` ve `results/secilen_botlar.json` silinir.
+
+## 30 Coin Botları
+`bot/multi.py`: Binance'te hacimce en büyük 30 coini her saat tarar. Akıllı Skor modu her coine trend,
+göreceli güç, momentum, kırılım, formasyon (ikili dip, ters OBO, yatay direnç, fincan-kulp, takoz/üçgen),
+hacim patlaması ve RSI'dan 8 üzerinden puan verir. BTC yön filtresi, FOMC/CPI freni, Korku & Açgözlülük
+freni, coin başına ATR stop + iz süren stop, en fazla N pozisyon. Küçük coinlerde kayma daha yüksek hesaplanır.
+Geçmiş testte coin listesi Kasım 2024 hacmine göre seçilir (bugünün kazananlarını seçip sonucu şişirmemek için).

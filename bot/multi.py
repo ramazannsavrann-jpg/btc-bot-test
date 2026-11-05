@@ -215,7 +215,7 @@ def process_time(state, ctx, t):
         _, o, h, lo, c, _ = D[s][i]
         ps = state["pos"][s]
         if lo <= ps["stop"]:
-            _close(state, s, t, min(o, ps["stop"]), "stop" if ps["stop"] < ps["entry_px"] else "kâr koruma stopu")
+            _close(state, s, t, min(o, ps["stop"]), "stop" if ps["stop"] < ps["entry_px"] else "iz süren stop")
             continue
         a = I[s]["atr"][i]
         if not isn(a) and p.get("chandelier_atr") and p["mode"] != "rotation":
