@@ -81,6 +81,8 @@ def process_bar(state, candles, ind, i):
     if state["grid"] is None:
         _build(state, o)
 
+    from . import external
+    no_buy = bool(external.entry_blocked(p, ts))
     if not state["halted"]:
         g = state["grid"]
         lv = g["levels"]
@@ -90,7 +92,7 @@ def process_bar(state, candles, ind, i):
         ref = state["last_close"] if state["last_close"] else o
         for k in range(len(lv) - 1):
             # bekleyen alım emri sadece fiyatın ALTINDAKİ seviyelerde durur
-            if k in held or lv[k] >= ref or l > lv[k]:
+            if no_buy or k in held or lv[k] >= ref or l > lv[k]:
                 continue
             px = min(o, lv[k]) * (1 + p["slip"])
             notional = min(g["alloc"], state["cash"] / (1 + p["fee"]))

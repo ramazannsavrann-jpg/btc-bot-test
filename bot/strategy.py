@@ -262,6 +262,12 @@ def process_bar(state, candles, ind, i):
             if entry and p.get("trend_filter") and not c > es:
                 entry = False
             if entry:
+                from . import external
+                why = external.entry_blocked(p, ts + BAR_MS.get(p.get("interval", "1h"), HOUR_MS))
+                if why:
+                    entry = False
+                    state["blocked"] = state.get("blocked", 0) + 1
+            if entry:
                 state["pending_entry"] = {"signal_ts": ts, "atr": a}
 
     state["last_ts"] = ts

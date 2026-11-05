@@ -99,4 +99,46 @@ CANDIDATES = [
                    "max_hold": 3},
         "grid": {},
     },
+    # ---- haber / duygu filtreleri ve formasyon (5 Kasım eklemesi) ----
+    {
+        "id": "donchian_filtre",
+        "title": "Donchian + Haber/Duygu Freni",
+        "desc": "Donchian kırılım botu; ama faiz kararı/enflasyon açıklamasına 4 saat kala ve sonrası 4 saat "
+                "işlem açmaz, Korku & Açgözlülük endeksi çok yüksekken almaz.",
+        "params": {"signal": "donchian", "interval": "1h", "trend_filter": True, "atr_len": 22,
+                   "stop_atr": 3.0, "chandelier_atr": 3.0, "event_pause": True, **TREND_EXIT},
+        "grid": {"dc_entry": [24, 48, 72], "dc_exit": [12, 24], "fg_max": [75, 90]},
+    },
+    {
+        "id": "aktif_filtre",
+        "title": "Aktif Trend + Haber/Duygu Freni",
+        "desc": "Aktif Trend botu; büyük ekonomik açıklamalar civarında ve aşırı açgözlülükte alım yapmaz.",
+        "params": {"signal": "pullback", "interval": "1h", "breakout_len": 24, "event_pause": True},
+        "grid": {"rsi_entry": [35.0, 40.0, 45.0], "tp_atr": [2.0, 3.0], "fg_max": [75, 90]},
+    },
+    {
+        "id": "grid_olay",
+        "title": "Grid Bot + Olay Freni",
+        "desc": "Grid botu; faiz kararı ve enflasyon açıklaması civarında yeni kademe alımı yapmaz "
+                "(sert tek yönlü hareketlere yakalanmamak için).",
+        "params": {"engine": "grid", "interval": "15m", "event_pause": True},
+        "grid": {"n_levels": [8, 12], "range_pct": [0.03, 0.05]},
+    },
+    {
+        "id": "fear_dip",
+        "title": "Aşırı Korkuda Dip Alımı",
+        "desc": "Korku & Açgözlülük endeksi çok düşükken (herkes korkarken) fiyat 20'lik ortalamanın üstüne "
+                "dönünce alır; iz süren 3×ATR stopla çıkar.",
+        "params": {"signal": "fear_dip", "interval": "1h", "stop_atr": 3.0, "chandelier_atr": 3.0, **TREND_EXIT},
+        "grid": {"fg_buy": [20, 25, 30, 40]},
+    },
+    {
+        "id": "wedge",
+        "title": "Takoz / Üçgen Kırılımı",
+        "desc": "Son iki tepe ve iki dipten çizilen daralan formasyonun (düşen takoz, simetrik/yükselen üçgen) "
+                "üst çizgisi kırılınca alır; isteğe bağlı hacim onayı.",
+        "params": {"signal": "wedge", "interval": "1h", "stop_atr": 2.0, "chandelier_atr": 3.0,
+                   "be_atr": 0, "max_hold": 120},
+        "grid": {"pivot_k": [3, 5], "vol_confirm": [False, True], "tp_atr": [3.0, 100.0]},
+    },
 ]

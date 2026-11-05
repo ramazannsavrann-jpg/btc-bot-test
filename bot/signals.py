@@ -397,3 +397,72 @@ class LateUTC(Sig):
 
     def exit(self, ind, i, candles, p, pos):
         return "gece 00:00 UTC" if (candles[i][0] // 3_600_000) % 24 == 23 else None
+
+
+@register("fear_dip")
+class FearDip(Sig):
+    title = "Aşırı Korkuda Dip Alımı"
+
+    def indicators(self, candles, p, base):
+        return {"ema20": ema([c[4] for c in candles], 20), "cl": [c[4] for c in candles]}
+
+    def entry(self, ind, i, candles, p):
+        from . import external
+        v = external.fg_value(candles[i][0])
+        # aşırı korku + fiyat 20'lik ortalamanın üstüne dönüyor (düşüş duruluyor)
+        return v is not None and v <= p.get("fg_buy", 25) and cross_up(ind["cl"], ind["ema20"], i)
+
+
+def pivots(v, k, is_high):
+    """k mum sağı/solu doğrulanmış tepe/dip. (j, değer, onay_indeksi=j+k) listesi."""
+    out = []
+    for j in range(k, len(v) - k):
+        w = v[j - k:j + k + 1]
+        if (v[j] == max(w)) if is_high else (v[j] == min(w)):
+            out.append((j, v[j], j + k))
+    return out
+
+
+@register("wedge")
+class Wedge(Sig):
+    title = "Takoz / Üçgen Kırılımı"
+
+    def indicators(self, candles, p, base):
+        _, h, l, c, v = cols(candles)
+        k = p.get("pivot_k", 4)
+        look = p.get("pattern_bars", 120)
+        ph, pl = pivots(h, k, True), pivots(l, k, False)
+        n = len(c)
+        upper = [NAN] * n
+        hi_ok = [False] * n
+        a = b = 0
+        for i in range(n):
+            # sadece i anında DOĞRULANMIŞ pivotlar (onay_indeksi <= i) -> geleceği görmez
+            while a < len(ph) and ph[a][2] <= i:
+                a += 1
+            while b < len(pl) and pl[b][2] <= i:
+                b += 1
+            if a < 2 or b < 2:
+                continue
+            (h1i, h1, _), (h2i, h2, _) = ph[a - 2], ph[a - 1]
+            (l1i, l1, _), (l2i, l2, _) = pl[b - 2], pl[b - 1]
+            if i - min(h1i, l1i) > look:
+                continue
+            su = (h2 - h1) / (h2i - h1i)
+            sl = (l2 - l1) / (l2i - l1i)
+            up_i = h2 + su * (i - h2i)
+            lo_i = l2 + sl * (i - l2i)
+            # daralan formasyon: düşen takoz, simetrik/yükselen üçgen (üst çizgi yatay ya da düşen)
+            converging = su < sl and su <= 0.0002 * c[i] and up_i > lo_i
+            upper[i] = up_i
+            hi_ok[i] = converging
+        return {"w_up": upper, "w_ok": hi_ok, "cl": c, "vol_ma": sma(v, 20), "vol": v}
+
+    def entry(self, ind, i, candles, p):
+        if not ind["w_ok"][i] or isn(ind["w_up"][i], ind["w_up"][i - 1]):
+            return False
+        brk = ind["cl"][i] > ind["w_up"][i] and ind["cl"][i - 1] <= ind["w_up"][i - 1]
+        if brk and p.get("vol_confirm"):
+            vm = ind["vol_ma"][i]
+            brk = not isn(vm) and ind["vol"][i] > vm * 1.2
+        return brk

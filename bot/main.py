@@ -13,7 +13,7 @@ import shutil
 import sys
 import time
 
-from . import backtest, data, engines, paper, strategy as S, tournament
+from . import backtest, data, engines, external, paper, strategy as S, tournament
 
 OUT = os.environ.get("BOT_OUT", "results")
 TOP_N = 3
@@ -44,6 +44,7 @@ def ensure_tournament():
     if os.path.exists(path):
         return paper.load_json(path)
     print("Turnuva başlıyor...")
+    print("Korku & Açgözlülük geçmişi:", "tamam" if external.load_fear_greed(0) else "ALINAMADI")
     need = sorted({c["params"].get("interval", "1h") for c in tournament.CANDIDATES})
     data_by_iv = {}
     for iv in need:
@@ -113,6 +114,8 @@ def main():
     tour = ensure_tournament()
     bots = bot_list(tour)
 
+    if not external.FG:
+        external.load_fear_greed(30)
     cache, rows = {}, []
     for b in bots:
         d = os.path.join(OUT, b["id"])
