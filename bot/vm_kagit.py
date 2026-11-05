@@ -201,6 +201,101 @@ def write_report(st, rows):
     return "\n".join(L) + "\n"
 
 
+# =================================================================== yalnızca raporlama (işlem mantığına dokunmaz)
+def _mark_from_exit(exit_v, w):
+    """Tasfiye değeri ve piyasa ağırlığından piyasa değeri (ENS raporlarıyla aynı esas: nakit + adet × fiyat)."""
+    k = (1 - SLIP) * (1 - FEE)
+    return exit_v / (1 - w + w * k)
+
+
+def build_summary(st, rows):
+    """6 saatlik rapor için ENS ve VM-A özeti + aynı başlangıç koşullarıyla günlük karşılaştırma.
+    Eksik veri tahmin edilmez; 'yok' olarak yazılır."""
+    px = st.get("last_price") or st["last_close"]
+    mark = st["cash"] + st["qty"] * px
+    k = st["kararlar"][-1] if st["kararlar"] else None
+    lt = st["trades"][-1] if st["trades"] else None
+    vm = {"bakiye_piyasa": round(mark, 4), "bakiye_tasfiye": round(value(st, px), 4),
+          "toplam_getiri_pct": round(mark - 100, 3), "btc_ayni_surede_pct": round((px / st["start_price"] - 1) * 100, 3),
+          "acik_pozisyon": (f"{st['qty']:.6f} BTC (≈{st['qty'] * px:.2f}$)" if st["qty"] > 0 else "yok"),
+          "nakit_orani_pct": round(st["cash"] / mark * 100, 2) if mark > 0 else None,
+          "son_karar": (f"{paper.tr_time(k['gun_sonu_ts'])} (hedef %{k['hedef'] * 100:.1f}, "
+                        f"{'işlem' if k['islem'] else 'bant içinde, işlem yok'})") if k else "henüz gün sonu kararı yok",
+          "son_islenen_mum_kapanisi": paper.tr_time(st["last_ts"] + BAR4),
+          "son_dolum": (f"{lt['yon']} {lt['adet']:.6f} BTC @ {lt['dolum_fiyati']:,.2f}$ (dolum mumu "
+                        f"{paper.tr_time(lt['dolum_mum_ts'])}, 1 dk referans {lt['referans_fiyat']:,.2f}$, "
+                        f"mum açılışına göre {(lt['referans_fiyat'] / lt['mum_acilis'] - 1) * 100:+.3f}%)") if lt else "henüz dolum yok",
+          "bekleyen": (f"hedef %{st['pending']['hedef'] * 100:.1f} (sinyal {paper.tr_time(st['pending']['sinyal_ts'])})"
+                       if st["pending"] else "yok"),
+          "baslangic": paper.tr_time(st["test_start"]), "son_calisma": paper.tr_time(st["last_run"])}
+    est = paper.load_json(os.path.join(ENS_DIR, "state.json"))
+    ens = None
+    if est:
+        epx = est.get("last_price") or est["last_close"]
+        eq = S.equity(est, epx)
+        subs = [x for x in est.get("subs", []) if x.get("position")]
+        ld = (est.get("dolumlar") or [None])[-1]
+        tr = est["trades"][-1] if est.get("trades") else None
+        ens = {"bakiye_piyasa": round(eq, 4), "toplam_getiri_pct": round(eq - 100, 3),
+               "btc_ayni_surede_pct": round((epx / est["start_price"] - 1) * 100, 3),
+               "acik_pozisyon": (f"{len(subs)}/3 alt sistem pozisyonda, {est['qty']:.6f} BTC" if subs else "yok"),
+               "nakit_orani_pct": round(est["cash"] / eq * 100, 2) if eq > 0 else None,
+               "son_karar": f"{paper.tr_time(est['last_ts'] + BAR4)} (son değerlendirilen 4s mum kapanışı)",
+               "son_dolum": (f"{ld['olay']} sinyal {ld['sinyal_ts']}, 1 dk referans {ld['referans_fiyat']}, mum fiyatı "
+                             f"{ld['mum_fiyati']}, fark %{ld['fark_pct']}") if ld else
+                            (f"son işlem: giriş {paper.tr_time(tr['entry_ts'])}, çıkış {paper.tr_time(tr['exit_ts'])}" if tr
+                             else "henüz dolum yok"),
+               "durum": "test bitti" if est.get("finished") else ("durdu (düşüş freni)" if est.get("halted") else "çalışıyor"),
+               "baslangic": paper.tr_time(est["test_start"]), "bitis": paper.tr_time(est["test_end"]),
+               "son_calisma": paper.tr_time(est.get("last_run", 0))}
+    gunluk, eksik, temel = [], [], None
+    c = ens_compare(rows, st["last_run"]) if est else None
+    if c and c["ortak"]:
+        def vm_mark(r):
+            return _mark_from_exit(float(r["bakiye"]), float(r.get("btc_agirligi") or 0))
+        r0, e0 = c["ortak"][0]
+        temel = {"zaman": r0["zaman_istanbul"], "vm": vm_mark(r0), "ens": e0[1], "btc": float(r0["btc_fiyat"])}
+        by_day = {}
+        for r, e in c["ortak"]:
+            day = datetime.fromtimestamp(int(r["utc_ms"]) / 1000, paper.TR).strftime("%Y-%m-%d")
+            by_day[day] = (r, e)
+        d0 = datetime.fromtimestamp(int(r0["utc_ms"]) / 1000, paper.TR).date()
+        d1 = datetime.fromtimestamp(st["last_run"] / 1000, paper.TR).date()
+        d = d0
+        from datetime import timedelta
+        end_d = datetime.fromtimestamp(est["test_end"] / 1000, paper.TR).date()
+        while d <= d1:
+            if est.get("finished") and d > end_d:
+                break                                   # ENS testi bitti: sonraki günler eksik sayılmaz
+            key = d.isoformat()
+            if key in by_day:
+                r, e = by_day[key]
+                gunluk.append({"gun": key, "kayit": r["zaman_istanbul"],
+                               "VM-A": round(vm_mark(r) / temel["vm"] * 100, 2),
+                               "ENS": round(e[1] / temel["ens"] * 100, 2),
+                               "BTC": round(float(r["btc_fiyat"]) / temel["btc"] * 100, 2)})
+            else:
+                eksik.append(key)
+            d += timedelta(days=1)
+    out = {"olusturma": paper.tr_time(st["last_run"]), "VM-A": vm, "ENS": ens,
+           "karsilastirma": {"yontem": "İkisi de ortak ilk kayıtta 100'e eşitlenir; her gün, iki botun en fazla 20 dk arayla "
+                                       "eşleşen son kaydı kullanılır. Değerler piyasa değeri esasındadır (nakit + adet × fiyat). "
+                                       "Eşleşen kayıt olmayan gün tahmin edilmez, 'eksik' yazılır.",
+                             "temel": temel, "gunluk": gunluk, "eksik_gunler": eksik,
+                             "not": "ENS canlı testi 12.11'de biter; sonrasında ENS sütunu güncellenmez. ENS'de canlı %10 düşüş "
+                                    "freni açık, VM-A'da yok. Asıl ileri karşılaştırma ön kayıt v2 hesabıdır."}}
+    paper.save_json(os.path.join(OUT, "ozet.json"), out)
+    L = ["", "## Günlük karşılaştırma (aynı başlangıç: ortak ilk kayıtta ikisi de 100)", "", out["karsilastirma"]["yontem"], ""]
+    if gunluk:
+        L += ["| Gün | Kayıt | VM-A | ENS | BTC |", "|---|---|---|---|---|"]
+        L += [f"| {g['gun']} | {g['kayit']} | {g['VM-A']:.2f} | {g['ENS']:.2f} | {g['BTC']:.2f} |" for g in gunluk]
+    else:
+        L.append("Henüz eşleşen ortak kayıt yok.")
+    if eksik:
+        L += ["", "Eşleşen kayıt olmayan günler (tahmin edilmedi): " + ", ".join(eksik)]
+    return "\n".join(L) + "\n"
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     now_ms = int(time.time() * 1000)
@@ -225,7 +320,7 @@ def main():
     with open(hp, encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     with open(os.path.join(OUT, "RAPOR.md"), "w", encoding="utf-8") as f:
-        f.write(write_report(st, rows))
+        f.write(write_report(st, rows) + build_summary(st, rows))
     print(f"VM-A bakiye={value(st, px):.2f}$ işlem={len(st['trades'])} ağırlık={mark_w(st, px):.3f}")
 
 
