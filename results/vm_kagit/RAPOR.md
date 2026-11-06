@@ -2,9 +2,9 @@
 
 _SANAL paradır; gerçek emir verilmez. Yatırım tavsiyesi değildir. Kurallar: ön kayıt v2/v2.1 VM-A._
 
-- Başlangıç: 05.11 16:20, BTC 80,390$ · son çalıştırma 06.11 06:28
-- Bakiye: **100.00$** (+0.00%) · aynı sürede BTC al-tut -5.35% · BTC ağırlığı %0.0
-- İşlem sayısı: 0 · bekleyen emir: hedef %99 (sinyal 06.11 03:00)
+- Başlangıç: 05.11 16:20, BTC 80,390$ · son çalıştırma 06.11 07:31
+- Bakiye: **99.29$** (-0.71%) · aynı sürede BTC al-tut -5.57% · BTC ağırlığı %99.0
+- İşlem sayısı: 1 · bekleyen emir: yok
 - Veri: Binance (data-api.binance.vision)
 
 Son gün sonu kararı (06.11 03:00): σ %37.0, hedef %99.0, mevcut ağırlık %0.0 → işlem
@@ -13,7 +13,7 @@ Son gün sonu kararı (06.11 03:00): σ %37.0, hedef %99.0, mevcut ağırlık %0
 
 Canlı ENS botu (Kırılım Ansamblı) 05.11 12:55 başladı; 7 günlük testi 12.11 12:55 tarihinde biter (mevcut bot değiştirilmedi). ENS'de canlı %10 düşüş freni açık, VM-A'da yok (v2.1). Asıl ileri karşılaştırma, aynı kurallarla hesaplanan ön kayıt v2 hesabıdır.
 
-Ortak dönem 05.11 16:20 → 06.11 05:39 (16 eşleşen kayıt, en fazla 20 dk fark):
+Ortak dönem 05.11 16:20 → 06.11 06:28 (17 eşleşen kayıt, en fazla 20 dk fark):
 
 | Bot | Başlangıç | Son | Getiri |
 |---|---|---|---|
@@ -25,16 +25,19 @@ Ortak dönem 05.11 16:20 → 06.11 05:39 (16 eşleşen kayıt, en fazla 20 dk fa
 
 | Yön | Sinyal | Dolum mumu | Mum açılışı | 1 dk referans | Fark | Dolum (kayma dahil) | Adet | Hedef |
 |---|---|---|---|---|---|---|---|---|
+| ALIM | 06.11 03:00 | 06.11 03:00 | 76,088.01 | 76,234.60 | +0.193% | 76,272.72 | 0.001297 | %99 |
 
 ## Dolum kayıtları (gerçekçi dolum, son 10)
 
 | Olay | Sinyal | Karar anı | Kayıt anı | Gecikme (dk) | 1 dk mum | Mum fiyatı | Referans | Fark % |
 |---|---|---|---|---|---|---|---|---|
+| vm_al | 06.11 03:00 | 06.11 03:31 | 06.11 07:31 | 31.9 | 06.11 03:31 | 76088.01 | 76234.6 | 0.1927 |
 
 1 dakikalık mum kapanışı gerçek işlem fiyatı değildir; bu bir simülasyondur.
 
 ## Günlük
 
+- 06.11 03:00 ALIM 0.001297 BTC @ 76,273$ (hedef ağırlık %99, sinyal 06.11 03:00)
 - 05.11 16:20 Test başladı. BTC 80,390$, sanal bakiye 100$. Geçmişte işlem yapılmaz.
 
 ## Günlük karşılaştırma (aynı başlangıç: ortak ilk kayıtta ikisi de 100)
@@ -44,4 +47,4 @@ Ortak dönem 05.11 16:20 → 06.11 05:39 (16 eşleşen kayıt, en fazla 20 dk fa
 | Gün | Kayıt | VM-A | ENS | BTC |
 |---|---|---|---|---|
 | 2026-11-05 | 05.11 23:53 | 100.00 | 100.00 | 95.00 |
-| 2026-11-06 | 06.11 05:39 | 100.00 | 100.00 | 94.65 |
+| 2026-11-06 | 06.11 06:28 | 100.00 | 100.00 | 94.65 |
