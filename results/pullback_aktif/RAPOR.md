@@ -1,6 +1,6 @@
 # Aktif Trend (RSI + Kırılım) (1h) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 07.11 00:11 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 07.11 00:50 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
 **Durum:** 🟢 Test sürüyor — gün 2/7 (38 saat geçti)
 
@@ -21,6 +21,7 @@
 | 06.11 05:47 | 100.00$ | +0.00$ | 76,130$ | 0 |
 | 06.11 11:48 | 100.00$ | +0.00$ | 75,616$ | 0 |
 | 06.11 18:27 | 100.00$ | +0.00$ | 75,543$ | 0 |
+| 07.11 00:50 | 100.00$ | +0.00$ | 75,882$ | 0 |
 
 ## 📜 Ne oldu? (son olaylar)
 
