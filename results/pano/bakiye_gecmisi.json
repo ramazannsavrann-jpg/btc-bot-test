@@ -55,6 +55,11 @@
 "bakiye": 98.39
 },
 {
+"zaman": "2026-11-06T15:27Z",
+"bot": "Grid Bot 7/24 (15m)",
+"bakiye": 98.47
+},
+{
 "zaman": "2026-11-05T07:29Z",
 "bot": "Donchian Kırılım + Chandelier (1h)",
 "bakiye": 100.0
@@ -80,6 +85,11 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-06T15:27Z",
+"bot": "Donchian Kırılım + Chandelier (1h)",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T07:29Z",
 "bot": "Aktif Trend (RSI + Kırılım) (1h)",
 "bakiye": 100.0
@@ -101,6 +111,11 @@
 },
 {
 "zaman": "2026-11-06T08:48Z",
+"bot": "Aktif Trend (RSI + Kırılım) (1h)",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-06T15:27Z",
 "bot": "Aktif Trend (RSI + Kırılım) (1h)",
 "bakiye": 100.0
 },
@@ -126,6 +141,11 @@
 },
 {
 "zaman": "2026-11-06T08:48Z",
+"bot": "Donchian + Haber/Duygu Freni (1h)",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-06T15:27Z",
 "bot": "Donchian + Haber/Duygu Freni (1h)",
 "bakiye": 100.0
 },
