@@ -1,18 +1,18 @@
 # 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 06.11 10:55 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
+**Son güncelleme:** 06.11 11:49 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
 | Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
 |---|---|---|---|---|---|---|
-| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -6.13% | 0 | %0 | gün 2/7 |
-| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **98.39$** | -1.61% | -6.11% | 0 | %0 | gün 2/7 |
-| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -6.13% | 0 | %0 | gün 2/7 |
-| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -6.13% | 0 | %0 | gün 2/7 |
-| [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -6.13% | 0 | %0 | gün 2/7 |
-| [Kırılım Ansamblı 20/40/60 gün (4s)](kirilim_ansambl/RAPOR.md) | **100.00$** | +0.00% | -5.53% | 0 | %0 | gün 1/7 |
-| [Donchian (4s)](donchian_4s/RAPOR.md) | **100.00$** | +0.00% | -5.53% | 0 | %0 | gün 1/7 |
-| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -5.79% (BTC) | 0 | %0 | gün 1/7 |
-| [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | -5.79% (BTC) | 0 | %0 | gün 1/7 |
+| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -6.24% | 0 | %0 | gün 2/7 |
+| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **98.39$** | -1.61% | -6.12% | 0 | %0 | gün 2/7 |
+| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -6.24% | 0 | %0 | gün 2/7 |
+| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -6.24% | 0 | %0 | gün 2/7 |
+| [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -6.24% | 0 | %0 | gün 2/7 |
+| [Kırılım Ansamblı 20/40/60 gün (4s)](kirilim_ansambl/RAPOR.md) | **100.00$** | +0.00% | -5.90% | 0 | %0 | gün 1/7 |
+| [Donchian (4s)](donchian_4s/RAPOR.md) | **100.00$** | +0.00% | -5.90% | 0 | %0 | gün 1/7 |
+| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -5.90% (BTC) | 0 | %0 | gün 2/7 |
+| [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | -5.90% (BTC) | 0 | %0 | gün 2/7 |
 
 ### Temkinli Trend (1s)
 - Başlangıç: 05.11 10:17, BTC 80,649$
