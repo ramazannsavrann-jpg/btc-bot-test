@@ -1,11 +1,11 @@
 # 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 07.11 02:14 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
+**Son güncelleme:** 07.11 02:47 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
 | Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
 |---|---|---|---|---|---|---|
 | [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -5.87% | 0 | %0 | gün 2/7 |
-| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **98.52$** | -1.48% | -5.88% | 0 | %0 | gün 2/7 |
+| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **98.54$** | -1.46% | -5.82% | 0 | %0 | gün 2/7 |
 | [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -5.87% | 0 | %0 | gün 2/7 |
 | [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -5.87% | 0 | %0 | gün 2/7 |
 | [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -5.87% | 0 | %0 | gün 2/7 |
@@ -21,7 +21,7 @@
 
 ### Grid Bot 7/24 (15m)
 - Başlangıç: 05.11 10:29, BTC 80,653$
-- Açık pozisyon: 4 parça BTC elde, şu an -1.48$ (ızgara 76,621$ – 84,686$)
+- Açık pozisyon: 4 parça BTC elde, şu an -1.46$ (ızgara 76,621$ – 84,686$)
 - 05.11 18:15 ALIM 76,659$ (12.51$ kullanıldı)
 - 05.11 18:00 ALIM 77,668$ (12.51$ kullanıldı)
 - 05.11 17:45 ALIM 78,676$ (12.51$ kullanıldı)
