@@ -1,18 +1,18 @@
 {
- "olusturma": "06.11 02:45",
+ "olusturma": "06.11 03:27",
  "VM-A": {
   "bakiye_piyasa": 100.0,
   "bakiye_tasfiye": 100.0,
   "toplam_getiri_pct": 0.0,
-  "btc_ayni_surede_pct": -5.003,
+  "btc_ayni_surede_pct": -5.351,
   "acik_pozisyon": "yok",
   "nakit_orani_pct": 100.0,
-  "son_karar": "henüz gün sonu kararı yok",
-  "son_islenen_mum_kapanisi": "05.11 23:00",
+  "son_karar": "06.11 03:00 (hedef %99.0, işlem)",
+  "son_islenen_mum_kapanisi": "06.11 03:00",
   "son_dolum": "henüz dolum yok",
-  "bekleyen": "yok",
+  "bekleyen": "hedef %99.0 (sinyal 06.11 03:00)",
   "baslangic": "05.11 16:20",
-  "son_calisma": "06.11 02:45"
+  "son_calisma": "06.11 03:27"
  },
  "ENS": {
   "bakiye_piyasa": 100.0,
@@ -25,7 +25,7 @@
   "durum": "çalışıyor",
   "baslangic": "05.11 12:55",
   "bitis": "12.11 12:55",
-  "son_calisma": "06.11 02:11"
+  "son_calisma": "06.11 02:51"
  },
  "karsilastirma": {
   "yontem": "İkisi de ortak ilk kayıtta 100'e eşitlenir; her gün, iki botun en fazla 20 dk arayla eşleşen son kaydı kullanılır. Değerler piyasa değeri esasındadır (nakit + adet × fiyat). Eşleşen kayıt olmayan gün tahmin edilmez, 'eksik' yazılır.",
@@ -45,7 +45,7 @@
    },
    {
     "gun": "2026-11-06",
-    "kayit": "06.11 02:06",
+    "kayit": "06.11 02:45",
     "VM-A": 100.0,
     "ENS": 100.0,
     "BTC": 95.0
