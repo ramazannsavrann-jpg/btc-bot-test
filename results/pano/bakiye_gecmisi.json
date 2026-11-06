@@ -225,6 +225,11 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-06T16:17Z",
+"bot": "30 Coin Akıllı Skor",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T08:12Z",
 "bot": "30 Coin Momentum Rotasyonu",
 "bakiye": 100.0
@@ -246,6 +251,11 @@
 },
 {
 "zaman": "2026-11-06T09:45Z",
+"bot": "30 Coin Momentum Rotasyonu",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-06T16:17Z",
 "bot": "30 Coin Momentum Rotasyonu",
 "bakiye": 100.0
 }
