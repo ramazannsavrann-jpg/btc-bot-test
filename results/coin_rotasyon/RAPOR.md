@@ -1,10 +1,10 @@
 # 30 Coin Momentum Rotasyonu — Canlı Kâğıt Test
 
-**Son güncelleme:** 06.11 05:47 (İstanbul) · **Durum:** 🟢 Test sürüyor — gün 1/7
+**Son güncelleme:** 06.11 06:36 (İstanbul) · **Durum:** 🟢 Test sürüyor — gün 1/7
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
-- Aynı sürede BTC al-tut: -5.26%
+- Aynı sürede BTC al-tut: -5.18%
 - Biten işlem: **0** · Kazanan: 0 · Başarı: **%0**
 - Açık pozisyonlar: yok
 - Takip edilen coinler: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ
@@ -16,6 +16,7 @@
 | 05.11 11:12 | 100.00$ | +0.00$ | 0 |
 | 05.11 17:40 | 100.00$ | +0.00$ | 0 |
 | 06.11 00:02 | 100.00$ | +0.00$ | 0 |
+| 06.11 06:36 | 100.00$ | +0.00$ | 0 |
 
 ## 📜 Ne oldu?
 
