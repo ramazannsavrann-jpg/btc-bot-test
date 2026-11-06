@@ -1,13 +1,13 @@
 # Donchian (4s) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 06.11 06:35 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 06.11 07:39 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 1/7 (18 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 1/7 (19 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
-- Aynı sürede sadece BTC alıp tutsaydın: **94.69$** (-5.31%)
-- BTC fiyatı: 80,359$ → 76,088$
+- Aynı sürede sadece BTC alıp tutsaydın: **94.47$** (-5.53%)
+- BTC fiyatı: 80,359$ → 75,913$
 - Biten işlem: **0** · Kazanan: 0 · Başarı oranı: **%0**
 - Açık pozisyon yok (bot uygun fırsat bekliyor; nakitte durmak da bir karardır).
 
