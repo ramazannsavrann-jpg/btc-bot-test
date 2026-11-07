@@ -39,8 +39,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794078000000,
- "last_close": 75805.19,
+ "last_ts": 1794081600000,
+ "last_close": 75698.28,
  "trades": [],
  "title": "Donchian + Haber/Duygu Freni (1h)",
  "test_start": 1793864452538,
@@ -113,7 +113,7 @@
   "05.11 10:40 Test başladı. BTC 80,649$, sanal bakiye 100$."
  ],
  "logged_entries": [],
- "last_price": 75805.19,
+ "last_price": 75698.28,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794083732752
+ "last_run": 1794086260410
 }
