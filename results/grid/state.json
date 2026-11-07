@@ -19,8 +19,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794037500000,
- "last_close": 76094.95,
+ "last_ts": 1794040200000,
+ "last_close": 76138.63,
  "trades": [],
  "grid": {
   "levels": [
@@ -135,7 +135,7 @@
   1793890800000,
   1793891700000
  ],
- "last_price": 76094.95,
+ "last_price": 76138.63,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794039011161
+ "last_run": 1794041927742
 }
