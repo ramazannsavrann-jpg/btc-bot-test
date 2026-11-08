@@ -1,8 +1,8 @@
 # Kırılım Ansamblı 20/40/60 gün (4s) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 08.11 03:15 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 08.11 04:21 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 3/7 (62 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 3/7 (63 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
