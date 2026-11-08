@@ -1,31 +1,31 @@
 {
- "olusturma": "08.11 18:55",
+ "olusturma": "08.11 19:24",
  "VM-A": {
-  "bakiye_piyasa": 99.523,
-  "bakiye_tasfiye": 99.3752,
-  "toplam_getiri_pct": -0.477,
-  "btc_ayni_surede_pct": -5.484,
-  "acik_pozisyon": "0.001297 BTC (≈98.52$)",
+  "bakiye_piyasa": 99.6431,
+  "bakiye_tasfiye": 99.4952,
+  "toplam_getiri_pct": -0.357,
+  "btc_ayni_surede_pct": -5.369,
+  "acik_pozisyon": "0.001297 BTC (≈98.64$)",
   "nakit_orani_pct": 1.0,
   "son_karar": "08.11 03:00 (hedef %99.0, bant içinde, işlem yok)",
-  "son_islenen_mum_kapanisi": "08.11 15:00",
+  "son_islenen_mum_kapanisi": "08.11 19:00",
   "son_dolum": "ALIM 0.001297 BTC @ 76,272.72$ (dolum mumu 06.11 03:00, 1 dk referans 76,234.60$, mum açılışına göre +0.193%)",
   "bekleyen": "yok",
   "baslangic": "05.11 16:20",
-  "son_calisma": "08.11 18:55"
+  "son_calisma": "08.11 19:24"
  },
  "ENS": {
   "bakiye_piyasa": 100.0,
   "toplam_getiri_pct": 0.0,
-  "btc_ayni_surede_pct": -5.448,
+  "btc_ayni_surede_pct": -5.333,
   "acik_pozisyon": "yok",
   "nakit_orani_pct": 100.0,
-  "son_karar": "08.11 15:00 (son değerlendirilen 4s mum kapanışı)",
+  "son_karar": "08.11 19:00 (son değerlendirilen 4s mum kapanışı)",
   "son_dolum": "henüz dolum yok",
   "durum": "çalışıyor",
   "baslangic": "05.11 12:55",
   "bitis": "12.11 12:55",
-  "son_calisma": "08.11 18:27"
+  "son_calisma": "08.11 19:03"
  },
  "karsilastirma": {
   "yontem": "İkisi de ortak ilk kayıtta 100'e eşitlenir; her gün, iki botun en fazla 20 dk arayla eşleşen son kaydı kullanılır. Değerler piyasa değeri esasındadır (nakit + adet × fiyat). Eşleşen kayıt olmayan gün tahmin edilmez, 'eksik' yazılır.",
@@ -59,7 +59,7 @@
    },
    {
     "gun": "2026-11-08",
-    "kayit": "08.11 18:21",
+    "kayit": "08.11 18:55",
     "VM-A": 99.52,
     "ENS": 100.0,
     "BTC": 94.52
