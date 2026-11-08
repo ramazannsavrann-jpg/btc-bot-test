@@ -1,13 +1,13 @@
 # Donchian Kırılım + Chandelier (1h) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 08.11 21:19 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 08.11 22:15 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 4/7 (83 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 4/7 (84 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
-- Aynı sürede sadece BTC alıp tutsaydın: **93.93$** (-6.07%)
-- BTC fiyatı: 80,649$ → 75,754$
+- Aynı sürede sadece BTC alıp tutsaydın: **94.16$** (-5.84%)
+- BTC fiyatı: 80,649$ → 75,943$
 - Biten işlem: **0** · Kazanan: 0 · Başarı oranı: **%0**
 - Açık pozisyon yok (bot uygun fırsat bekliyor; nakitte durmak da bir karardır).
 
