@@ -1,11 +1,11 @@
 [
 {
-"guncelleme": "2026-11-08T21:47Z",
-"guncelleme_tr": "09.11 00:47",
-"btc_fiyat": 75744.0,
-"btc_degisim_pct": -6.08,
+"guncelleme": "2026-11-08T22:19Z",
+"guncelleme_tr": "09.11 01:19",
+"btc_fiyat": 74136.0,
+"btc_degisim_pct": -8.08,
 "bot_sayisi": 9,
-"toplam_islem": 0,
+"toplam_islem": 4,
 "arastirma_donem": "2023-11-01 → 2026-11-01",
 "pbo_pct": 50.4,
 "dsr_pct": 1.0,
