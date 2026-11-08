@@ -1,5 +1,5 @@
 {
- "olusturma": "09.11 02:22",
+ "olusturma": "09.11 02:54",
  "VM-A": {
   "bakiye_piyasa": 99.4554,
   "bakiye_tasfiye": 99.3078,
@@ -12,7 +12,7 @@
   "son_dolum": "ALIM 0.001297 BTC @ 76,272.72$ (dolum mumu 06.11 03:00, 1 dk referans 76,234.60$, mum açılışına göre +0.193%)",
   "bekleyen": "yok",
   "baslangic": "05.11 16:20",
-  "son_calisma": "09.11 02:22"
+  "son_calisma": "09.11 02:54"
  },
  "ENS": {
   "bakiye_piyasa": 100.0,
@@ -25,7 +25,7 @@
   "durum": "çalışıyor",
   "baslangic": "05.11 12:55",
   "bitis": "12.11 12:55",
-  "son_calisma": "09.11 01:53"
+  "son_calisma": "09.11 02:28"
  },
  "karsilastirma": {
   "yontem": "İkisi de ortak ilk kayıtta 100'e eşitlenir; her gün, iki botun en fazla 20 dk arayla eşleşen son kaydı kullanılır. Değerler piyasa değeri esasındadır (nakit + adet × fiyat). Eşleşen kayıt olmayan gün tahmin edilmez, 'eksik' yazılır.",
@@ -66,7 +66,7 @@
    },
    {
     "gun": "2026-11-09",
-    "kayit": "09.11 01:55",
+    "kayit": "09.11 02:22",
     "VM-A": 99.46,
     "ENS": 100.0,
     "BTC": 94.45
