@@ -1,8 +1,8 @@
 # Temkinli Trend (1s) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 08.11 20:16 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 08.11 20:48 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 4/7 (82 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 4/7 (83 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
