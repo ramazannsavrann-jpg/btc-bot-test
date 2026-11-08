@@ -1,13 +1,13 @@
 # Donchian + Haber/Duygu Freni (1h) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 08.11 18:27 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 08.11 19:03 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
 **Durum:** 🟢 Test sürüyor — gün 4/7 (80 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
-- Aynı sürede sadece BTC alıp tutsaydın: **94.28$** (-5.72%)
-- BTC fiyatı: 80,649$ → 76,040$
+- Aynı sürede sadece BTC alıp tutsaydın: **94.33$** (-5.67%)
+- BTC fiyatı: 80,649$ → 76,074$
 - Biten işlem: **0** · Kazanan: 0 · Başarı oranı: **%0**
 - Açık pozisyon yok (bot uygun fırsat bekliyor; nakitte durmak da bir karardır).
 

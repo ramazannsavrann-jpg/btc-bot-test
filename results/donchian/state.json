@@ -37,8 +37,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794146400000,
- "last_close": 76039.81,
+ "last_ts": 1794150000000,
+ "last_close": 76073.74,
  "trades": [],
  "title": "Donchian Kırılım + Chandelier (1h)",
  "test_start": 1793863766535,
@@ -129,7 +129,7 @@
   "05.11 10:29 Test başladı. BTC 80,649$, sanal bakiye 100$."
  ],
  "logged_entries": [],
- "last_price": 76039.81,
+ "last_price": 76073.74,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794151654475
+ "last_run": 1794153836956
 }

@@ -385,6 +385,11 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-08T16:03Z",
+"bot": "Kırılım Ansamblı 20/40/60 gün (4s)",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T09:55Z",
 "bot": "Donchian (4s)",
 "bakiye": 100.0
@@ -441,6 +446,11 @@
 },
 {
 "zaman": "2026-11-08T09:58Z",
+"bot": "Donchian (4s)",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-08T16:03Z",
 "bot": "Donchian (4s)",
 "bakiye": 100.0
 },
