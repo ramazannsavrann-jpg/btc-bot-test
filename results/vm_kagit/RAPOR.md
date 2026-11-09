@@ -2,7 +2,7 @@
 
 _SANAL paradır; gerçek emir verilmez. Yatırım tavsiyesi değildir. Kurallar: ön kayıt v2/v2.1 VM-A._
 
-- Başlangıç: 05.11 16:20, BTC 80,390$ · son çalıştırma 10.11 01:04
+- Başlangıç: 05.11 16:20, BTC 80,390$ · son çalıştırma 10.11 01:46
 - Bakiye: **97.95$** (-2.05%) · aynı sürede BTC al-tut -6.86% · BTC ağırlığı %99.0
 - İşlem sayısı: 1 · bekleyen emir: yok
 - Veri: Binance (data-api.binance.vision)
@@ -13,7 +13,7 @@ Son gün sonu kararı (09.11 03:00): σ %37.0, hedef %99.0, mevcut ağırlık %9
 
 Canlı ENS botu (Kırılım Ansamblı) 05.11 12:55 başladı; 7 günlük testi 12.11 12:55 tarihinde biter (mevcut bot değiştirilmedi). ENS'de canlı %10 düşüş freni açık, VM-A'da yok (v2.1). Asıl ileri karşılaştırma, aynı kurallarla hesaplanan ön kayıt v2 hesabıdır.
 
-Ortak dönem 05.11 16:20 → 09.11 23:11 (114 eşleşen kayıt, en fazla 20 dk fark):
+Ortak dönem 05.11 16:20 → 10.11 01:46 (115 eşleşen kayıt, en fazla 20 dk fark):
 
 | Bot | Başlangıç | Son | Getiri |
 |---|---|---|---|
@@ -51,5 +51,4 @@ Ortak dönem 05.11 16:20 → 09.11 23:11 (114 eşleşen kayıt, en fazla 20 dk f
 | 2026-11-07 | 07.11 23:57 | 99.29 | 100.00 | 94.30 |
 | 2026-11-08 | 08.11 23:56 | 99.46 | 100.00 | 94.45 |
 | 2026-11-09 | 09.11 23:11 | 98.09 | 100.00 | 93.14 |
-
-Eşleşen kayıt olmayan günler (tahmin edilmedi): 2026-11-10
+| 2026-11-10 | 10.11 01:46 | 98.09 | 100.00 | 93.14 |
