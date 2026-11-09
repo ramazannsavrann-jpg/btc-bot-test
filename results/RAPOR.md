@@ -1,17 +1,17 @@
 # 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 09.11 05:00 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
+**Son güncelleme:** 09.11 05:47 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
 | Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
 |---|---|---|---|---|---|---|
-| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -6.71% | 0 | %0 | gün 4/7 |
-| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **97.31$** | -2.69% | -6.77% | 4 | %0 | gün 4/7 |
-| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -6.71% | 0 | %0 | gün 4/7 |
-| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -6.71% | 0 | %0 | gün 4/7 |
-| [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -6.71% | 0 | %0 | gün 4/7 |
+| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -6.80% | 0 | %0 | gün 4/7 |
+| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **97.34$** | -2.66% | -6.51% | 4 | %0 | gün 4/7 |
+| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -6.80% | 0 | %0 | gün 4/7 |
+| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -6.80% | 0 | %0 | gün 4/7 |
+| [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -6.80% | 0 | %0 | gün 4/7 |
 | [Kırılım Ansamblı 20/40/60 gün (4s)](kirilim_ansambl/RAPOR.md) | **100.00$** | +0.00% | -6.85% | 0 | %0 | gün 4/7 |
 | [Donchian (4s)](donchian_4s/RAPOR.md) | **100.00$** | +0.00% | -6.85% | 0 | %0 | gün 4/7 |
-| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -6.37% (BTC) | 0 | %0 | gün 4/7 |
+| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -6.47% (BTC) | 0 | %0 | gün 4/7 |
 | [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | -6.47% (BTC) | 0 | %0 | gün 4/7 |
 
 ### Temkinli Trend (1s)
@@ -21,7 +21,7 @@
 
 ### Grid Bot 7/24 (15m)
 - Başlangıç: 05.11 10:29, BTC 80,653$
-- Açık pozisyon: 1 parça BTC elde, şu an +0.00$ (ızgara 70,429$ – 77,843$)
+- Açık pozisyon: 1 parça BTC elde, şu an +0.04$ (ızgara 70,429$ – 77,843$)
 - 09.11 02:30 ALIM 75,100$ (12.18$ kullanıldı)
 - 09.11 00:45 SATIŞ 74,099$ (grid stop) → -0.44$
 - 09.11 00:45 SATIŞ 74,099$ (grid stop) → -0.60$
