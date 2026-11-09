@@ -260,6 +260,12 @@
    "equity": 100.0,
    "price": 74852.67,
    "trades": 0
+  },
+  {
+   "ts": 1794222415161,
+   "equity": 100.0,
+   "price": 73870.02,
+   "trades": 0
   }
  ],
  "log": [
@@ -268,5 +274,5 @@
  "logged_entries": [],
  "last_price": 73870.02,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794218956431
+ "last_run": 1794222415161
 }
