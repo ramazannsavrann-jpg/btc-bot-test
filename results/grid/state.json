@@ -10,8 +10,8 @@
   "max_dd": 0.1
  },
  "start_equity": 100.0,
- "cash": 72.9560745683192,
- "qty": 0.00032594997994855684,
+ "cash": 85.24690487777022,
+ "qty": 0.00016196272295580466,
  "position": null,
  "pending_entry": null,
  "loss_streak": 0,
@@ -19,8 +19,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794224700000,
- "last_close": 74372.01,
+ "last_ts": 1794229200000,
+ "last_close": 74760.61,
  "trades": [
   {
    "entry_ts": 1793881800000,
@@ -61,6 +61,16 @@
    "pnl": -0.442,
    "pnl_pct": -3.533,
    "reason": "grid stop"
+  },
+  {
+   "entry_ts": 1794205800000,
+   "exit_ts": 1794228300000,
+   "entry_px": 74172.84,
+   "exit_px": 75024.94,
+   "qty": 0.00016398725699275218,
+   "pnl": 0.1153,
+   "pnl_pct": 0.947,
+   "reason": "grid kârı"
   }
  ],
  "grid": {
@@ -85,13 +95,6 @@
    "cost": 12.17556362835737,
    "entry_ts": 1794180600000,
    "entry_px": 75099.9983585625
-  },
-  {
-   "lvl": 4,
-   "qty": 0.00016398725699275218,
-   "cost": 12.17556362835737,
-   "entry_ts": 1794205800000,
-   "entry_px": 74172.837885
   }
  ],
  "title": "Grid Bot 7/24 (15m)",
@@ -208,7 +211,8 @@
   "09.11 00:45 SATIŞ 74,099$ (grid stop) → -0.60$",
   "09.11 00:45 SATIŞ 74,099$ (grid stop) → -0.44$",
   "09.11 02:30 ALIM 75,100$ (12.18$ kullanıldı)",
-  "09.11 09:30 ALIM 74,173$ (12.18$ kullanıldı)"
+  "09.11 09:30 ALIM 74,173$ (12.18$ kullanıldı)",
+  "09.11 15:45 SATIŞ 75,025$ (grid kârı) → +0.12$"
  ],
  "logged_entries": [
   1793881800000,
@@ -218,7 +222,7 @@
   1794180600000,
   1794205800000
  ],
- "last_price": 74372.01,
+ "last_price": 74760.61,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794225911233
+ "last_run": 1794230707606
 }
