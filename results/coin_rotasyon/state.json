@@ -227,9 +227,15 @@
    "equity": 100.0,
    "price": 74726.01,
    "trades": 0
+  },
+  {
+   "ts": 1794257517530,
+   "equity": 100.0,
+   "price": 74878.01,
+   "trades": 0
   }
  ],
  "last_price": 74878.01,
- "last_run": 1794254584030,
+ "last_run": 1794257517530,
  "source": "Binance"
 }

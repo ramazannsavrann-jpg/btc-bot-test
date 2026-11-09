@@ -85,6 +85,11 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-09T20:51Z",
+"bot": "Temkinli Trend (1s)",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T07:29Z",
 "bot": "Grid Bot 7/24 (15m)",
 "bakiye": 100.0
@@ -170,6 +175,11 @@
 "bakiye": 97.33
 },
 {
+"zaman": "2026-11-09T20:51Z",
+"bot": "Grid Bot 7/24 (15m)",
+"bakiye": 97.36
+},
+{
 "zaman": "2026-11-05T07:29Z",
 "bot": "Donchian Kırılım + Chandelier (1h)",
 "bakiye": 100.0
@@ -255,6 +265,11 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-09T20:51Z",
+"bot": "Donchian Kırılım + Chandelier (1h)",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T07:29Z",
 "bot": "Aktif Trend (RSI + Kırılım) (1h)",
 "bakiye": 100.0
@@ -336,6 +351,11 @@
 },
 {
 "zaman": "2026-11-09T14:29Z",
+"bot": "Aktif Trend (RSI + Kırılım) (1h)",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-09T20:51Z",
 "bot": "Aktif Trend (RSI + Kırılım) (1h)",
 "bakiye": 100.0
 },
@@ -421,6 +441,11 @@
 },
 {
 "zaman": "2026-11-09T14:29Z",
+"bot": "Donchian + Haber/Duygu Freni (1h)",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-09T20:51Z",
 "bot": "Donchian + Haber/Duygu Freni (1h)",
 "bakiye": 100.0
 },
@@ -680,6 +705,11 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-09T20:51Z",
+"bot": "30 Coin Akıllı Skor",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T08:12Z",
 "bot": "30 Coin Momentum Rotasyonu",
 "bakiye": 100.0
@@ -761,6 +791,11 @@
 },
 {
 "zaman": "2026-11-09T14:30Z",
+"bot": "30 Coin Momentum Rotasyonu",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-09T20:51Z",
 "bot": "30 Coin Momentum Rotasyonu",
 "bakiye": 100.0
 }
