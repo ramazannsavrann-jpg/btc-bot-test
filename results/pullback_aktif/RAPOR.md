@@ -1,13 +1,13 @@
 # Aktif Trend (RSI + Kırılım) (1h) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 10.11 11:38 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 10.11 12:35 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 6/7 (121 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 6/7 (122 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
-- Aynı sürede sadece BTC alıp tutsaydın: **92.81$** (-7.19%)
-- BTC fiyatı: 80,649$ → 74,849$
+- Aynı sürede sadece BTC alıp tutsaydın: **92.65$** (-7.35%)
+- BTC fiyatı: 80,649$ → 74,725$
 - Biten işlem: **0** · Kazanan: 0 · Başarı oranı: **%0**
 - Açık pozisyon yok (bot uygun fırsat bekliyor; nakitte durmak da bir karardır).
 
@@ -34,6 +34,7 @@
 | 09.11 17:29 | 100.00$ | +0.00$ | 74,726$ | 0 |
 | 09.11 23:51 | 100.00$ | +0.00$ | 74,878$ | 0 |
 | 10.11 06:19 | 100.00$ | +0.00$ | 74,864$ | 0 |
+| 10.11 12:35 | 100.00$ | +0.00$ | 74,725$ | 0 |
 
 ## 📜 Ne oldu? (son olaylar)
 
