@@ -33,8 +33,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794340800000,
- "last_close": 73780.0,
+ "last_ts": 1794344400000,
+ "last_close": 73850.09,
  "trades": [],
  "title": "Aktif Trend (RSI + Kırılım) (1h)",
  "test_start": 1793863766539,
@@ -167,13 +167,19 @@
    "equity": 100.0,
    "price": 73216.01,
    "trades": 0
+  },
+  {
+   "ts": 1794348959590,
+   "equity": 100.0,
+   "price": 73850.09,
+   "trades": 0
   }
  ],
  "log": [
   "05.11 10:29 Test başladı. BTC 80,649$, sanal bakiye 100$."
  ],
  "logged_entries": [],
- "last_price": 73780.0,
+ "last_price": 73850.09,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794346403339
+ "last_run": 1794348959590
 }
