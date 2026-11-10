@@ -1,6 +1,6 @@
 # Donchian (4s) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 10.11 20:42 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 10.11 21:24 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
 **Durum:** 🟢 Test sürüyor — gün 6/7 (128 saat geçti)
 
@@ -35,6 +35,7 @@
 | 10.11 02:48 | 100.00$ | +0.00$ | 74,878$ | 0 |
 | 10.11 09:22 | 100.00$ | +0.00$ | 74,562$ | 0 |
 | 10.11 15:22 | 100.00$ | +0.00$ | 74,420$ | 0 |
+| 10.11 21:24 | 100.00$ | +0.00$ | 73,216$ | 0 |
 
 ## 📜 Ne oldu? (son olaylar)
 
