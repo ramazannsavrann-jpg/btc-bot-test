@@ -1,13 +1,13 @@
 # Temkinli Trend (1s) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 10.11 07:22 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 10.11 08:23 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 5/7 (117 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 5/7 (118 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
-- Aynı sürede sadece BTC alıp tutsaydın: **92.45$** (-7.55%)
-- BTC fiyatı: 80,649$ → 74,562$
+- Aynı sürede sadece BTC alıp tutsaydın: **92.73$** (-7.27%)
+- BTC fiyatı: 80,649$ → 74,786$
 - Biten işlem: **0** · Kazanan: 0 · Başarı oranı: **%0**
 - Açık pozisyon yok (bot uygun fırsat bekliyor; nakitte durmak da bir karardır).
 
