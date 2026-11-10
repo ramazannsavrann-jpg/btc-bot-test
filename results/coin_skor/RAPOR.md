@@ -1,10 +1,10 @@
 # 30 Coin Akıllı Skor — Canlı Kâğıt Test
 
-**Son güncelleme:** 10.11 04:35 (İstanbul) · **Durum:** 🟢 Test sürüyor — gün 5/7
+**Son güncelleme:** 10.11 05:32 (İstanbul) · **Durum:** 🟢 Test sürüyor — gün 5/7
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
-- Aynı sürede BTC al-tut: -6.56%
+- Aynı sürede BTC al-tut: -6.58%
 - Biten işlem: **0** · Kazanan: 0 · Başarı: **%0**
 - Açık pozisyonlar: yok
 - Takip edilen coinler: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ
