@@ -29,8 +29,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794330000000,
- "last_close": 73284.01,
+ "last_ts": 1794333600000,
+ "last_close": 73488.68,
  "trades": [],
  "test_start": 1793863055658,
  "test_end": 1794467855658,
@@ -168,8 +168,8 @@
   "05.11 10:17 Test başladı. BTC 80,649$, sanal bakiye 100$."
  ],
  "logged_entries": [],
- "last_price": 73284.01,
+ "last_price": 73488.68,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794335056343,
+ "last_run": 1794338823850,
  "title": "Temkinli Trend (1s)"
 }
