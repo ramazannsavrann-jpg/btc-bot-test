@@ -15,14 +15,14 @@
 {
 "bot": "Grid Bot 7/24 (15m)",
 "tur": "Sadece BTC",
-"bakiye": 97.27,
-"getiri_pct": -2.73,
-"btc_al_tut_pct": -8.34,
+"bakiye": 97.18,
+"getiri_pct": -2.82,
+"btc_al_tut_pct": -8.56,
 "islem": 5,
 "kazanan": 1,
 "basari_pct": 20.0,
 "durum": "Gün 6/7",
-"acik_pozisyon": "3 parça BTC elde, şu an -0.15$ (ızgara 70,429$ – 77,843$)",
+"acik_pozisyon": "3 parça BTC elde, şu an -0.24$ (ızgara 70,429$ – 77,843$)",
 "baslangic": "2026-11-05T07:29Z"
 },
 {
