@@ -1,18 +1,18 @@
 # 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 12.11 01:38 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
+**Son güncelleme:** 12.11 02:32 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
 | Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
 |---|---|---|---|---|---|---|
-| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -7.76% | 0 | %0 | gün 7/7 |
-| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **97.41$** | -2.59% | -7.87% | 6 | %33 | gün 7/7 |
-| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -7.76% | 0 | %0 | gün 7/7 |
-| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -7.76% | 0 | %0 | gün 7/7 |
-| [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -7.76% | 0 | %0 | gün 7/7 |
+| [Temkinli Trend (1s)](temkinli/RAPOR.md) | **100.00$** | +0.00% | -8.32% | 0 | %0 | gün 7/7 |
+| [Grid Bot 7/24 (15m)](grid/RAPOR.md) | **97.24$** | -2.76% | -8.49% | 6 | %33 | gün 7/7 |
+| [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -8.32% | 0 | %0 | gün 7/7 |
+| [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -8.32% | 0 | %0 | gün 7/7 |
+| [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -8.32% | 0 | %0 | gün 7/7 |
 | [Kırılım Ansamblı 20/40/60 gün (4s)](kirilim_ansambl/RAPOR.md) | **100.00$** | +0.00% | -7.42% | 0 | %0 | gün 7/7 |
 | [Donchian (4s)](donchian_4s/RAPOR.md) | **100.00$** | +0.00% | -7.42% | 0 | %0 | gün 7/7 |
-| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -7.43% (BTC) | 0 | %0 | gün 7/7 |
-| [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | -7.43% (BTC) | 0 | %0 | gün 7/7 |
+| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -7.99% (BTC) | 0 | %0 | gün 7/7 |
+| [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | -7.99% (BTC) | 0 | %0 | gün 7/7 |
 
 ### Temkinli Trend (1s)
 - Başlangıç: 05.11 10:17, BTC 80,649$
@@ -21,7 +21,7 @@
 
 ### Grid Bot 7/24 (15m)
 - Başlangıç: 05.11 10:29, BTC 80,653$
-- Açık pozisyon: 2 parça BTC elde, şu an -0.13$ (ızgara 70,429$ – 77,843$)
+- Açık pozisyon: 2 parça BTC elde, şu an -0.30$ (ızgara 70,429$ – 77,843$)
 - 11.11 11:00 SATIŞ 74,099$ (grid kârı) → +0.12$
 - 10.11 18:30 ALIM 73,246$ (12.18$ kullanıldı)
 - 10.11 13:30 ALIM 74,173$ (12.18$ kullanıldı)

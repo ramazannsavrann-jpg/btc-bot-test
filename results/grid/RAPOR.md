@@ -1,15 +1,15 @@
 # Grid Bot 7/24 (15m) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 12.11 01:38 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 12.11 02:31 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 7/7 (159 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 7/7 (160 saat geçti)
 
-## 💰 100$ → **97.41$** (-2.59%)
+## 💰 100$ → **97.24$** (-2.76%)
 
-- Aynı sürede sadece BTC alıp tutsaydın: **92.13$** (-7.87%)
-- BTC fiyatı: 80,653$ → 74,304$
+- Aynı sürede sadece BTC alıp tutsaydın: **91.51$** (-8.49%)
+- BTC fiyatı: 80,653$ → 73,802$
 - Biten işlem: **6** · Kazanan: 2 · Başarı oranı: **%33**
-- Açık pozisyon: 2 parça BTC elde, şu an -0.13$ (ızgara 70,429$ – 77,843$)
+- Açık pozisyon: 2 parça BTC elde, şu an -0.30$ (ızgara 70,429$ – 77,843$)
 
 ## 🕕 6 saatlik özet
 
@@ -40,6 +40,7 @@
 | 11.11 07:27 | 97.17$ | -0.10$ | 73,717$ | 5 |
 | 11.11 13:41 | 97.31$ | +0.14$ | 74,008$ | 6 |
 | 11.11 20:27 | 97.42$ | +0.11$ | 74,349$ | 6 |
+| 12.11 02:31 | 97.24$ | -0.18$ | 73,802$ | 6 |
 
 ## 📜 Ne oldu? (son olaylar)
 
