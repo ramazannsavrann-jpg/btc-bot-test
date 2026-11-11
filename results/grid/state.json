@@ -19,8 +19,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794388500000,
- "last_close": 73762.01,
+ "last_ts": 1794392100000,
+ "last_close": 74007.95,
  "trades": [
   {
    "entry_ts": 1793881800000,
@@ -257,6 +257,12 @@
    "equity": 97.17,
    "price": 73717.43,
    "trades": 5
+  },
+  {
+   "ts": 1794393695633,
+   "equity": 97.31,
+   "price": 74007.95,
+   "trades": 6
   }
  ],
  "log": [
@@ -286,7 +292,7 @@
   1794306600000,
   1794324600000
  ],
- "last_price": 73762.01,
+ "last_price": 74007.95,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794389936695
+ "last_run": 1794393695633
 }
