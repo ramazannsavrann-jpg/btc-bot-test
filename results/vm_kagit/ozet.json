@@ -1,31 +1,31 @@
 {
- "olusturma": "11.11 22:59",
+ "olusturma": "12.11 00:51",
  "VM-A": {
-  "bakiye_piyasa": 96.9437,
-  "bakiye_tasfiye": 96.7998,
-  "toplam_getiri_pct": -3.056,
-  "btc_ayni_surede_pct": -7.959,
-  "acik_pozisyon": "0.001297 BTC (≈95.94$)",
+  "bakiye_piyasa": 97.4663,
+  "bakiye_tasfiye": 97.3216,
+  "toplam_getiri_pct": -2.534,
+  "btc_ayni_surede_pct": -7.457,
+  "acik_pozisyon": "0.001297 BTC (≈96.47$)",
   "nakit_orani_pct": 1.03,
   "son_karar": "11.11 03:00 (hedef %99.0, bant içinde, işlem yok)",
-  "son_islenen_mum_kapanisi": "11.11 19:00",
+  "son_islenen_mum_kapanisi": "11.11 23:00",
   "son_dolum": "ALIM 0.001297 BTC @ 76,272.72$ (dolum mumu 06.11 03:00, 1 dk referans 76,234.60$, mum açılışına göre +0.193%)",
   "bekleyen": "yok",
   "baslangic": "05.11 16:20",
-  "son_calisma": "11.11 22:59"
+  "son_calisma": "12.11 00:51"
  },
  "ENS": {
   "bakiye_piyasa": 100.0,
   "toplam_getiri_pct": 0.0,
-  "btc_ayni_surede_pct": -7.923,
+  "btc_ayni_surede_pct": -7.422,
   "acik_pozisyon": "yok",
   "nakit_orani_pct": 100.0,
-  "son_karar": "11.11 19:00 (son değerlendirilen 4s mum kapanışı)",
+  "son_karar": "11.11 23:00 (son değerlendirilen 4s mum kapanışı)",
   "son_dolum": "henüz dolum yok",
   "durum": "çalışıyor",
   "baslangic": "05.11 12:55",
   "bitis": "12.11 12:55",
-  "son_calisma": "11.11 22:19"
+  "son_calisma": "11.11 23:14"
  },
  "karsilastirma": {
   "yontem": "İkisi de ortak ilk kayıtta 100'e eşitlenir; her gün, iki botun en fazla 20 dk arayla eşleşen son kaydı kullanılır. Değerler piyasa değeri esasındadır (nakit + adet × fiyat). Eşleşen kayıt olmayan gün tahmin edilmez, 'eksik' yazılır.",
@@ -80,13 +80,15 @@
    },
    {
     "gun": "2026-11-11",
-    "kayit": "11.11 21:59",
+    "kayit": "11.11 22:59",
     "VM-A": 96.94,
     "ENS": 100.0,
     "BTC": 92.04
    }
   ],
-  "eksik_gunler": [],
+  "eksik_gunler": [
+   "2026-11-12"
+  ],
   "not": "ENS canlı testi 12.11'de biter; sonrasında ENS sütunu güncellenmez. ENS'de canlı %10 düşüş freni açık, VM-A'da yok. Asıl ileri karşılaştırma ön kayıt v2 hesabıdır."
  }
 }
