@@ -37,8 +37,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794398400000,
- "last_close": 73991.97,
+ "last_ts": 1794412800000,
+ "last_close": 74394.99,
  "trades": [],
  "title": "Donchian (4s)",
  "test_start": 1793872543938,
@@ -189,13 +189,19 @@
    "equity": 100.0,
    "price": 73992.38,
    "trades": 0
+  },
+  {
+   "ts": 1794428063871,
+   "equity": 100.0,
+   "price": 74394.99,
+   "trades": 0
   }
  ],
  "log": [
   "05.11 12:55 Test başladı. BTC 80,359$, sanal bakiye 100$."
  ],
  "logged_entries": [],
- "last_price": 73991.97,
+ "last_price": 74394.99,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794424746560
+ "last_run": 1794428063871
 }

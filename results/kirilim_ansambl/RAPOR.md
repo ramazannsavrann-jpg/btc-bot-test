@@ -1,13 +1,13 @@
 # Kırılım Ansamblı 20/40/60 gün (4s) — Canlı Kâğıt Test Raporu
 
-**Son güncelleme:** 11.11 22:19 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
+**Son güncelleme:** 11.11 23:14 (İstanbul) · Fiyat kaynağı: Binance (data-api.binance.vision)
 
-**Durum:** 🟢 Test sürüyor — gün 7/7 (153 saat geçti)
+**Durum:** 🟢 Test sürüyor — gün 7/7 (154 saat geçti)
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
-- Aynı sürede sadece BTC alıp tutsaydın: **92.08$** (-7.92%)
-- BTC fiyatı: 80,359$ → 73,992$
+- Aynı sürede sadece BTC alıp tutsaydın: **92.58$** (-7.42%)
+- BTC fiyatı: 80,359$ → 74,395$
 - Biten işlem: **0** · Kazanan: 0 · Başarı oranı: **%0**
 - Açık pozisyon yok (bot uygun fırsat bekliyor; nakitte durmak da bir karardır).
 
@@ -39,6 +39,7 @@
 | 11.11 03:47 | 100.00$ | +0.00$ | 73,796$ | 0 |
 | 11.11 10:46 | 100.00$ | +0.00$ | 73,770$ | 0 |
 | 11.11 16:55 | 100.00$ | +0.00$ | 73,992$ | 0 |
+| 11.11 23:14 | 100.00$ | +0.00$ | 74,395$ | 0 |
 
 ## 📜 Ne oldu? (son olaylar)
 
