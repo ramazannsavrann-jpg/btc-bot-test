@@ -1,74 +1,74 @@
 [
 {
 "bot": "Grid Bot 7/24 (15m)",
+"zaman": "11.11 11:00",
+"olay": "SATIŞ 74,099$ (grid kârı) → +0.12$",
+"no": 1
+},
+{
+"bot": "Grid Bot 7/24 (15m)",
 "zaman": "10.11 18:30",
 "olay": "ALIM 73,246$ (12.18$ kullanıldı)",
-"no": 1
+"no": 2
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "10.11 13:30",
 "olay": "ALIM 74,173$ (12.18$ kullanıldı)",
-"no": 2
+"no": 3
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 15:45",
 "olay": "SATIŞ 75,025$ (grid kârı) → +0.12$",
-"no": 3
+"no": 4
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 09:30",
 "olay": "ALIM 74,173$ (12.18$ kullanıldı)",
-"no": 4
+"no": 5
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 02:30",
 "olay": "ALIM 75,100$ (12.18$ kullanıldı)",
-"no": 5
-},
-{
-"bot": "Grid Bot 7/24 (15m)",
-"zaman": "09.11 00:45",
-"olay": "SATIŞ 74,099$ (grid stop) → -0.90$",
 "no": 6
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 00:45",
-"olay": "SATIŞ 74,099$ (grid stop) → -0.75$",
+"olay": "SATIŞ 74,099$ (grid stop) → -0.90$",
 "no": 7
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 00:45",
-"olay": "SATIŞ 74,099$ (grid stop) → -0.60$",
+"olay": "SATIŞ 74,099$ (grid stop) → -0.75$",
 "no": 8
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 00:45",
-"olay": "SATIŞ 74,099$ (grid stop) → -0.44$",
+"olay": "SATIŞ 74,099$ (grid stop) → -0.60$",
 "no": 9
+},
+{
+"bot": "Grid Bot 7/24 (15m)",
+"zaman": "09.11 00:45",
+"olay": "SATIŞ 74,099$ (grid stop) → -0.44$",
+"no": 10
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "05.11 18:15",
 "olay": "ALIM 76,659$ (12.51$ kullanıldı)",
-"no": 10
+"no": 11
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "05.11 18:00",
 "olay": "ALIM 77,668$ (12.51$ kullanıldı)",
-"no": 11
-},
-{
-"bot": "Grid Bot 7/24 (15m)",
-"zaman": "05.11 17:45",
-"olay": "ALIM 78,676$ (12.51$ kullanıldı)",
 "no": 12
 },
 {
