@@ -1,6 +1,6 @@
 # 30 Coin Momentum Rotasyonu — Canlı Kâğıt Test
 
-**Son güncelleme:** 12.11 06:32 (İstanbul) · **Durum:** 🟢 Test sürüyor — gün 7/7
+**Son güncelleme:** 12.11 07:30 (İstanbul) · **Durum:** 🟢 Test sürüyor — gün 7/7
 
 ## 💰 100$ → **100.00$** (+0.00%)
 
