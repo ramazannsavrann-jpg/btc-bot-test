@@ -830,6 +830,11 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-12T08:44Z",
+"bot": "Kırılım Ansamblı 20/40/60 gün (4s)",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T09:55Z",
 "bot": "Donchian (4s)",
 "bakiye": 100.0
@@ -956,6 +961,11 @@
 },
 {
 "zaman": "2026-11-12T02:34Z",
+"bot": "Donchian (4s)",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-12T08:44Z",
 "bot": "Donchian (4s)",
 "bakiye": 100.0
 },
@@ -1095,6 +1105,11 @@
 "bakiye": 100.0
 },
 {
+"zaman": "2026-11-12T08:44Z",
+"bot": "30 Coin Akıllı Skor",
+"bakiye": 100.0
+},
+{
 "zaman": "2026-11-05T08:12Z",
 "bot": "30 Coin Momentum Rotasyonu",
 "bakiye": 100.0
@@ -1226,6 +1241,11 @@
 },
 {
 "zaman": "2026-11-12T06:29Z",
+"bot": "30 Coin Momentum Rotasyonu",
+"bakiye": 100.0
+},
+{
+"zaman": "2026-11-12T08:44Z",
 "bot": "30 Coin Momentum Rotasyonu",
 "bakiye": 100.0
 }

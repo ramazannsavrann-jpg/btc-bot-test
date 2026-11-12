@@ -1,6 +1,6 @@
 # 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 12.11 10:49 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
+**Son güncelleme:** 12.11 11:44 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
 | Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
 |---|---|---|---|---|---|---|
@@ -9,10 +9,10 @@
 | [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -8.83% | 0 | %0 | ✅ bitti |
 | [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -8.83% | 0 | %0 | ✅ bitti |
 | [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -8.83% | 0 | %0 | ✅ bitti |
-| [Kırılım Ansamblı 20/40/60 gün (4s)](kirilim_ansambl/RAPOR.md) | **100.00$** | +0.00% | -8.15% | 0 | %0 | gün 7/7 |
-| [Donchian (4s)](donchian_4s/RAPOR.md) | **100.00$** | +0.00% | -8.15% | 0 | %0 | gün 7/7 |
-| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -8.50% (BTC) | 0 | %0 | gün 7/7 |
-| [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | -8.50% (BTC) | 0 | %0 | gün 7/7 |
+| [Kırılım Ansamblı 20/40/60 gün (4s)](kirilim_ansambl/RAPOR.md) | **100.00$** | +0.00% | -8.34% | 0 | %0 | gün 7/7 |
+| [Donchian (4s)](donchian_4s/RAPOR.md) | **100.00$** | +0.00% | -8.34% | 0 | %0 | gün 7/7 |
+| [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -8.34% (BTC) | 0 | %0 | ✅ bitti |
+| [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | -8.34% (BTC) | 0 | %0 | ✅ bitti |
 
 ### Temkinli Trend (1s)
 - Başlangıç: 05.11 10:17, BTC 80,649$
@@ -61,11 +61,13 @@
 ### 30 Coin Akıllı Skor
 - Başlangıç: 05.11 11:12, BTC 80,359$
 - Açık pozisyon: yok
+- 12.11 11:44 7 günlük test bitti.
 - 05.11 11:12 Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ
 
 ### 30 Coin Momentum Rotasyonu
 - Başlangıç: 05.11 11:12, BTC 80,359$
 - Açık pozisyon: yok
+- 12.11 11:44 7 günlük test bitti.
 - 05.11 11:12 Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ
 
 ## 🏆 Turnuvalar
