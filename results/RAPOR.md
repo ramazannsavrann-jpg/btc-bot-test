@@ -1,6 +1,6 @@
 # 🤖 BTC Botları — Canlı Kâğıt Test
 
-**Son güncelleme:** 12.11 12:37 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
+**Son güncelleme:** 12.11 13:41 (İstanbul). Her bot ayrı **sanal 100$** ile, gerçek BTC fiyatıyla çalışır.
 
 | Bot | 100$ → | Getiri | Aynı sürede al-tut | Biten işlem | Başarı | Durum |
 |---|---|---|---|---|---|---|
@@ -9,8 +9,8 @@
 | [Donchian Kırılım + Chandelier (1h)](donchian/RAPOR.md) | **100.00$** | +0.00% | -8.83% | 0 | %0 | ✅ bitti |
 | [Aktif Trend (RSI + Kırılım) (1h)](pullback_aktif/RAPOR.md) | **100.00$** | +0.00% | -8.83% | 0 | %0 | ✅ bitti |
 | [Donchian + Haber/Duygu Freni (1h)](donchian_filtre/RAPOR.md) | **100.00$** | +0.00% | -8.83% | 0 | %0 | ✅ bitti |
-| [Kırılım Ansamblı 20/40/60 gün (4s)](kirilim_ansambl/RAPOR.md) | **100.00$** | +0.00% | -8.34% | 0 | %0 | gün 7/7 |
-| [Donchian (4s)](donchian_4s/RAPOR.md) | **100.00$** | +0.00% | -8.34% | 0 | %0 | gün 7/7 |
+| [Kırılım Ansamblı 20/40/60 gün (4s)](kirilim_ansambl/RAPOR.md) | **100.00$** | +0.00% | -8.34% | 0 | %0 | ✅ bitti |
+| [Donchian (4s)](donchian_4s/RAPOR.md) | **100.00$** | +0.00% | -8.34% | 0 | %0 | ✅ bitti |
 | [30 Coin Akıllı Skor](coin_skor/RAPOR.md) | **100.00$** | +0.00% | -8.34% (BTC) | 0 | %0 | ✅ bitti |
 | [30 Coin Momentum Rotasyonu](coin_rotasyon/RAPOR.md) | **100.00$** | +0.00% | -8.34% (BTC) | 0 | %0 | ✅ bitti |
 
@@ -51,11 +51,13 @@
 ### Kırılım Ansamblı 20/40/60 gün (4s)
 - Başlangıç: 05.11 12:55, BTC 80,359$
 - Açık pozisyon: yok
+- 12.11 11:00 7 günlük test bitti.
 - 05.11 12:55 Test başladı. BTC 80,359$, sanal bakiye 100$.
 
 ### Donchian (4s)
 - Başlangıç: 05.11 12:55, BTC 80,359$
 - Açık pozisyon: yok
+- 12.11 11:00 7 günlük test bitti.
 - 05.11 12:55 Test başladı. BTC 80,359$, sanal bakiye 100$.
 
 ### 30 Coin Akıllı Skor
