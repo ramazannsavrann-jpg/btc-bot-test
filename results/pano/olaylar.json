@@ -1,122 +1,146 @@
 [
 {
 "bot": "Grid Bot 7/24 (15m)",
+"zaman": "12.11 10:30",
+"olay": "SATIŞ 73,572$ (test bitti) → -0.27$",
+"no": 1
+},
+{
+"bot": "Grid Bot 7/24 (15m)",
+"zaman": "12.11 10:30",
+"olay": "SATIŞ 73,572$ (test bitti) → -0.12$",
+"no": 2
+},
+{
+"bot": "Grid Bot 7/24 (15m)",
+"zaman": "12.11 10:30",
+"olay": "7 günlük test bitti.",
+"no": 3
+},
+{
+"bot": "Temkinli Trend (1s)",
+"zaman": "12.11 10:00",
+"olay": "7 günlük test bitti.",
+"no": 4
+},
+{
+"bot": "Donchian Kırılım + Chandelier (1h)",
+"zaman": "12.11 10:00",
+"olay": "7 günlük test bitti.",
+"no": 5
+},
+{
+"bot": "Aktif Trend (RSI + Kırılım) (1h)",
+"zaman": "12.11 10:00",
+"olay": "7 günlük test bitti.",
+"no": 6
+},
+{
+"bot": "Donchian + Haber/Duygu Freni (1h)",
+"zaman": "12.11 10:00",
+"olay": "7 günlük test bitti.",
+"no": 7
+},
+{
+"bot": "Grid Bot 7/24 (15m)",
 "zaman": "11.11 11:00",
 "olay": "SATIŞ 74,099$ (grid kârı) → +0.12$",
-"no": 1
+"no": 8
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "10.11 18:30",
 "olay": "ALIM 73,246$ (12.18$ kullanıldı)",
-"no": 2
+"no": 9
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "10.11 13:30",
 "olay": "ALIM 74,173$ (12.18$ kullanıldı)",
-"no": 3
+"no": 10
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 15:45",
 "olay": "SATIŞ 75,025$ (grid kârı) → +0.12$",
-"no": 4
+"no": 11
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 09:30",
 "olay": "ALIM 74,173$ (12.18$ kullanıldı)",
-"no": 5
+"no": 12
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 02:30",
 "olay": "ALIM 75,100$ (12.18$ kullanıldı)",
-"no": 6
-},
-{
-"bot": "Grid Bot 7/24 (15m)",
-"zaman": "09.11 00:45",
-"olay": "SATIŞ 74,099$ (grid stop) → -0.90$",
-"no": 7
+"no": 13
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 00:45",
 "olay": "SATIŞ 74,099$ (grid stop) → -0.75$",
-"no": 8
+"no": 14
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 00:45",
 "olay": "SATIŞ 74,099$ (grid stop) → -0.60$",
-"no": 9
+"no": 15
 },
 {
 "bot": "Grid Bot 7/24 (15m)",
 "zaman": "09.11 00:45",
 "olay": "SATIŞ 74,099$ (grid stop) → -0.44$",
-"no": 10
-},
-{
-"bot": "Grid Bot 7/24 (15m)",
-"zaman": "05.11 18:15",
-"olay": "ALIM 76,659$ (12.51$ kullanıldı)",
-"no": 11
-},
-{
-"bot": "Grid Bot 7/24 (15m)",
-"zaman": "05.11 18:00",
-"olay": "ALIM 77,668$ (12.51$ kullanıldı)",
-"no": 12
+"no": 16
 },
 {
 "bot": "Kırılım Ansamblı 20/40/60 gün (4s)",
 "zaman": "05.11 12:55",
 "olay": "Test başladı. BTC 80,359$, sanal bakiye 100$.",
-"no": 13
+"no": 17
 },
 {
 "bot": "Donchian (4s)",
 "zaman": "05.11 12:55",
 "olay": "Test başladı. BTC 80,359$, sanal bakiye 100$.",
-"no": 14
+"no": 18
 },
 {
 "bot": "30 Coin Akıllı Skor",
 "zaman": "05.11 11:12",
 "olay": "Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ",
-"no": 15
+"no": 19
 },
 {
 "bot": "30 Coin Momentum Rotasyonu",
 "zaman": "05.11 11:12",
 "olay": "Test başladı. Takip edilen 30 coin: BTC, ETH, SOL, ZEC, XRP, BNB, NEAR, PEPE, UNI, TRUMP, SUI, HYPE, DOGE, ENA, TRX, LINK, WLD, AAVE, ADA, PUMP, AVAX, QNT, TAO, LTC, BEB, BMT, HUMA, BEAMX, ONDO, INJ",
-"no": 16
+"no": 20
 },
 {
 "bot": "Donchian + Haber/Duygu Freni (1h)",
 "zaman": "05.11 10:40",
 "olay": "Test başladı. BTC 80,649$, sanal bakiye 100$.",
-"no": 17
+"no": 21
 },
 {
 "bot": "Donchian Kırılım + Chandelier (1h)",
 "zaman": "05.11 10:29",
 "olay": "Test başladı. BTC 80,649$, sanal bakiye 100$.",
-"no": 18
+"no": 22
 },
 {
 "bot": "Aktif Trend (RSI + Kırılım) (1h)",
 "zaman": "05.11 10:29",
 "olay": "Test başladı. BTC 80,649$, sanal bakiye 100$.",
-"no": 19
+"no": 23
 },
 {
 "bot": "Temkinli Trend (1s)",
 "zaman": "05.11 10:17",
 "olay": "Test başladı. BTC 80,649$, sanal bakiye 100$.",
-"no": 20
+"no": 24
 }
 ]

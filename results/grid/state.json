@@ -10,8 +10,8 @@
   "max_dd": 0.1
  },
  "start_equity": 100.0,
- "cash": 73.18852867285835,
- "qty": 0.0003259499799485568,
+ "cash": 97.14541648365537,
+ "qty": 0.0,
  "position": null,
  "pending_entry": null,
  "loss_streak": 0,
@@ -19,8 +19,8 @@
  "peak": 100.0,
  "halted": false,
  "halt_reason": null,
- "last_ts": 1794463200000,
- "last_close": 73680.0,
+ "last_ts": 1794467700000,
+ "last_close": 73609.04,
  "trades": [
   {
    "entry_ts": 1793881800000,
@@ -81,6 +81,26 @@
    "pnl": 0.1172,
    "pnl_pct": 0.962,
    "reason": "grid kârı"
+  },
+  {
+   "entry_ts": 1794180600000,
+   "exit_ts": 1794468600000,
+   "entry_px": 75100.0,
+   "exit_px": 73572.24,
+   "qty": 0.00016196272295580463,
+   "pnl": -0.2715,
+   "pnl_pct": -2.23,
+   "reason": "test bitti"
+  },
+  {
+   "entry_ts": 1794306600000,
+   "exit_ts": 1794468600000,
+   "entry_px": 74172.84,
+   "exit_px": 73572.24,
+   "qty": 0.00016398725699275218,
+   "pnl": -0.1227,
+   "pnl_pct": -1.008,
+   "reason": "test bitti"
   }
  ],
  "grid": {
@@ -98,27 +118,12 @@
   "alloc": 12.163400228129241,
   "center": 74135.77
  },
- "lots": [
-  {
-   "lvl": 5,
-   "qty": 0.00016196272295580463,
-   "cost": 12.17556362835737,
-   "entry_ts": 1794180600000,
-   "entry_px": 75099.9983585625
-  },
-  {
-   "lvl": 4,
-   "qty": 0.00016398725699275218,
-   "cost": 12.17556362835737,
-   "entry_ts": 1794306600000,
-   "entry_px": 74172.837885
-  }
- ],
+ "lots": [],
  "title": "Grid Bot 7/24 (15m)",
  "test_start": 1793863766534,
  "test_end": 1794468566534,
  "start_price": 80653.2,
- "finished": false,
+ "finished": true,
  "snapshots": [
   {
    "ts": 1793863766534,
@@ -281,6 +286,13 @@
    "equity": 97.2,
    "price": 73680.0,
    "trades": 6
+  },
+  {
+   "ts": 1794469723589,
+   "equity": 97.15,
+   "price": 73609.04,
+   "trades": 8,
+   "final": true
   }
  ],
  "log": [
@@ -298,7 +310,10 @@
   "09.11 15:45 SATIŞ 75,025$ (grid kârı) → +0.12$",
   "10.11 13:30 ALIM 74,173$ (12.18$ kullanıldı)",
   "10.11 18:30 ALIM 73,246$ (12.18$ kullanıldı)",
-  "11.11 11:00 SATIŞ 74,099$ (grid kârı) → +0.12$"
+  "11.11 11:00 SATIŞ 74,099$ (grid kârı) → +0.12$",
+  "12.11 10:30 SATIŞ 73,572$ (test bitti) → -0.27$",
+  "12.11 10:30 SATIŞ 73,572$ (test bitti) → -0.12$",
+  "12.11 10:30 7 günlük test bitti."
  ],
  "logged_entries": [
   1793881800000,
@@ -310,7 +325,7 @@
   1794306600000,
   1794324600000
  ],
- "last_price": 73680.0,
+ "last_price": 73609.04,
  "source": "Binance (data-api.binance.vision)",
- "last_run": 1794464941129
+ "last_run": 1794469723589
 }
