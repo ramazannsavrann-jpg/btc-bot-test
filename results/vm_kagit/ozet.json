@@ -1,18 +1,18 @@
 {
- "olusturma": "14.11 09:59",
+ "olusturma": "14.11 11:01",
  "VM-A": {
-  "bakiye_piyasa": 87.5605,
-  "bakiye_tasfiye": 87.4307,
-  "toplam_getiri_pct": -12.439,
-  "btc_ayni_surede_pct": -16.96,
-  "acik_pozisyon": "0.001297 BTC (≈86.56$)",
+  "bakiye_piyasa": 88.0919,
+  "bakiye_tasfiye": 87.9613,
+  "toplam_getiri_pct": -11.908,
+  "btc_ayni_surede_pct": -16.451,
+  "acik_pozisyon": "0.001297 BTC (≈87.09$)",
   "nakit_orani_pct": 1.14,
   "son_karar": "14.11 03:00 (hedef %99.0, bant içinde, işlem yok)",
-  "son_islenen_mum_kapanisi": "14.11 07:00",
+  "son_islenen_mum_kapanisi": "14.11 11:00",
   "son_dolum": "ALIM 0.001297 BTC @ 76,272.72$ (dolum mumu 06.11 03:00, 1 dk referans 76,234.60$, mum açılışına göre +0.193%)",
   "bekleyen": "yok",
   "baslangic": "05.11 16:20",
-  "son_calisma": "14.11 09:59"
+  "son_calisma": "14.11 11:01"
  },
  "ENS": {
   "bakiye_piyasa": 100.0,
