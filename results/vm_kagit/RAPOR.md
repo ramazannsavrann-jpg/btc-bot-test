@@ -2,7 +2,7 @@
 
 _SANAL paradır; gerçek emir verilmez. Yatırım tavsiyesi değildir. Kurallar: ön kayıt v2/v2.1 VM-A._
 
-- Başlangıç: 05.11 16:20, BTC 80,390$ · son çalıştırma 19.11 05:39
+- Başlangıç: 05.11 16:20, BTC 80,390$ · son çalıştırma 19.11 06:31
 - Bakiye: **82.66$** (-17.34%) · aynı sürede BTC al-tut -21.55% · BTC ağırlığı %98.8
 - İşlem sayısı: 1 · bekleyen emir: yok
 - Veri: Binance (data-api.binance.vision)
