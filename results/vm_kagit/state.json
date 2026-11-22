@@ -3,8 +3,8 @@
  "cash": 1.0,
  "qty": 0.001296677270748015,
  "pending": null,
- "last_ts": 1795276800000,
- "last_close": 60364.02,
+ "last_ts": 1795291200000,
+ "last_close": 60215.77,
  "start_price": 80390.01,
  "test_start": 1793884824576,
  "source": "Binance (data-api.binance.vision)",
@@ -149,12 +149,19 @@
    "hedef": 0.99,
    "agirlik": 0.9871,
    "islem": false
+  },
+  {
+   "gun_sonu_ts": 1795305600000,
+   "sigma": 0.3901,
+   "hedef": 0.99,
+   "agirlik": 0.9874,
+   "islem": false
   }
  ],
  "log": [
   "05.11 16:20 Test başladı. BTC 80,390$, sanal bakiye 100$. Geçmişte işlem yapılmaz.",
   "06.11 03:00 ALIM 0.001297 BTC @ 76,273$ (hedef ağırlık %99, sinyal 06.11 03:00)"
  ],
- "last_price": 60364.02,
- "last_run": 1795305271382
+ "last_price": 60215.77,
+ "last_run": 1795319036878
 }
